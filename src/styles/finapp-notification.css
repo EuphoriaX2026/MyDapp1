@@ -1,0 +1,190 @@
+/**
+ * Finapp glass notifications — below app header (south edge), stacked vertically.
+ * Pages without a header use the same top offset as a standard 56px appHeader.
+ */
+
+:root {
+  --finapp-notification-header-height: 56px;
+  --finapp-notification-header-gap: 8px;
+  --finapp-notification-stack-top: calc(
+    env(safe-area-inset-top, 0px) + var(--finapp-notification-header-height) +
+      var(--finapp-notification-header-gap)
+  );
+}
+
+.finapp-notification-stack {
+  position: absolute;
+  top: var(--finapp-notification-stack-top);
+  left: var(--finapp-content-inset-start, 20px);
+  right: var(--finapp-content-inset-end, 20px);
+  z-index: 10003;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.finapp-notification-stack--public {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+}
+
+.finapp-notification-stack .finapp-notification-box {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  width: 100%;
+  max-width: none;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  animation: finapp-notification-enter 0.32s ease forwards;
+}
+
+.finapp-notification-stack .finapp-notification-box--exit {
+  animation: finapp-notification-exit 0.28s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes finapp-notification-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes finapp-notification-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* Legacy single box (unused when stacked; kept for safety) */
+.finapp-notification-box {
+  position: absolute;
+  left: var(--finapp-content-inset-start, 20px);
+  right: var(--finapp-content-inset-end, 20px);
+  width: auto;
+  max-width: none;
+  z-index: 10003;
+  pointer-events: none;
+  box-sizing: border-box;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.finapp-notification-box.show {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* ─── Glass surface (no image / avatar) ─── */
+.finapp-notification-glass {
+  position: relative;
+  border-radius: 16px;
+  padding: 14px 42px 14px 16px;
+  font-family: var(--app-font-family, 'Inter', sans-serif);
+  backdrop-filter: blur(18px) saturate(1.35);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.finapp-notification-glass--success {
+  background: color-mix(in srgb, #1dcc70 14%, rgba(245, 245, 247, 0.88));
+  border-color: color-mix(in srgb, #1dcc70 28%, rgba(255, 255, 255, 0.5));
+}
+
+.finapp-notification-glass--info {
+  background: rgba(242, 242, 247, 0.9);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.finapp-notification-glass--warning {
+  background: color-mix(in srgb, #c4c4cc 22%, rgba(245, 245, 247, 0.9));
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.finapp-notification-glass--error {
+  background: color-mix(in srgb, #f9a8c9 38%, rgba(255, 248, 250, 0.92));
+  border-color: color-mix(in srgb, #f472b6 35%, rgba(255, 255, 255, 0.55));
+}
+
+.finapp-notification-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--finapp-heading, #27173e);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.finapp-notification-close:active {
+  opacity: 0.75;
+}
+
+.finapp-notification-message {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 1.45;
+  color: var(--finapp-heading, #27173e);
+  text-align: left;
+}
+
+body.finapp-app-shell.dark-mode .finapp-notification-glass {
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+body.finapp-app-shell.dark-mode .finapp-notification-glass--success {
+  background: color-mix(in srgb, #1dcc70 16%, rgba(30, 30, 46, 0.82));
+}
+
+body.finapp-app-shell.dark-mode .finapp-notification-glass--info,
+body.finapp-app-shell.dark-mode .finapp-notification-glass--warning {
+  background: color-mix(in srgb, #6b7280 18%, rgba(30, 30, 46, 0.85));
+}
+
+body.finapp-app-shell.dark-mode .finapp-notification-glass--error {
+  background: color-mix(in srgb, #f472b6 22%, rgba(40, 24, 36, 0.88));
+}
+
+body.finapp-app-shell.dark-mode .finapp-notification-message {
+  color: var(--finapp-heading, #ffffff);
+}
+
+body.finapp-app-shell.dark-mode .finapp-notification-close {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--finapp-heading, #ffffff);
+}

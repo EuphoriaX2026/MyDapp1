@@ -1,0 +1,225 @@
+/**
+ * Off-screen PNG export card — SafePal-style receive share (E.ONE branding)
+ */
+
+.receive-share-export-root {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 390px;
+  pointer-events: none;
+  opacity: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.receive-share-export {
+  width: 390px;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #ffffff;
+  color: #111111;
+  overflow: hidden;
+}
+
+.receive-share-export__body {
+  padding: 36px 28px 24px;
+  text-align: center;
+}
+
+.receive-share-export__header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.receive-share-export__token-icon-wrap {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.receive-share-export__token-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.receive-share-export__chain-badge {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  object-fit: cover;
+  background: #ffffff;
+}
+
+.receive-share-export__token-label {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #111111;
+}
+
+.receive-share-export__qr-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.receive-share-export__qr-inner {
+  position: relative;
+  background: #ffffff;
+  border-radius: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.receive-share-export__qr {
+  display: block;
+  width: 220px !important;
+  height: 220px !important;
+}
+
+.receive-share-export__qr-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.receive-share-export__qr-badge-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.receive-share-export__address {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: #111111;
+  text-align: center;
+  word-break: break-all;
+}
+
+.receive-share-export__warning {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #8e8e93;
+  text-align: center;
+}
+
+.receive-share-export__warning strong {
+  font-weight: 700;
+  color: #111111;
+}
+
+.receive-share-export__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  background: #6236ff;
+  min-height: 88px;
+  box-sizing: border-box;
+}
+
+.receive-share-export__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.receive-share-export__brand-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.receive-share-export__brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.receive-share-export__brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.receive-share-export__brand-url {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.2;
+}
+
+.receive-share-export__app-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.receive-share-export__app-qr-inner {
+  position: relative;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 4px;
+  line-height: 0;
+}
+
+.receive-share-export__app-qr-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+.receive-share-export__app-qr-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1;
+  text-align: center;
+}

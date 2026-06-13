@@ -1,0 +1,18 @@
+.eguard-penalty-banner {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, #ef4444 50%, transparent);
+  background: color-mix(in srgb, #ef4444 15%, transparent);
+  color: #ef4444;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+}
+
+body.finapp-app-shell.dark-mode .eguard-penalty-banner {
+  color: #f87171;
+  border-color: color-mix(in srgb, #f87171 45%, transparent);
+  background: color-mix(in srgb, #f87171 12%, transparent);
+}

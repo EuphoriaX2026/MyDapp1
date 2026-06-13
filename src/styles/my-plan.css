@@ -1,0 +1,327 @@
+/**
+ * My Plan page — glass UI, stat tiles, wallet stack (extracted from MyPlan.tsx).
+ */
+
+@keyframes my-plan-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
+
+.clip-path-chart {
+  clip-path: polygon(0 100%, 0 83%, 10% 83%, 20% 50%, 40% 66%, 60% 16%, 80% 50%, 100% 16%, 100% 100%);
+}
+
+.my-plan-glass {
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.my-plan-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.08) 35%,
+    transparent 60%
+  );
+}
+
+.my-plan-glass::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: 55%;
+  height: 70%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.28) 0%, transparent 68%);
+}
+
+.my-plan-glass > * {
+  position: relative;
+  z-index: 1;
+}
+
+.my-plan-glass-btn {
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.my-plan-glass-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Stat tiles — layered gray frame + icy white inner card */
+.stat-ice-tile {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 2.5rem;
+  background: #e3e3e8;
+  padding: 8px;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.stat-ice-tile-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 1.125rem;
+  overflow: hidden;
+  background: linear-gradient(
+    0deg,
+    #e6eaee 0%,
+    #f0f2f5 14%,
+    #fafbfc 32%,
+    #ffffff 58%,
+    #ffffff 100%
+  );
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.11),
+    0 4px 14px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.stat-ice-tile-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.15) 42%,
+    transparent 70%
+  );
+}
+
+.stat-ice-tile-inner::after {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 0;
+  height: 38%;
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(180, 188, 198, 0.12) 0%, transparent 100%);
+}
+
+.stat-ice-tile-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Total Balance — stacked wallet tabs + icy front face */
+.stat-balance-wallet-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.wallet-stack {
+  position: relative;
+  z-index: 2;
+  padding: 0.5rem 0.625rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wallet-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  height: 1.375rem;
+  border-radius: 0.75rem 0.75rem 0 0;
+  margin-top: -0.35rem;
+  padding: 0 0.5rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.wallet-tab:first-child {
+  margin-top: 0;
+}
+
+.wallet-tab-label,
+.wallet-tab-value {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #9ca3af;
+  letter-spacing: 0.01em;
+}
+
+.wallet-tab-value {
+  margin-left: 0.125rem;
+  opacity: 0.95;
+}
+
+.wallet-tab--purple {
+  z-index: 1;
+  background: linear-gradient(180deg, #6b5ce7 0%, #3b2b85 100%);
+}
+
+.wallet-tab--pink {
+  z-index: 2;
+  background: linear-gradient(180deg, #f06595 0%, #c2255c 100%);
+}
+
+.wallet-tab--blue {
+  z-index: 3;
+  background: linear-gradient(180deg, #5c7cfa 0%, #364fc7 100%);
+}
+
+.wallet-main-face {
+  position: relative;
+  z-index: 4;
+  flex: 1;
+  min-height: 0;
+  margin-top: -1px;
+  padding: 0.5rem 0.75rem 0.625rem;
+  border-radius: 0 0 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(
+    0deg,
+    #e6eaee 0%,
+    #f0f2f5 16%,
+    #fafbfc 38%,
+    #ffffff 62%,
+    #ffffff 100%
+  );
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.1),
+    0 3px 10px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.wallet-main-face::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.12) 45%,
+    transparent 72%
+  );
+}
+
+.wallet-main-face::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  height: 42%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(156, 163, 175, 0.14) 0%, transparent 100%);
+  border-radius: 50% 50% 0 0 / 18% 18% 0 0;
+}
+
+.wallet-handle {
+  position: absolute;
+  top: 0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.75rem;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(156, 163, 175, 0.45);
+  z-index: 2;
+}
+
+.wallet-edit-btn {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.5rem;
+  z-index: 3;
+  width: 1.375rem;
+  height: 1.375rem;
+  border: none;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.wallet-main-amount {
+  position: relative;
+  z-index: 1;
+  margin: 0.15rem 0 0;
+  font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #6b7280;
+  letter-spacing: -0.02em;
+}
+
+.wallet-main-caption {
+  position: relative;
+  z-index: 1;
+  margin: 0.1rem 0 0;
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #9ca3af;
+}

@@ -1,0 +1,69 @@
+/**
+ * Wallet flow pages — Checking Credit, Send Money
+ * 90% width glass panels, header synced with page surface.
+ */
+
+.wallet-flow-page {
+  font-family: var(--app-font-family);
+  --wallet-flow-surface: var(--finapp-body-bg, #ededf5);
+  min-height: 100%;
+}
+
+body.finapp-app-shell.dark-mode .wallet-flow-page {
+  --wallet-flow-surface: var(--finapp-body-bg, #030108);
+}
+
+.wallet-flow-page .wallet-flow-header {
+  background: var(--wallet-flow-surface) !important;
+  color: var(--finapp-heading, #1a1a2e) !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.wallet-flow-page .wallet-flow-header::before {
+  background: var(--wallet-flow-surface) !important;
+}
+
+.wallet-flow-page .wallet-flow-header .pageTitle {
+  color: var(--finapp-heading, #1a1a2e) !important;
+  font-weight: 500;
+}
+
+.wallet-flow-page .wallet-flow-header .pageTitle.wallet-flow-title--hidden {
+  visibility: hidden;
+}
+
+.wallet-flow-page .wallet-flow-header .headerButton {
+  color: var(--finapp-heading, #1a1a2e) !important;
+}
+
+.wallet-flow-page .wallet-flow-header .headerButton ion-icon {
+  color: var(--finapp-heading, #1a1a2e);
+}
+
+.wallet-flow-page .wallet-flow-body {
+  padding: 12px 0 28px;
+}
+
+.wallet-flow-page .wallet-flow-glass-wrap {
+  width: var(--finapp-aligned-width);
+  max-width: none;
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+.wallet-flow-page .wallet-flow-glass-card .glass-panel {
+  border-radius: 1.5rem;
+  padding: 1.25rem 1rem;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.wallet-flow-page .wallet-flow-glass-card h2,
+.wallet-flow-page .wallet-flow-glass-card h3,
+.wallet-flow-page .wallet-flow-glass-card strong {
+  color: var(--finapp-heading, #1a1a2e);
+}
+
+.wallet-flow-page .form-group.basic .label {
+  color: var(--finapp-text, #8e8e93);
+}

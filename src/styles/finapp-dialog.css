@@ -1,0 +1,13 @@
+.finapp-dialog-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--app-font-family, 'Inter', sans-serif);
+  font-weight: 400;
+}
+
+.finapp-dialog-inline-btn__icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}

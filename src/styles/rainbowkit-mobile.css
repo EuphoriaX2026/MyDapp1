@@ -1,0 +1,46 @@
+/**
+ * RainbowKit — minimal mobile fixes (avoid breaking bottom-sheet layout).
+ */
+
+/* Close button — prevent oval squash from touchable shrink animation */
+[data-rk] button[aria-label='Close'] {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  max-width: 30px !important;
+  max-height: 30px !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
+  border-radius: 9999px !important;
+}
+
+[data-rk] button[aria-label='Close']:hover,
+[data-rk] button[aria-label='Close']:active,
+[data-rk] button[aria-label='Close']:focus-visible {
+  transform: scale(1) !important;
+}
+
+[data-rk] button[aria-label='Close']::after {
+  display: none !important;
+}
+
+/* Desktop: keep wallet sheet aligned with the 28rem column — content only, not the overlay */
+@media (min-width: 29rem) {
+  body.finapp-app-shell:has(.invisible-mobile-frame) [data-rk] [role='document'] {
+    width: min(28rem, 100vw) !important;
+    max-width: 28rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Real mobile / emulator — full-width bottom sheet */
+@media (max-width: 768px), (pointer: coarse) {
+  [data-rk] [role='document'] {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}

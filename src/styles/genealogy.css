@@ -1,0 +1,519 @@
+/**
+ * Genealogy — custom L→R binary tree (Finapp theme, curved SVG edges)
+ */
+
+:root {
+  --genealogy-app-header-h: 56px;
+  --genealogy-bottom-nav-h: 56px;
+}
+
+/* Allow horizontal scroll inside the mobile frame when tree grows */
+.invisible-mobile-frame:has(.genealogy-page) {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Page shell: top of content → bottom nav (header is inside this block) */
+.wallet-flow-page--flat:has(.genealogy-page) {
+  height: calc(
+    100dvh - var(--genealogy-bottom-nav-h) - env(safe-area-inset-bottom, 0px)
+  );
+  min-height: calc(
+    100dvh - var(--genealogy-bottom-nav-h) - env(safe-area-inset-bottom, 0px)
+  );
+  max-height: calc(
+    100dvh - var(--genealogy-bottom-nav-h) - env(safe-area-inset-bottom, 0px)
+  );
+}
+
+.wallet-flow-page--flat:has(.genealogy-page) .wallet-flow-body {
+  flex: 1;
+  min-height: 0;
+}
+
+.wallet-flow-page--flat:has(.genealogy-page) .wallet-flow-flat-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.send-money-page.genealogy-page {
+  align-items: stretch;
+  width: 100%;
+  max-width: none !important;
+  flex: 1;
+  min-height: 0;
+}
+
+.genealogy-page {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  background: transparent;
+}
+
+.genealogy-header-bar {
+  flex-shrink: 0;
+  width: var(--finapp-aligned-width);
+  margin: 6px auto 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.genealogy-header-id,
+.genealogy-header-wallet {
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tree frame — fills remaining space down to bottom nav */
+.genealogy-viewport {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0;
+  background: transparent;
+  touch-action: pan-x pan-y;
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.genealogy-canvas {
+  position: relative;
+  display: block;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  flex-shrink: 0;
+  max-width: none !important;
+  box-sizing: content-box;
+}
+
+.genealogy-edges {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+.genealogy-edge-path {
+  fill: none;
+  stroke: #9ca3af;
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.genealogy-nodes-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.genealogy-node-anchor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.genealogy-label-btn {
+  position: absolute;
+  flex: 0 0 76px;
+  width: 76px;
+  min-width: 76px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.2;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  text-align: right;
+  white-space: nowrap;
+  cursor: pointer;
+  z-index: 2;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.genealogy-label-btn:active {
+  opacity: 0.7;
+}
+
+.genealogy-circle-btn {
+  position: absolute;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  aspect-ratio: 1;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  pointer-events: auto;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.genealogy-circle-btn:active {
+  transform: scale(0.92);
+}
+
+.genealogy-circle-num {
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 1;
+  color: #fff;
+  pointer-events: none;
+}
+
+.genealogy-loading-dot {
+  position: absolute;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--finapp-text-light, #a9abad);
+  margin-left: 2px;
+}
+
+/* ID click — mini info card */
+.genealogy-id-card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1190;
+  background: transparent;
+}
+
+.genealogy-id-card {
+  position: fixed;
+  z-index: 1200;
+  width: 280px;
+  padding: 10px 12px 8px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--finapp-content-bg, #fff) 94%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 75%, transparent);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.genealogy-id-card-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10px;
+  row-gap: 6px;
+  align-items: center;
+}
+
+.genealogy-id-card-label {
+  margin: 0;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--finapp-text-light, #a9abad);
+}
+
+.genealogy-id-card-label--right {
+  text-align: right;
+}
+
+.genealogy-id-card-wallet {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--finapp-heading, #27173e);
+  font-variant-numeric: tabular-nums;
+}
+
+.genealogy-id-card-copy {
+  justify-self: end;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.35;
+  color: var(--finapp-primary, #6236ff);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.genealogy-id-card-copy:hover {
+  text-decoration: underline;
+}
+
+.genealogy-id-card-raw {
+  margin: 0;
+  text-align: right;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--finapp-primary, #6236ff);
+  font-variant-numeric: tabular-nums;
+}
+
+.genealogy-id-card-select {
+  width: 55%;
+  max-width: 55%;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 80%, transparent);
+  background: color-mix(in srgb, var(--finapp-content-bg, #fff) 88%, transparent);
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--finapp-heading, #27173e);
+  cursor: pointer;
+}
+
+.genealogy-empty-msg {
+  width: var(--finapp-aligned-width);
+  margin: 24px auto;
+  text-align: center;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+body.finapp-app-shell.dark-mode .genealogy-id-card-wallet {
+  color: var(--finapp-heading, #fff);
+}
+
+body.finapp-app-shell.dark-mode .genealogy-id-card {
+  background: color-mix(in srgb, var(--finapp-content-bg, #1a1525) 96%, transparent);
+}
+
+/* Points panel — below ID / wallet header */
+.genealogy-points-panel {
+  flex-shrink: 0;
+  width: calc(100% - 20px);
+  margin: 4px 10px 6px;
+  border: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 80%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--finapp-content-bg, #fff) 96%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: flex 0.2s ease, margin 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Expanded — fill page below header; hide tree so table needs no inner scroll */
+.genealogy-points-panel--expanded {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 4px 10px 10px;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.genealogy-points-panel--expanded ~ .genealogy-viewport {
+  display: none;
+}
+
+.genealogy-points-panel-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px 6px 10px;
+}
+
+.genealogy-points-tabs {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.genealogy-points-tab {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 4px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.genealogy-points-tab--active {
+  color: var(--finapp-primary, #6236ff);
+  border-color: color-mix(in srgb, var(--finapp-primary, #6236ff) 28%, transparent);
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 8%, var(--finapp-content-bg, #fff));
+}
+
+.genealogy-points-close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--finapp-text-light, #a9abad);
+  cursor: pointer;
+}
+
+.genealogy-points-close:hover {
+  background: color-mix(in srgb, var(--finapp-line, #dcdce9) 40%, transparent);
+}
+
+.genealogy-points-table-wrap {
+  max-height: min(38vh, 280px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 10px 8px;
+}
+
+.genealogy-points-panel--expanded .genealogy-points-table-wrap {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
+  padding: 0 12px 12px;
+}
+
+.genealogy-points-table-head,
+.genealogy-points-table-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 6px;
+  align-items: center;
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.genealogy-points-table-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.25;
+  color: var(--finapp-text-light, #a9abad);
+  border-bottom: 1px solid var(--finapp-line, #dcdce9);
+  background: color-mix(in srgb, var(--finapp-content-bg, #fff) 94%, transparent);
+}
+
+.genealogy-points-table-row + .genealogy-points-table-row {
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.genealogy-points-group-name,
+.genealogy-points-cell {
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.genealogy-points-group-name {
+  color: var(--finapp-heading, #27173e);
+}
+
+.genealogy-points-cell {
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.genealogy-points-loading {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.genealogy-points-reopen {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: calc(100% - 20px);
+  margin: 4px 10px 6px;
+  padding: 6px 8px;
+  border: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 80%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--finapp-content-bg, #fff) 92%, transparent);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.genealogy-points-reopen-tab {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 4px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--finapp-text-light, #a9abad);
+  text-align: center;
+  cursor: pointer;
+}
+
+.genealogy-points-reopen-tab:hover {
+  color: var(--finapp-primary, #6236ff);
+}
+
+body.finapp-app-shell.dark-mode .genealogy-points-panel,
+body.finapp-app-shell.dark-mode .genealogy-points-reopen {
+  background: color-mix(in srgb, var(--finapp-content-bg, #1a1525) 96%, transparent);
+}
+
+body.finapp-app-shell.dark-mode .genealogy-points-table-head {
+  background: color-mix(in srgb, var(--finapp-content-bg, #1a1525) 96%, transparent);
+}
+
+body.finapp-app-shell.dark-mode .genealogy-points-group-name {
+  color: var(--finapp-heading, #fff);
+}

@@ -1,0 +1,29 @@
+/* Browser compatibility banner — scoped, non-blocking on public landing */
+.compatibility-warning {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  pointer-events: auto;
+}
+
+body.finapp-public-shell .compatibility-warning {
+  position: fixed;
+  top: env(safe-area-inset-top, 0px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(28rem, calc(100vw - 16px));
+  z-index: 10050;
+  padding: 8px;
+}
+
+body.finapp-public-shell .compatibility-warning .alert {
+  margin: 0 !important;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+body.finapp-app-shell .compatibility-warning {
+  padding: 0 8px;
+}

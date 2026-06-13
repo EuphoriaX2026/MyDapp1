@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply font-sans tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+}
+
+/* ─── E.ONE VisionOS Glassmorphism — Spatial UI Utilities (Phase 1) ─── */
+
+@layer utilities {
+  /* Primary glass surface — panels, cards, sheets (Finapp token-driven) */
+  .glass-panel {
+    @apply relative overflow-hidden rounded-3xl border backdrop-blur-2xl;
+    background: var(--app-glass-bg, rgba(255, 255, 255, 0.12));
+    border-color: var(--app-glass-border, rgba(255, 255, 255, 0.22));
+    color: var(--app-text-secondary, rgb(149, 141, 158));
+    box-shadow:
+      theme('boxShadow.glass-base'),
+      theme('boxShadow.glass-highlight');
+  }
+
+  /* Interactive glass control — buttons, chips, nav items */
+  .glass-button {
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-2xl border backdrop-blur-xl transition-transform duration-200 ease-out;
+    background: var(--app-glass-bg, rgba(255, 255, 255, 0.15));
+    border-color: var(--app-glass-border, rgba(255, 255, 255, 0.25));
+    color: var(--app-text-primary, #27173e);
+    box-shadow:
+      theme('boxShadow.glass-base'),
+      theme('boxShadow.glass-highlight');
+  }
+
+  .glass-button:active {
+    @apply scale-95;
+    box-shadow:
+      theme('boxShadow.glass-inner'),
+      theme('boxShadow.glass-highlight');
+  }
+
+  .glass-button:disabled {
+    @apply pointer-events-none opacity-50;
+  }
+
+  /* Page-level vibrancy layer — sits behind content */
+  .frosted-background {
+    @apply relative min-h-screen backdrop-blur-none;
+    background-color: var(--finapp-body-bg, #ededf5);
+    background-image: theme('backgroundImage.frosted-mesh');
+  }
+
+  .frosted-background::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 bg-glass-gradient-brand opacity-60;
+  }
+
+  /* Optional specular highlight overlay for elevated surfaces */
+  .glass-specular::after {
+    content: '';
+    @apply pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-3xl bg-glass-gradient opacity-70;
+  }
+
+  /* Page shell — full width, edge-to-edge (gutters live in components/sections when needed) */
+  .dapp-container {
+    @apply relative mx-auto min-h-[100dvh] w-full max-w-none;
+  }
+
+  /* Standard page shell */
+  .dapp-page {
+    @apply frosted-background dapp-container relative flex w-full flex-col overflow-x-hidden;
+    color: var(--app-text-primary, #27173e);
+  }
+
+  /* Glass-compatible form control */
+  .glass-input {
+    @apply w-full rounded-2xl border py-3.5 pl-12 pr-4 text-sm backdrop-blur-md transition-all focus:border-brand-blue/50 focus:outline-none focus:ring-4 focus:ring-brand-blue-100;
+    background: var(--app-glass-input-bg, rgba(255, 255, 255, 0.14));
+    border-color: var(--app-glass-border, rgba(255, 255, 255, 0.22));
+    color: var(--app-text-primary, #27173e);
+  }
+
+  .glass-input::placeholder {
+    color: color-mix(in srgb, var(--app-text-muted, #a9abad) 75%, transparent);
+  }
+
+  /* Neumorphic 3D pop — stepper nodes */
+  .neumorphic-pop {
+    background: #f4f5f8;
+    box-shadow:
+      -6px -6px 14px rgba(255, 255, 255, 0.9),
+      6px 6px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Radiating light rays — active step (brand pink) */
+  .starburst-rays {
+    position: absolute;
+    inset: -12px;
+    background: repeating-conic-gradient(
+      from 0deg,
+      rgba(219, 44, 245, 0.15) 0deg 10deg,
+      transparent 10deg 20deg
+    );
+    border-radius: 50%;
+    filter: blur(2px);
+    z-index: -1;
+    animation: slow-spin 20s linear infinite;
+  }
+
+  @keyframes slow-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

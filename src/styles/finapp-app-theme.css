@@ -1,0 +1,515 @@
+/**
+ * Finapp light/dark shell for authenticated app routes.
+ * Excludes public marketing/auth pages (Login, Register).
+ * Colors from Finapp v2 _variables.scss — layout/dimensions unchanged.
+ */
+
+body.finapp-app-shell {
+  /* Light mode (Finapp default) */
+  --finapp-body-bg: #ededf5;
+  --finapp-content-bg: #ffffff;
+  --finapp-heading: #27173e;
+  --finapp-text: rgb(149, 141, 158);
+  --finapp-text-light: #a9abad;
+  --finapp-line: #dcdce9;
+  --finapp-primary: #6236ff;
+
+  --app-text-primary: var(--finapp-heading);
+  --app-text-secondary: var(--finapp-text);
+  --app-text-muted: var(--finapp-text-light);
+  --app-surface-bg: var(--finapp-body-bg);
+  --app-card-bg: #ffffff;
+  --app-card-border: #dcdce9;
+  --app-glass-bg: #ffffff;
+  --app-glass-border: #dcdce9;
+  --app-glass-input-bg: #ffffff;
+  --app-nav-bg: rgba(255, 255, 255, 0.88);
+  --app-nav-icon-active: var(--finapp-primary);
+  --app-nav-icon-inactive: var(--finapp-heading);
+  --app-nav-active-pill: rgba(98, 54, 255, 0.12);
+
+  /* E.ONE Sidebar (Dashboard / My Plan) */
+  --eone-sidebar-container-bg: #ffffff;
+  --eone-sidebar-container-border: rgba(255, 255, 255, 0.22);
+  --eone-sidebar-container-shadow: 24px 0 40px rgba(74, 37, 225, 0.12);
+  --eone-sidebar-menu-bg: #ededf5;
+  --eone-sidebar-menu-label: #a9abad;
+  --eone-sidebar-menu-text: #958d9e;
+  --eone-sidebar-menu-icon: #a9abad;
+  --eone-sidebar-menu-active-bg: rgba(98, 54, 255, 0.12);
+  --eone-sidebar-menu-active-color: #6236ff;
+  --eone-sidebar-menu-hover-bg: #ffffff;
+  --eone-sidebar-menu-hover-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  --eone-sidebar-divider: #dcdce9;
+  --eone-sidebar-plan-border: #dcdce9;
+  --eone-sidebar-logout-hover-bg: #fff1f2;
+  --eone-sidebar-logout-color: #ef4444;
+
+  background-color: var(--finapp-body-bg) !important;
+  background-image: none !important;
+  color: var(--finapp-text);
+  font-size: 15px;
+  line-height: 1.6rem;
+  letter-spacing: 0.004em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.finapp-app-shell:not(.dark-mode)::before {
+  display: none !important;
+}
+
+/* Cosmic void + ambient orbs — dark mode only (body bg stays var(--finapp-body-bg)) */
+body.finapp-app-shell.dark-mode::before {
+  content: '';
+  display: block !important;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 8%, rgba(91, 56, 218, 0.28) 0%, transparent 55%),
+    radial-gradient(circle at 85% 75%, rgba(215, 232, 247, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(88, 36, 220, 0.2) 0%, transparent 45%);
+}
+
+body.finapp-app-shell.dark-mode {
+  --finapp-body-bg: #030108;
+  --finapp-content-bg: #161129;
+  --finapp-heading: #ffffff;
+  --finapp-text: #8f82a5;
+  --finapp-text-light: #69587f;
+  --finapp-line: #2d1f3b;
+
+  --app-text-primary: var(--finapp-heading);
+  --app-text-secondary: var(--finapp-text);
+  --app-text-muted: var(--finapp-text-light);
+  --app-surface-bg: var(--finapp-body-bg);
+  --app-card-bg: var(--finapp-content-bg);
+  --app-card-border: var(--finapp-line);
+  --app-glass-bg: var(--finapp-content-bg);
+  --app-glass-border: var(--finapp-line);
+  --app-glass-input-bg: #1e1630;
+  --app-nav-bg: rgba(22, 17, 41, 0.94);
+  --app-nav-icon-active: var(--finapp-primary);
+  --app-nav-icon-inactive: var(--finapp-heading);
+  --app-nav-active-pill: rgba(98, 54, 255, 0.22);
+
+  --eone-sidebar-container-bg: #161129;
+  --eone-sidebar-container-border: #2d1f3b;
+  --eone-sidebar-container-shadow: 24px 0 40px rgba(0, 0, 0, 0.4);
+  --eone-sidebar-menu-bg: #161129;
+  --eone-sidebar-menu-label: #69587f;
+  --eone-sidebar-menu-text: #8f82a5;
+  --eone-sidebar-menu-icon: #8f82a5;
+  --eone-sidebar-menu-active-bg: rgba(98, 54, 255, 0.28);
+  --eone-sidebar-menu-active-color: #ffffff;
+  --eone-sidebar-menu-hover-bg: rgba(45, 31, 59, 0.75);
+  --eone-sidebar-menu-hover-shadow: none;
+  --eone-sidebar-divider: #2d1f3b;
+  --eone-sidebar-plan-border: #2d1f3b;
+  --eone-sidebar-logout-hover-bg: rgba(255, 57, 111, 0.14);
+  --eone-sidebar-logout-color: #ff396f;
+
+  background-color: var(--finapp-body-bg) !important;
+  color: var(--finapp-text);
+}
+
+body.finapp-app-shell #root,
+body.finapp-app-shell .App {
+  background: transparent;
+}
+
+/* Unified page canvas — match Settings (#/settings) in light & dark */
+body.finapp-app-shell .invisible-mobile-frame {
+  background-color: var(--finapp-body-bg);
+}
+
+body.finapp-app-shell .settings-page,
+body.finapp-app-shell .finapp-secondary-page,
+body.finapp-app-shell .mywallet2-page,
+body.finapp-app-shell .dapp-page,
+body.finapp-app-shell #appCapsule {
+  background-color: var(--finapp-body-bg) !important;
+  background-image: none !important;
+}
+
+body.finapp-app-shell .dapp-page::before,
+body.finapp-app-shell .frosted-background::before {
+  display: none !important;
+}
+
+body.finapp-app-shell.dark-mode .frosted-background {
+  background-color: var(--finapp-body-bg) !important;
+  background-image: none !important;
+}
+
+/* Public routes — transparent shell; typography in app-typography.css */
+body.finapp-public-shell {
+  background: transparent !important;
+  color: inherit;
+}
+
+body.finapp-public-shell::before {
+  display: none !important;
+}
+
+/* Block Finapp dark-mode bleed if class is re-added by legacy code */
+body.finapp-public-shell.dark-mode,
+body.finapp-public-shell.finapp-app-shell {
+  background: transparent !important;
+  color: inherit;
+}
+
+/* Login / Register — never show floating mobile bottom nav */
+body.finapp-public-shell .eone-mobile-bottom-nav,
+body.finapp-public-shell [data-mobile-bottom-nav] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ─── Global custom wallpaper (Settings → localStorage) ─── */
+.app-shell-wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.app-shell-wallpaper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(237, 237, 245, 0.4);
+}
+
+body.finapp-app-shell.dark-mode .app-shell-wallpaper::after {
+  background: rgba(3, 1, 8, 0.55);
+}
+
+/* ─── Finapp avatar-section: fixed circle, no stretch ─── */
+.avatar-section .imaged.w100.rounded {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.avatar-section > a {
+  display: inline-block;
+  line-height: 0;
+}
+
+/* ─── Square crop dialog viewport ─── */
+.avatar-crop-viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid #6236ff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.09);
+  background: #161129;
+  cursor: grab;
+  touch-action: none;
+}
+
+.avatar-crop-viewport:active {
+  cursor: grabbing;
+}
+
+body.finapp-app-shell.dark-mode .avatar-crop-viewport {
+  border-color: #6236ff;
+  background: #030108;
+}
+
+/* ─── Semantic text (Tailwind brand utilities) — colors only ─── */
+body.finapp-app-shell .text-brand-surface-dark {
+  color: var(--app-text-primary);
+}
+
+body.finapp-app-shell .text-brand-surface-muted {
+  color: var(--app-text-muted);
+}
+
+body.finapp-app-shell h1,
+body.finapp-app-shell h2,
+body.finapp-app-shell h3,
+body.finapp-app-shell h4,
+body.finapp-app-shell h5,
+body.finapp-app-shell h6 {
+  color: var(--app-text-primary);
+}
+
+body.finapp-app-shell .text-muted {
+  color: var(--app-text-secondary) !important;
+}
+
+body.finapp-app-shell .dapp-page {
+  color: var(--app-text-secondary);
+}
+
+/* Light: plain Finapp surface — no cosmic mesh overlay on page shell */
+body.finapp-app-shell:not(.dark-mode) .frosted-background::before {
+  display: none !important;
+}
+
+body.finapp-app-shell.dark-mode .frosted-background {
+  background-color: var(--app-surface-bg);
+  background-image: none;
+}
+
+body.finapp-app-shell.dark-mode .frosted-background::before {
+  opacity: 0.22;
+}
+
+/* ─── Finapp Bootstrap cards / lists (from _darkmode.scss palette) ─── */
+body.finapp-app-shell .card {
+  background: var(--finapp-content-bg);
+  color: var(--finapp-text);
+}
+
+body.finapp-app-shell .card .card-title,
+body.finapp-app-shell .card .card-subtitle,
+body.finapp-app-shell .card .card-header {
+  color: var(--finapp-heading);
+}
+
+body.finapp-app-shell .listview {
+  color: var(--finapp-text);
+}
+
+body.finapp-app-shell .listview .text-muted {
+  color: var(--finapp-text-light) !important;
+}
+
+/* ─── Mobile bottom nav — colors only (geometry unchanged) ─── */
+body.finapp-app-shell .eone-mobile-bottom-nav .nav-bar-shell {
+  background: var(--app-nav-bg) !important;
+  border-color: var(--finapp-line);
+}
+
+body.finapp-app-shell .eone-mobile-bottom-nav .nav-icon-active {
+  color: var(--app-nav-icon-active) !important;
+}
+
+body.finapp-app-shell .eone-mobile-bottom-nav .nav-icon-inactive {
+  color: var(--app-nav-icon-inactive) !important;
+}
+
+body.finapp-app-shell .eone-mobile-bottom-nav .nav-item-active .nav-item-pill {
+  background: var(--app-nav-active-pill) !important;
+}
+
+/* ─── Finapp pilled tabs (EDex etc.) — dark shell alignment ─── */
+body.finapp-app-shell.dark-mode .nav-tabs.capsuled {
+  background: var(--finapp-content-bg);
+  border-color: var(--finapp-line);
+}
+
+body.finapp-app-shell.dark-mode .nav-tabs.capsuled .nav-link {
+  color: var(--finapp-text);
+}
+
+body.finapp-app-shell.dark-mode .nav-tabs.capsuled .nav-link.active {
+  background: var(--finapp-primary);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Finapp v2 — Tailwind utility remapping (app shell only, colors only)
+   Maps hardcoded light utilities in src/components to Finapp tokens.
+   Light: white cards (#fff), heading #27173E, text rgb(149,141,158)
+   Dark:  purple cards (#161129), heading #fff, text #8f82a5
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Light shell: Finapp card surfaces for bg-white/* ─── */
+body.finapp-app-shell:not(.dark-mode) .bg-white {
+  background-color: var(--finapp-content-bg) !important;
+}
+
+body.finapp-app-shell:not(.dark-mode) .bg-white\/10 {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 88%, var(--finapp-body-bg)) !important;
+}
+
+body.finapp-app-shell:not(.dark-mode) .bg-white\/20,
+body.finapp-app-shell:not(.dark-mode) .bg-white\/15 {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 92%, var(--finapp-body-bg)) !important;
+}
+
+body.finapp-app-shell:not(.dark-mode) .bg-white\/40,
+body.finapp-app-shell:not(.dark-mode) .bg-white\/50,
+body.finapp-app-shell:not(.dark-mode) .bg-white\/55,
+body.finapp-app-shell:not(.dark-mode) .bg-white\/60,
+body.finapp-app-shell:not(.dark-mode) .bg-white\/70 {
+  background-color: var(--finapp-content-bg) !important;
+}
+
+body.finapp-app-shell:not(.dark-mode) .border-gray-100,
+body.finapp-app-shell:not(.dark-mode) .border-gray-200,
+body.finapp-app-shell:not(.dark-mode) .border-white\/50,
+body.finapp-app-shell:not(.dark-mode) .border-white\/60,
+body.finapp-app-shell:not(.dark-mode) .border-white\/80 {
+  border-color: var(--finapp-line) !important;
+}
+
+/* ─── Dark shell: purple cards + white/muted text (Finapp _darkmode.scss) ─── */
+body.finapp-app-shell.dark-mode .bg-white {
+  background-color: var(--finapp-content-bg) !important;
+}
+
+body.finapp-app-shell.dark-mode .bg-white\/10 {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 72%, transparent) !important;
+}
+
+body.finapp-app-shell.dark-mode .bg-white\/15 {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 78%, transparent) !important;
+}
+
+body.finapp-app-shell.dark-mode .bg-white\/20 {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 82%, transparent) !important;
+}
+
+body.finapp-app-shell.dark-mode .bg-white\/25 {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 85%, transparent) !important;
+}
+
+body.finapp-app-shell.dark-mode .bg-white\/40,
+body.finapp-app-shell.dark-mode .bg-white\/50 {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 90%, transparent) !important;
+}
+
+body.finapp-app-shell.dark-mode .bg-white\/55,
+body.finapp-app-shell.dark-mode .bg-white\/60 {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 93%, transparent) !important;
+}
+
+body.finapp-app-shell.dark-mode .bg-white\/70,
+body.finapp-app-shell.dark-mode .bg-white\/80,
+body.finapp-app-shell.dark-mode .bg-white\/90,
+body.finapp-app-shell.dark-mode .bg-white\/95 {
+  background-color: var(--finapp-content-bg) !important;
+}
+
+body.finapp-app-shell.dark-mode .hover\:bg-white\/20:hover,
+body.finapp-app-shell.dark-mode .hover\:bg-white\/40:hover,
+body.finapp-app-shell.dark-mode .hover\:bg-white\/50:hover,
+body.finapp-app-shell.dark-mode .hover\:bg-white\/70:hover,
+body.finapp-app-shell.dark-mode .hover\:bg-white\/80:hover,
+body.finapp-app-shell.dark-mode .hover\:bg-white:hover {
+  background-color: color-mix(in srgb, var(--finapp-content-bg) 88%, var(--finapp-primary)) !important;
+}
+
+body.finapp-app-shell.dark-mode .text-gray-900,
+body.finapp-app-shell.dark-mode .text-gray-800,
+body.finapp-app-shell.dark-mode .text-black {
+  color: var(--finapp-heading) !important;
+}
+
+body.finapp-app-shell.dark-mode .text-gray-700,
+body.finapp-app-shell.dark-mode .text-gray-600,
+body.finapp-app-shell.dark-mode .text-gray-500,
+body.finapp-app-shell.dark-mode .text-gray-400,
+body.finapp-app-shell.dark-mode .text-gray-300 {
+  color: var(--finapp-text) !important;
+}
+
+body.finapp-app-shell.dark-mode [class*='text-[#1a1a2e]'],
+body.finapp-app-shell.dark-mode [class*='text-[#1C1C1E]'] {
+  color: var(--finapp-heading) !important;
+}
+
+body.finapp-app-shell.dark-mode [class*='text-[#8E8E93]'],
+body.finapp-app-shell.dark-mode [class*='text-[#4F4F4F]'] {
+  color: var(--finapp-text) !important;
+}
+
+body.finapp-app-shell.dark-mode .text-brand-surface-dark {
+  color: var(--app-text-primary) !important;
+}
+
+body.finapp-app-shell.dark-mode .text-brand-surface-muted {
+  color: var(--app-text-muted) !important;
+}
+
+body.finapp-app-shell.dark-mode .border-gray-100,
+body.finapp-app-shell.dark-mode .border-gray-200,
+body.finapp-app-shell.dark-mode .border-white\/20,
+body.finapp-app-shell.dark-mode .border-white\/30,
+body.finapp-app-shell.dark-mode .border-white\/40,
+body.finapp-app-shell.dark-mode .border-white\/50,
+body.finapp-app-shell.dark-mode .border-white\/60,
+body.finapp-app-shell.dark-mode .border-white\/80 {
+  border-color: var(--finapp-line) !important;
+}
+
+body.finapp-app-shell.dark-mode .placeholder\:text-gray-400::placeholder {
+  color: var(--finapp-text-light) !important;
+}
+
+body.finapp-app-shell.dark-mode .neumorphic-pop {
+  background: var(--finapp-content-bg);
+  color: var(--finapp-heading);
+}
+
+body.finapp-app-shell.dark-mode .route-loader {
+  background-color: var(--finapp-body-bg) !important;
+}
+
+body.finapp-app-shell.dark-mode .glass-profile-card {
+  background: var(--finapp-content-bg);
+  color: var(--finapp-heading);
+  border-color: var(--finapp-line);
+}
+
+/* ─── Edge-to-edge shell — remove legacy Finapp / dapp-container gutters ─── */
+body.finapp-app-shell .dapp-page,
+body.finapp-app-shell .dapp-container {
+  padding: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+body.finapp-app-shell #appCapsule {
+  margin-top: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  padding-top: 0 !important;
+}
+
+/* Single header offset — avoid double 56px + safe-area gap */
+body.finapp-app-shell .appHeader + #appCapsule,
+body.finapp-app-shell #appCapsule:has(> .appHeader),
+body.finapp-app-shell #appCapsule:has(.wallet-flow-page),
+body.finapp-app-shell #appCapsule:has(.mywallet2-page) {
+  padding-top: calc(56px + env(safe-area-inset-top, 0px)) !important;
+}
+
+body.finapp-app-shell .section:not(.full) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Finapp appHeader — restore legacy 26px ion-icon size for Iconify SVG controls */
+.appHeader .left .headerButton > svg,
+.appHeader .right .headerButton > svg {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.activate-app-header .left .activate-header-btn > svg {
+  width: 24px;
+  height: 24px;
+}
+
+.activate-app-header .activate-header-cart-btn > svg {
+  width: 22px;
+  height: 22px;
+}

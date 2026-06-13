@@ -1,0 +1,356 @@
+/**
+ * E-Dex page layout — header bar + Finapp content-frame aligned tabs/cards.
+ */
+
+.edex-page {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 1.5rem;
+  margin-top: 0;
+  font-family: Inter, var(--app-font-family), sans-serif;
+}
+
+.edex-page-header {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--finapp-aligned-width);
+  margin: 6px var(--finapp-content-inset-end) 10px var(--finapp-content-inset-start);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: max(0.5rem, env(safe-area-inset-top, 0px));
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+}
+
+.edex-page-header-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--finapp-heading, #1a1523);
+  cursor: pointer;
+  flex-shrink: 0;
+  z-index: 1;
+  transition: opacity 0.15s ease;
+}
+
+.edex-page-header-back:hover {
+  opacity: 0.7;
+}
+
+.edex-page-header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--finapp-heading, #1a1523);
+  text-align: center;
+  pointer-events: none;
+}
+
+.edex-page-header-spacer {
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.edex-page-content {
+  width: 100%;
+}
+
+.edex-tabs-wrap {
+  width: var(--finapp-aligned-width);
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+.edex-tabs-wrap .nav-tabs.capsuled {
+  width: 100%;
+}
+
+.edex-tabs-wrap .tab-content {
+  margin-top: 0;
+}
+
+.edex-swap-tab-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.edex-wallet-slot {
+  width: var(--finapp-aligned-width);
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+  min-height: 56px;
+  padding: 22px 0 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.edex-wallet-row-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.edex-wallet-row-btn:hover {
+  opacity: 0.75;
+}
+
+.edex-wallet-row-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.edex-wallet-row-name {
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+  color: var(--finapp-heading, #1a1523);
+}
+
+.edex-wallet-row-addr {
+  margin-left: 6px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  font-variant-numeric: tabular-nums;
+  color: var(--finapp-heading, #1a1523);
+}
+
+.edex-wallet-row-connect {
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-synthesis: none;
+  color: var(--finapp-heading, #1a1523);
+}
+
+.edex-swap-wrap {
+  width: var(--finapp-aligned-width);
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+.edex-bank-cards-wrap {
+  width: var(--finapp-aligned-width);
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+/* Disable global card-block zoom on EDex credit cards */
+.edex-page .finapp-bank-cards .card-block {
+  transition: box-shadow 0.2s ease !important;
+}
+
+.edex-page .finapp-bank-cards .card-block:hover {
+  transform: none !important;
+  box-shadow:
+    0 12px 40px 0 rgba(31, 38, 135, 0.1),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Inter Regular overrides for EDex swap amounts (not global Bold 700) */
+.edex-page .financial-amount,
+.edex-page .swap-amount-input,
+.edex-page .swap-amount-display {
+  font-family: Inter, var(--app-font-family), sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.edex-coming-soon {
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  color: var(--finapp-text-light, #9ca3af);
+}
+
+body.finapp-app-shell.dark-mode .edex-page-header-title {
+  color: var(--finapp-heading, #fff);
+}
+
+body.finapp-app-shell.dark-mode .edex-page-header-back {
+  color: var(--finapp-heading, #fff);
+}
+
+body.finapp-app-shell.dark-mode .edex-wallet-row-name,
+body.finapp-app-shell.dark-mode .edex-wallet-row-addr,
+body.finapp-app-shell.dark-mode .edex-wallet-row-connect {
+  color: var(--finapp-heading, #fff);
+}
+
+/* Swap cards — white labels, amounts & USD estimates in dark theme */
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-label {
+  color: #fff !important;
+}
+
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-pay-amount {
+  color: #fff !important;
+}
+
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-pay-amount.swap-edex-pay-exceeds {
+  color: #f0abce !important;
+}
+
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-receive-amount,
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-receive-amount-value,
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-receive-amount-decimal,
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-receive-amount > span {
+  color: #fff !important;
+}
+
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-receive-zero {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+body.finapp-app-shell.dark-mode .edex-page .swap-card--edex .swap-edex-usd {
+  color: #fff !important;
+}
+
+.edex-page .swap-card--edex .swap-edex-usd {
+  font-weight: 400 !important;
+}
+
+.edex-page .swap-card--edex .swap-edex-max-btn {
+  background: var(--finapp-primary, #6236ff);
+  outline: none;
+  box-shadow: none;
+  align-self: center;
+}
+
+.edex-page .swap-card--edex .swap-edex-confirm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  background: var(--finapp-primary, #6236ff);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--finapp-primary, #6236ff) 35%, transparent);
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+}
+
+.edex-page .swap-card--edex .swap-edex-confirm-btn:disabled {
+  box-shadow: none;
+}
+
+.edex-page .swap-card--edex {
+  display: flex;
+  flex-direction: column;
+}
+
+.edex-page .swap-card--edex .swap-edex-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  min-height: 52px;
+  margin: 24px 0;
+}
+
+/* Credit Card tab — ISO bank-card ratio (85.6 × 53.98 mm), title case labels */
+.edex-page .finapp-bank-cards--edex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.edex-page .finapp-bank-cards--edex .card-block {
+  width: min(100%, calc(176px * 85.6 / 53.98));
+  aspect-ratio: 85.6 / 53.98;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 12px;
+}
+
+.edex-page .finapp-bank-cards--edex .card-main {
+  border-radius: 12px;
+  padding: 12px 14px 11px;
+}
+
+.edex-page .finapp-bank-cards--edex .card-brand-slot {
+  left: 14px;
+  top: 14px;
+  min-height: 18px;
+  height: 18px;
+  max-width: calc(100% - 96px);
+}
+
+.edex-page .finapp-bank-cards--edex .card-price-corner {
+  right: 14px;
+  max-width: 48%;
+}
+
+.edex-page .finapp-bank-cards--edex .card-price-value {
+  font-size: clamp(1.05rem, 6.2vw, 2.1rem);
+}
+
+.edex-page .finapp-bank-cards--edex .card-number {
+  font-size: 13px;
+}
+
+.edex-page .finapp-bank-cards--edex .card-expiry,
+.edex-page .finapp-bank-cards--edex .card-ccv {
+  font-size: 10px;
+}
+
+.edex-page .finapp-bank-cards--edex .bottom {
+  margin-top: 8px;
+}
+
+.edex-page .finapp-bank-cards--edex span.label {
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.edex-page .finapp-bank-cards--edex .card-buy-btn {
+  min-height: 22px;
+  height: 22px;
+  min-width: 54px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.edex-page .finapp-bank-cards--edex .card-e1-mark {
+  display: inline-block;
+  height: 13px;
+  width: auto;
+  vertical-align: middle;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}

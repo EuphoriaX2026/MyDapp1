@@ -1,0 +1,174 @@
+/* Vite scaffold defaults overridden in index.css for full-bleed infinity canvas */
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  width: 100%;
+  background: transparent;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Force proper dropdown styling on all browsers */
+select.form-control,
+select.form-select,
+select.custom-select {
+  -webkit-appearance: menulist !important;
+  -moz-appearance: menulist !important;
+  appearance: menulist !important;
+}
+
+/* Ensure dropdown arrows are visible in dark mode */
+body.finapp-app-shell.dark-mode select.form-control,
+body.finapp-app-shell.dark-mode select.form-select,
+body.finapp-app-shell.dark-mode select.custom-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+
+/* Exchange page loading overlay styles */
+.exchange-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-in;
+}
+
+.exchange-loading-overlay.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+body.finapp-app-shell.dark-mode .exchange-loading-overlay {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+.exchange-container.loading {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.exchange-container.initialized {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* Smooth loading spinner animations for better UX */
+@keyframes smooth-spinner-border {
+  from {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+/* Override Bootstrap spinner with smoother animation */
+.spinner-border {
+  animation: smooth-spinner-border 0.9s linear infinite !important;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Smooth spinner grow animation */
+@keyframes smooth-spinner-grow {
+  0% {
+    transform: scale3d(0, 0, 1);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale3d(0.5, 0.5, 1);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0;
+  }
+}
+
+.spinner-grow {
+  animation: smooth-spinner-grow 1.1s cubic-bezier(0.4, 0.0, 0.6, 1) infinite !important;
+  will-change: transform, opacity;
+}
+
+/* Enhanced loading states with smooth transitions */
+.loading-state {
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.6, 1);
+}
+
+.loading-state.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.loading-state.inactive {
+  transform: translateY(10px);
+  opacity: 0.7;
+}

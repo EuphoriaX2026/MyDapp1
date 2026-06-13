@@ -1,0 +1,41 @@
+@import './settings-page.css';
+
+/* Layout helpers for WalletFlowPageShell + standalone secondary routes */
+.finapp-secondary-page {
+  background-color: var(--finapp-body-bg, #ededf5);
+  min-height: 100%;
+}
+
+body.finapp-app-shell.dark-mode .finapp-secondary-page {
+  background-color: var(--finapp-body-bg, #030108);
+}
+
+.finapp-secondary-page .section:not(.full) {
+  padding-left: var(--finapp-content-inset-start);
+  padding-right: var(--finapp-content-inset-end);
+  box-sizing: border-box;
+}
+
+.finapp-secondary-page.wallet-flow-page .wallet-flow-body {
+  padding: 8px 0 24px;
+}
+
+.finapp-secondary-page.wallet-flow-page .wallet-flow-flat-content,
+.finapp-secondary-page.wallet-flow-page .wallet-flow-glass-wrap {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.finapp-secondary-page.wallet-flow-page .wallet-flow-flat-footer {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.finapp-secondary-page.wallet-flow-page .wallet-flow-glass-card .glass-panel {
+  border-radius: 16px;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}

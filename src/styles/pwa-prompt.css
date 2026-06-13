@@ -1,0 +1,70 @@
+.pwa-install-banner {
+  position: fixed;
+  left: 50%;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 9998;
+  width: min(28rem, calc(100vw - 24px));
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--finapp-primary, #6236ff) 28%, transparent);
+  background: color-mix(in srgb, var(--finapp-content-bg, #fff) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  font-family: Inter, var(--app-font-family), sans-serif;
+}
+
+.pwa-install-banner__title {
+  margin: 0 0 4px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.pwa-install-banner__desc {
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.pwa-install-banner__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pwa-install-banner__btn {
+  flex: 1;
+  min-height: 40px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pwa-install-banner__btn--primary {
+  background: var(--finapp-primary, #6236ff);
+  border-color: var(--finapp-primary, #6236ff);
+  color: #fff;
+}
+
+.pwa-install-banner__btn--ghost {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--finapp-line, #dcdce9) 70%, transparent);
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+body.finapp-app-shell.dark-mode .pwa-install-banner {
+  background: rgba(17, 24, 39, 0.72);
+  border-color: color-mix(in srgb, var(--finapp-primary, #6236ff) 35%, transparent);
+}
+
+body.finapp-app-shell.dark-mode .pwa-install-banner__title {
+  color: #fff;
+}

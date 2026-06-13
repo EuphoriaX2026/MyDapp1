@@ -1,0 +1,1387 @@
+{
+  "abi": [
+    {
+      "type": "constructor",
+      "inputs": [
+        {
+          "name": "_router",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "addUserDebt",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "addUserTotalRftBaseShares",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "addWeeklyRevenueE1",
+      "inputs": [
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "addWeeklyUsdClaimedTotal",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "batchSetUserSharesInWeek",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_groupIdxs",
+          "type": "uint8[]",
+          "internalType": "uint8[]"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "daoAddress",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "generateNextPackageId",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "getBatchNodeStatus",
+      "inputs": [
+        {
+          "name": "_users",
+          "type": "address[]",
+          "internalType": "address[]"
+        },
+        {
+          "name": "_packageId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple[]",
+          "internalType": "struct Types.NodeBatchStatus[]",
+          "components": [
+            {
+              "name": "user",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "hasReceived",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "expiry",
+              "type": "uint64",
+              "internalType": "uint64"
+            },
+            {
+              "name": "highestActiveGroup",
+              "type": "uint8",
+              "internalType": "uint8"
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getBatchUserPackageGroupExpiry",
+      "inputs": [
+        {
+          "name": "_users",
+          "type": "address[]",
+          "internalType": "address[]"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256[]",
+          "internalType": "uint256[]"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserDebt",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "hasReceivedPointForPackage",
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "isSubjectToLifeFee",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "lastBalanceTimestamp",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "maxHistoricalPayoutUSD",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "nextPackageId",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "reduceUserDebt",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "router",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IRouter"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "setBatchPendingPoints",
+      "inputs": [
+        {
+          "name": "_users",
+          "type": "address[]",
+          "internalType": "address[]"
+        },
+        {
+          "name": "_pointsData",
+          "type": "tuple[]",
+          "internalType": "struct Types.PendingPoints[]",
+          "components": [
+            {
+              "name": "left",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "right",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "weekId",
+              "type": "uint256",
+              "internalType": "uint256"
+            }
+          ]
+        },
+        {
+          "name": "_packageId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setHasReceivedPointForPackage",
+      "inputs": [
+        {
+          "name": "_id",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_status",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setIsSubjectToLifeFee",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_status",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setLastBalanceTimestamp",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_timestamp",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setRouterAddress",
+      "inputs": [
+        {
+          "name": "_newRouter",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserFirstActivationInGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_status",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserFirstActivationTimestamp",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_timestamp",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserHighestActiveGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_group",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserIsVIP",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_status",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserMainPackageInGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_type",
+          "type": "uint8",
+          "internalType": "enum Types.PackageType"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserPackageGroupExpiry",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_expiry",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserPackageId",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_id",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserPackageTier",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_tier",
+          "type": "uint8",
+          "internalType": "enum Types.PackageType"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserPendingPoints",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_pending",
+          "type": "tuple",
+          "internalType": "struct Types.PendingPoints",
+          "components": [
+            {
+              "name": "left",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "right",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "weekId",
+              "type": "uint256",
+              "internalType": "uint256"
+            }
+          ]
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserPointLedger",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_ledger",
+          "type": "tuple",
+          "internalType": "struct Types.PointLedger",
+          "components": [
+            {
+              "name": "rawLeft",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "rawRight",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "paidLeft",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "paidRight",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ]
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserSharesInWeekByGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setUserTotalRftBaseShares",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setWeeklyData",
+      "inputs": [
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_data",
+          "type": "tuple",
+          "internalType": "struct Types.WeeklyData",
+          "components": [
+            {
+              "name": "totalSharesGenerated",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "lockedErxForPayout",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "pricePerShareUSD",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "isPriced",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "isCleanedUp",
+              "type": "bool",
+              "internalType": "bool"
+            }
+          ]
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setWeeklyRevenueE1",
+      "inputs": [
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "setWeeklyUsdClaimedTotal",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "updateAddresses",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "updateMaxHistoricalPayout",
+      "inputs": [
+        {
+          "name": "_payoutUSD",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "updateRFTGenerationState",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_params",
+          "type": "tuple",
+          "internalType": "struct Types.RFTUpdateParams",
+          "components": [
+            {
+              "name": "sharesGenerated",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "newLedgerState",
+              "type": "tuple",
+              "internalType": "struct Types.PointLedger",
+              "components": [
+                {
+                  "name": "rawLeft",
+                  "type": "uint128",
+                  "internalType": "uint128"
+                },
+                {
+                  "name": "rawRight",
+                  "type": "uint128",
+                  "internalType": "uint128"
+                },
+                {
+                  "name": "paidLeft",
+                  "type": "uint128",
+                  "internalType": "uint128"
+                },
+                {
+                  "name": "paidRight",
+                  "type": "uint128",
+                  "internalType": "uint128"
+                }
+              ]
+            },
+            {
+              "name": "consumedPoints",
+              "type": "tuple",
+              "internalType": "struct Types.PendingPoints",
+              "components": [
+                {
+                  "name": "left",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "right",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "weekId",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "isLifeFeeQualified",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "timestamp",
+              "type": "uint256",
+              "internalType": "uint256"
+            }
+          ]
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "userFirstActivationInGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userFirstActivationTimestamp",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userHighestActiveGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userIsVIP",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userMainPackageInGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8",
+          "internalType": "enum Types.PackageType"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userPackageGroupExpiry",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userPackageId",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userPackageTier",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8",
+          "internalType": "enum Types.PackageType"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userPendingPoints",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple",
+          "internalType": "struct Types.PendingPoints",
+          "components": [
+            {
+              "name": "left",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "right",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "weekId",
+              "type": "uint256",
+              "internalType": "uint256"
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userPointLedgers",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple",
+          "internalType": "struct Types.PointLedger",
+          "components": [
+            {
+              "name": "rawLeft",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "rawRight",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "paidLeft",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "paidRight",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userSharesInWeekByGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "userTotalRftBaseShares",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "weeklyData",
+      "inputs": [
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple",
+          "internalType": "struct Types.WeeklyData",
+          "components": [
+            {
+              "name": "totalSharesGenerated",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "lockedErxForPayout",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "pricePerShareUSD",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "isPriced",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "isCleanedUp",
+              "type": "bool",
+              "internalType": "bool"
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "weeklyRevenueE1",
+      "inputs": [
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "weeklyUsdClaimedTotal",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    }
+  ]
+}

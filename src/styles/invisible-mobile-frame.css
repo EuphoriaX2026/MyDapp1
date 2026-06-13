@@ -1,0 +1,123 @@
+/**
+ * Mobile-first app column — same width and chrome on all breakpoints.
+ * Headers scroll with content and stay within this column (never viewport-fixed).
+ */
+.invisible-mobile-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+/* ─── All Finapp appHeader bars — column width, not full viewport ─── */
+.invisible-mobile-frame .appHeader {
+  position: relative !important;
+  top: auto !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  transform: none !important;
+  margin-top: env(safe-area-inset-top, 0px);
+  height: 56px !important;
+  padding-top: 0 !important;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.invisible-mobile-frame .appHeader::before {
+  display: none !important;
+}
+
+.invisible-mobile-frame .appHeader .pageTitle {
+  pointer-events: none;
+  user-select: none;
+}
+
+.invisible-mobile-frame .appHeader .left,
+.invisible-mobile-frame .appHeader .right {
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.invisible-mobile-frame .appHeader .headerButton,
+.invisible-mobile-frame .appHeader a.headerButton {
+  position: relative;
+  z-index: 21;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* No fixed-header spacer — headers are in document flow inside the frame */
+body.finapp-app-shell .invisible-mobile-frame .appHeader + #appCapsule,
+body.finapp-app-shell .invisible-mobile-frame #appCapsule:has(> .appHeader),
+body.finapp-app-shell .invisible-mobile-frame #appCapsule:has(.wallet-flow-page),
+body.finapp-app-shell .invisible-mobile-frame #appCapsule:has(.mywallet2-page),
+body.finapp-app-shell .invisible-mobile-frame .dapp-page #appCapsule {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Sidebar + overlay scoped to the mobile column on desktop */
+.invisible-mobile-frame .sidebar-shell {
+  position: absolute;
+  inset: 0;
+  z-index: 2001;
+  pointer-events: none;
+}
+
+.invisible-mobile-frame .sidebar-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.invisible-mobile-frame .sidebar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+/* MyWallet More drawer — scoped to mobile column (mirror of sidebar from right) */
+.invisible-mobile-frame .mywallet2-more-shell {
+  position: absolute;
+  inset: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Bottom menu — fixed to viewport bottom, aligned with mobile column */
+.invisible-mobile-frame > .eone-app-bottom-menu.appBottomMenu,
+.invisible-mobile-frame .eone-app-bottom-menu.appBottomMenu {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 0 !important;
+  transform: translateX(-50%);
+  width: 100% !important;
+  max-width: 28rem !important;
+  margin: 0 !important;
+}
+
+/* Legacy floating nav (unused) */
+.invisible-mobile-frame .eone-mobile-bottom-nav {
+  position: absolute;
+  z-index: 999;
+  left: 2.5rem;
+  right: 2.5rem;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  width: auto;
+  max-width: none;
+  pointer-events: auto;
+}
+
+.invisible-mobile-frame .eone-mobile-bottom-nav .nav-bar-shell {
+  width: 100%;
+}

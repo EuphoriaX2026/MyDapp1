@@ -1,0 +1,1622 @@
+{
+  "abi": [
+    {
+      "type": "constructor",
+      "inputs": [
+        {
+          "name": "_routerAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "activatePackage",
+      "inputs": [
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "activator",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IActivator"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "bank",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IBank"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "buyProduct",
+      "inputs": [
+        {
+          "name": "_productId",
+          "type": "bytes32",
+          "internalType": "bytes32"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "claimRFTs",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "claimWeeklySharePayout",
+      "inputs": [
+        {
+          "name": "_weekId",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "cleanupBlockedUsersBatch",
+      "inputs": [
+        {
+          "name": "_batchSize",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "config",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IConfigs"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "engine",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IEngine"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "equipTurboItem",
+      "inputs": [
+        {
+          "name": "_tokenId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "finalizeAndPriceWeek",
+      "inputs": [
+        {
+          "name": "_weekIdToPrice",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "getActiveRewardPool",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getBlockedUserCleanupDefaultPeriod",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getBpsDenominator",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getClaimFeeBPS",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getClaimWindowDuration",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getCleanupBatchSize",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getCleanupDelay",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getDirectChildren",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "leftChild",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "rightChild",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getDistributionChainLimit",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getErxPriceUsd",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getForfeitWindowMonths",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getFreeToInactiveDuration",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getGroupCount",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getInactiveToBlockedDuration",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getInactivityPeriod",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getLifeFeeBPS",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getLifeFeeThresholdShares",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getManualDistributionLevels",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getMaxDistributionChainLimit",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getMonsterMakerTimeframe",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getMyParent",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getNodeInfo",
+      "inputs": [
+        {
+          "name": "_targetUser",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "targetStatus",
+          "type": "uint8",
+          "internalType": "enum Types.UserStatus"
+        },
+        {
+          "name": "targetHighestGroup",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "leftChild",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "leftChildStatus",
+          "type": "uint8",
+          "internalType": "enum Types.UserStatus"
+        },
+        {
+          "name": "rightChild",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "rightChildStatus",
+          "type": "uint8",
+          "internalType": "enum Types.UserStatus"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getOneDay",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getOneWeek",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getPackagePrice",
+      "inputs": [
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_packageType",
+          "type": "uint8",
+          "internalType": "enum Types.PackageType"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "erxAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getPackagePriceUSD",
+      "inputs": [
+        {
+          "name": "groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "pkgType",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getPackageTypeId",
+      "inputs": [
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "_pkgType",
+          "type": "uint8",
+          "internalType": "enum Types.PackageType"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getPackageValidityDuration",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getPointRelayQueueSize",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getPrecision",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getRawPointsExpirationDuration",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getRegisterPriceCacheDuration",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getRewardPointLedger",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "rawLeft",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "rawRight",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "paidLeft",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "paidRight",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getRftBaseShares",
+      "inputs": [
+        {
+          "name": "groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getRftCeilingPrice",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getRftFloorPrice",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getStoreProducts",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple[]",
+          "internalType": "struct IStore.Product[]",
+          "components": [
+            {
+              "name": "priceUSD",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "creator",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "creatorShareBPS",
+              "type": "uint16",
+              "internalType": "uint16"
+            },
+            {
+              "name": "fundShareBPS",
+              "type": "uint16",
+              "internalType": "uint16"
+            },
+            {
+              "name": "isActive",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "isAutoBurn",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "mintingRate",
+              "type": "uint16",
+              "internalType": "uint16"
+            },
+            {
+              "name": "hookContract",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "maxSupply",
+              "type": "uint96",
+              "internalType": "uint96"
+            },
+            {
+              "name": "mintedCount",
+              "type": "uint96",
+              "internalType": "uint96"
+            },
+            {
+              "name": "factoryAddress",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "externalTypeId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "internalType": "string"
+            },
+            {
+              "name": "uriSuffix",
+              "type": "string",
+              "internalType": "string"
+            },
+            {
+              "name": "details",
+              "type": "tuple",
+              "internalType": "struct IAssetMakerStructs.AssetDetails",
+              "components": [
+                {
+                  "name": "productId",
+                  "type": "bytes32",
+                  "internalType": "bytes32"
+                },
+                {
+                  "name": "deliveryTimeWindow",
+                  "type": "uint64",
+                  "internalType": "uint64"
+                },
+                {
+                  "name": "groupIdx",
+                  "type": "uint8",
+                  "internalType": "uint8"
+                },
+                {
+                  "name": "assetType",
+                  "type": "uint8",
+                  "internalType": "uint8"
+                },
+                {
+                  "name": "isBurnable",
+                  "type": "bool",
+                  "internalType": "bool"
+                },
+                {
+                  "name": "saveData",
+                  "type": "bool",
+                  "internalType": "bool"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getSubtreeCounts",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "leftCount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "rightCount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getTotalPackagesActivated",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getTotalRegisteredUsers",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUsdPrecision",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserBasicDetails",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "userId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "registrationTimestamp",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "statusTransitionDueDate",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "packagePurchaseLimitResetDueDate",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserBasicInfo",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple",
+          "internalType": "struct Types.UserBasicInfo",
+          "components": [
+            {
+              "name": "userId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "status",
+              "type": "uint8",
+              "internalType": "enum Types.UserStatus"
+            },
+            {
+              "name": "registrationTimestamp",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "statusTransitionDueDate",
+              "type": "uint48",
+              "internalType": "uint48"
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserFullInfo",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple",
+          "internalType": "struct Types.UserFullInfo",
+          "components": [
+            {
+              "name": "basic",
+              "type": "tuple",
+              "internalType": "struct Types.UserBasicInfo",
+              "components": [
+                {
+                  "name": "userId",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "status",
+                  "type": "uint8",
+                  "internalType": "enum Types.UserStatus"
+                },
+                {
+                  "name": "registrationTimestamp",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "statusTransitionDueDate",
+                  "type": "uint48",
+                  "internalType": "uint48"
+                }
+              ]
+            },
+            {
+              "name": "tree",
+              "type": "tuple",
+              "internalType": "struct Types.UserTreeInfo",
+              "components": [
+                {
+                  "name": "parentAddress",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "positionInParentLeg",
+                  "type": "uint8",
+                  "internalType": "uint8"
+                },
+                {
+                  "name": "depth",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "pathHash",
+                  "type": "bytes32",
+                  "internalType": "bytes32"
+                },
+                {
+                  "name": "directChildrenCount",
+                  "type": "uint8",
+                  "internalType": "uint8"
+                },
+                {
+                  "name": "directChildrenAddresses",
+                  "type": "address[2]",
+                  "internalType": "address[2]"
+                },
+                {
+                  "name": "leftLegSubtreeCount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "rightLegSubtreeCount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "status",
+              "type": "tuple",
+              "internalType": "struct Types.UserStatusInfo",
+              "components": [
+                {
+                  "name": "isQueen",
+                  "type": "bool",
+                  "internalType": "bool"
+                },
+                {
+                  "name": "isFlaggedForCleanup",
+                  "type": "bool",
+                  "internalType": "bool"
+                },
+                {
+                  "name": "cleanupDueTimestamp",
+                  "type": "uint48",
+                  "internalType": "uint48"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserGroupTimestamps",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "registrationTimestamp",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "groupExpiryTimestamp",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserIncomeCapInfo",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "highestActiveGroup",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserInfo",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "userId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "status",
+          "type": "uint8",
+          "internalType": "enum Types.UserStatus"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserStatus",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8",
+          "internalType": "enum Types.UserStatus"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserStatusInfo",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple",
+          "internalType": "struct Types.UserStatusInfo",
+          "components": [
+            {
+              "name": "isQueen",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "isFlaggedForCleanup",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "cleanupDueTimestamp",
+              "type": "uint48",
+              "internalType": "uint48"
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUserTreeInfo",
+      "inputs": [
+        {
+          "name": "_userAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "tuple",
+          "internalType": "struct Types.UserTreeInfo",
+          "components": [
+            {
+              "name": "parentAddress",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "positionInParentLeg",
+              "type": "uint8",
+              "internalType": "uint8"
+            },
+            {
+              "name": "depth",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "pathHash",
+              "type": "bytes32",
+              "internalType": "bytes32"
+            },
+            {
+              "name": "directChildrenCount",
+              "type": "uint8",
+              "internalType": "uint8"
+            },
+            {
+              "name": "directChildrenAddresses",
+              "type": "address[2]",
+              "internalType": "address[2]"
+            },
+            {
+              "name": "leftLegSubtreeCount",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "rightLegSubtreeCount",
+              "type": "uint256",
+              "internalType": "uint256"
+            }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getUsersLastPackageTypeInGroup",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8",
+          "internalType": "enum Types.PackageType"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getWeeklyUsdErxCap",
+      "inputs": [
+        {
+          "name": "groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "pkgType",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "isSubjectToLifeFee",
+      "inputs": [
+        {
+          "name": "_user",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "ledger",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract ILedger"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "lens",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract ILens"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "manager",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IManager"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "processLifecycleUpdatesBatch",
+      "inputs": [
+        {
+          "name": "_users",
+          "type": "address[]",
+          "internalType": "address[]"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "processMyPendingPoints",
+      "inputs": [
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "processRelayQueuePublic",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "qualifyForMonsterAward",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "redeemE1",
+      "inputs": [
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "register",
+      "inputs": [
+        {
+          "name": "_referrerAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "registerContract",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IRegister"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "removeInactiveChild",
+      "inputs": [
+        {
+          "name": "_childAddress",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "router",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IRouter"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "setRouter",
+      "inputs": [
+        {
+          "name": "_newRouter",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "store",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IStore"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "turbo",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract ITurbo"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "unequipTurboItem",
+      "inputs": [
+        {
+          "name": "_groupIdx",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "updateAddresses",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "error",
+      "name": "ActivatorContractNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "BankContractNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ConfigContractNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "EngineContractNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "InvalidAddress",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "LensContractNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ManagerContractNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ReentrancyGuardReentrantCall",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "RegisterContractNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "TurboContractNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "Unauthorized",
+      "inputs": []
+    }
+  ]
+}

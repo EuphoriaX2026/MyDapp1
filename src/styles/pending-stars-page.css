@@ -1,0 +1,733 @@
+/**
+ * Pending Stars — current-week pending → RFT conversion (90% centered Finapp layout)
+ */
+
+.pending-stars-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px;
+}
+
+.pending-stars-surface {
+  width: var(--finapp-aligned-width);
+  max-width: 100%;
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+.pending-stars-page-hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 0 12px;
+  box-sizing: border-box;
+}
+
+.pending-stars-header-title {
+  margin: 0;
+  width: 100%;
+  max-width: var(--finapp-aligned-width);
+  padding: 0 var(--finapp-content-inset-end) 0 var(--finapp-content-inset-start);
+  box-sizing: border-box;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--finapp-heading, #27173e);
+  text-align: center;
+}
+
+.pending-stars-intro {
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+.pending-stars-cycle-label {
+  margin: 0 0 16px;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  text-align: center;
+}
+
+.pending-stars-table-head,
+.pending-stars-table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 14px;
+}
+
+.pending-stars-table-head {
+  font-family: var(--app-font-family);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--finapp-text-light, #a9abad);
+  border-bottom: 1px solid var(--finapp-line, #dcdce9);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pending-stars-table-row + .pending-stars-table-row {
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.pending-stars-group-name {
+  font-family: var(--app-font-family);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.pending-stars-cell {
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+/* Upsell — 3D icy white / frosted glass */
+.pending-stars-upsell-wrap {
+  width: 100%;
+  margin: 12px 0 0;
+  position: relative;
+}
+
+.pending-stars-upsell-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--finapp-heading, #27173e);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.pending-stars-upsell-btn:active {
+  transform: scale(0.98);
+}
+
+.pending-stars-upsell-dot {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 50%;
+  background: rgba(255, 59, 48, 0.72);
+  color: #fff;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 22px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(255, 59, 48, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.pending-stars-inactive-panel {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--finapp-line, #dcdce9) 25%, var(--finapp-content-bg, #fff));
+  border: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.pending-stars-inactive-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 8px;
+  padding: 8px 4px;
+  opacity: 0.55;
+}
+
+.pending-stars-inactive-row + .pending-stars-inactive-row {
+  border-top: 1px dashed var(--finapp-line, #dcdce9);
+}
+
+/* Step 1 bottom actions */
+.pending-stars-step1-actions {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.pending-stars-step1-actions--dual {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.pending-stars-step1-actions--dual .pending-stars-action-btn,
+.pending-stars-step1-actions--dual .pending-stars-activation-btn {
+  flex: 1;
+  width: auto;
+  margin: 0;
+}
+
+.pending-stars-action-btn {
+  display: block;
+}
+
+.pending-stars-activation-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--finapp-primary, #6236ff);
+  background: var(--finapp-content-bg, #fff);
+  color: var(--finapp-primary, #6236ff);
+  font-family: var(--app-font-family);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.15s ease;
+}
+
+.pending-stars-activation-btn:active {
+  opacity: 0.85;
+}
+
+/* Step 1 — group accordion cards */
+.pending-stars-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.pending-stars-group-card {
+  border-radius: 14px;
+  background: var(--finapp-content-bg, #fff);
+  border: 1px solid var(--finapp-line, #dcdce9);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.pending-stars-group-card--open {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.pending-stars-group-card--warning {
+  background: color-mix(in srgb, #ff396f 8%, var(--finapp-content-bg, #fff));
+  border-color: color-mix(in srgb, #ff396f 35%, var(--finapp-line, #dcdce9));
+}
+
+.pending-stars-group-card--warning.pending-stars-group-card--open {
+  background: transparent;
+  border-color: color-mix(in srgb, #ff396f 25%, transparent);
+  box-shadow: none;
+}
+
+.pending-stars-group-card__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--finapp-heading, #27173e);
+  cursor: pointer;
+  text-align: left;
+}
+
+.pending-stars-group-card__toggle--open {
+  justify-content: flex-end;
+  padding-bottom: 8px;
+}
+
+.pending-stars-group-card__toggle-label {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.pending-stars-group-card--warning .pending-stars-group-card__toggle {
+  color: #c41e5a;
+}
+
+.pending-stars-group-card__body {
+  padding: 0 14px 14px;
+}
+
+.pending-stars-group-card__warning {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, #ff396f 12%, transparent);
+  border: 1px solid color-mix(in srgb, #ff396f 28%, transparent);
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #c41e5a;
+  text-align: center;
+}
+
+.pending-stars-sim-grid-head--group {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--finapp-heading, #27173e);
+  text-align: left;
+  line-height: 1.25;
+  padding-bottom: 8px;
+}
+
+.pending-stars-group-card--warning .pending-stars-sim-grid-head--group {
+  color: #c41e5a;
+}
+
+.pending-stars-sim-table-wrap {
+  border-radius: 12px;
+  border: 1px solid var(--finapp-line, #dcdce9);
+  overflow: hidden;
+  background: var(--finapp-content-bg, #fff);
+}
+
+.pending-stars-sim-grid--table {
+  padding: 10px 12px 8px;
+}
+
+.pending-stars-sim-meta--plain {
+  margin-top: 10px;
+  padding-top: 0;
+  border-top: none;
+  background: transparent;
+}
+
+.pending-stars-sim-grid--table .contents:last-child .pending-stars-sim-grid-label,
+.pending-stars-sim-grid--table .contents:last-child .pending-stars-sim-grid-value {
+  border-bottom: none;
+}
+
+.pending-stars-sim-grid--table .pending-stars-sim-grid-head {
+  border-bottom: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.pending-stars-result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.pending-stars-history-link {
+  text-align: center;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.pending-stars-confirm-block {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pending-stars-confirm-prompt {
+  margin: 0 0 12px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.pending-stars-confirm-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.pending-stars-cancel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--finapp-line, #dcdce9);
+  background: transparent;
+  color: var(--finapp-text, #958d9e);
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.pending-stars-cancel-btn:active {
+  opacity: 0.85;
+}
+
+/* Step 2 — shares summary */
+.pending-stars-step2-table-head,
+.pending-stars-step2-table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.pending-stars-step2-table-head {
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--finapp-text-light, #a9abad);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.pending-stars-step2-table-row + .pending-stars-step2-table-row {
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.pending-stars-cell--bold {
+  font-weight: 700;
+  color: var(--finapp-heading, #27173e);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.pending-stars-step2-totals {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pending-stars-step2-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--finapp-text, #958d9e);
+}
+
+.pending-stars-step2-total-row strong {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--finapp-heading, #27173e);
+  font-variant-numeric: tabular-nums;
+}
+
+.pending-stars-step2-total-row--highlight strong {
+  color: var(--finapp-primary, #6236ff);
+}
+
+/* Legacy simulation cards */
+.pending-stars-sim-card {
+  margin-bottom: 10px;
+  border-radius: 14px;
+  background: var(--finapp-content-bg, #fff);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
+  overflow: hidden;
+}
+
+.pending-stars-sim-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  font-family: var(--app-font-family);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--finapp-heading, #27173e);
+  cursor: pointer;
+  text-align: left;
+}
+
+.pending-stars-sim-card-chevron {
+  font-size: 12px;
+  color: var(--finapp-text-light, #a9abad);
+  transition: transform 0.2s ease;
+}
+
+.pending-stars-sim-card-chevron--open {
+  transform: rotate(180deg);
+}
+
+.pending-stars-sim-card-body {
+  padding: 0 14px 14px;
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.pending-stars-sim-grid {
+  display: grid;
+  grid-template-columns: 1.35fr minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px 0;
+  padding-top: 10px;
+  font-family: var(--app-font-family);
+  font-size: 12px;
+}
+
+.pending-stars-sim-grid-head {
+  font-weight: 500;
+  color: var(--finapp-text-light, #a9abad);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.pending-stars-sim-grid-head--branch {
+  text-align: center;
+  border-left: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 70%, transparent);
+}
+
+.pending-stars-sim-grid-label {
+  font-weight: 400;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  padding: 6px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 50%, transparent);
+}
+
+.pending-stars-sim-grid-value {
+  font-weight: 500;
+  color: var(--finapp-heading, #27173e);
+  padding: 6px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 50%, transparent);
+  font-variant-numeric: tabular-nums;
+}
+
+.pending-stars-sim-grid-value--branch {
+  text-align: center;
+  border-left: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 45%, transparent);
+}
+
+.pending-stars-sim-meta {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.pending-stars-sim-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 5px 0;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.pending-stars-sim-meta-row strong {
+  font-weight: 500;
+  color: var(--finapp-heading, #27173e);
+  font-variant-numeric: tabular-nums;
+}
+
+.pending-stars-summary {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 6%, var(--finapp-content-bg, #fff));
+  border: 1px solid color-mix(in srgb, var(--finapp-primary, #6236ff) 18%, transparent);
+}
+
+.pending-stars-summary-title {
+  margin: 0 0 8px;
+  font-family: var(--app-font-family);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.pending-stars-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.pending-stars-summary-row--total {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.pending-stars-step2-action {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.pending-stars-receipt {
+  text-align: center;
+}
+
+.pending-stars-receipt-icon {
+  width: 56px;
+  height: 56px;
+  margin: 8px auto 12px;
+  border-radius: 50%;
+  background: color-mix(in srgb, #1dcc70 15%, var(--finapp-content-bg, #fff));
+  color: #1dcc70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.pending-stars-receipt-title {
+  margin: 0 0 16px;
+  font-family: var(--app-font-family);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.pending-stars-receipt-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.pending-stars-receipt-list li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.pending-stars-receipt-list li:first-child {
+  border-top: none;
+}
+
+.pending-stars-receipt-list li span:last-child {
+  font-weight: 500;
+  color: var(--finapp-heading, #27173e);
+  text-align: right;
+  word-break: break-all;
+  font-variant-numeric: tabular-nums;
+}
+
+.pending-stars-loading {
+  width: var(--finapp-aligned-width);
+  margin: 32px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.pending-stars-error {
+  width: var(--finapp-aligned-width);
+  margin: 0 auto 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: color-mix(in srgb, #ff3b30 10%, var(--finapp-content-bg, #fff));
+  border: 1px solid color-mix(in srgb, #ff3b30 30%, transparent);
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  color: #ff3b30;
+  text-align: center;
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-header-title,
+body.finapp-app-shell.dark-mode .pending-stars-group-name,
+body.finapp-app-shell.dark-mode .pending-stars-sim-card-head,
+body.finapp-app-shell.dark-mode .pending-stars-summary-title,
+body.finapp-app-shell.dark-mode .pending-stars-receipt-title {
+  color: var(--finapp-heading, #ffffff);
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-sim-card,
+body.finapp-app-shell.dark-mode .reports-stars-card {
+  background: var(--finapp-content-bg, #1a1525);
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-upsell-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--finapp-heading, #fff);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-activation-btn {
+  background: color-mix(in srgb, var(--finapp-content-bg, #1a1525) 90%, transparent);
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-sim-grid-value,
+body.finapp-app-shell.dark-mode .pending-stars-sim-meta-row strong {
+  color: var(--finapp-heading, #fff);
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-group-card:not(.pending-stars-group-card--open),
+body.finapp-app-shell.dark-mode .pending-stars-sim-table-wrap {
+  background: var(--finapp-content-bg, #1a1525);
+  border-color: var(--finapp-line, #2f2842);
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-group-card--open {
+  background: transparent;
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-group-card--warning:not(.pending-stars-group-card--open) {
+  background: color-mix(in srgb, #ff396f 14%, var(--finapp-content-bg, #1a1525));
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-group-card__warning,
+body.finapp-app-shell.dark-mode .pending-stars-group-card--warning .pending-stars-group-card__toggle,
+body.finapp-app-shell.dark-mode .pending-stars-group-card--warning .pending-stars-sim-grid-head--group {
+  color: #ff7aa0;
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-sim-grid-head--group {
+  color: var(--finapp-heading, #fff);
+}
+
+body.finapp-app-shell.dark-mode .pending-stars-confirm-prompt,
+body.finapp-app-shell.dark-mode .pending-stars-step2-total-row strong,
+body.finapp-app-shell.dark-mode .pending-stars-cell--bold {
+  color: var(--finapp-heading, #fff);
+}

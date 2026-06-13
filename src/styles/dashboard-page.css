@@ -1,0 +1,102 @@
+/**
+ * Dashboard — scrollable transparent header (not fixed)
+ */
+
+.dashboard-page {
+  font-family: var(--app-font-family);
+}
+
+/* Header scrolls with page; full-width bar within mobile column */
+.dashboard-page .dashboard-app-header {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  transform: none !important;
+  z-index: 10;
+  flex-shrink: 0;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: env(safe-area-inset-top, 0px);
+  height: 56px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: var(--finapp-heading, #27173e) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.dashboard-page .dashboard-app-header::before {
+  display: none !important;
+}
+
+.dashboard-page .dashboard-app-header .left,
+.dashboard-page .dashboard-app-header .right {
+  position: absolute !important;
+  top: 0 !important;
+  height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 20 !important;
+  pointer-events: auto !important;
+}
+
+.dashboard-page .dashboard-app-header .left {
+  left: 10px !important;
+  right: auto !important;
+}
+
+.dashboard-page .dashboard-app-header .right {
+  right: 10px !important;
+  left: auto !important;
+}
+
+.dashboard-page .dashboard-app-header .pageTitle {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--app-font-family) !important;
+  font-weight: 700 !important;
+  font-synthesis: none;
+  letter-spacing: -0.01em;
+  color: var(--finapp-heading, #27173e) !important;
+}
+
+body.finapp-app-shell.dark-mode .dashboard-page .dashboard-app-header {
+  background: transparent !important;
+  color: var(--finapp-heading, #ffffff) !important;
+}
+
+body.finapp-app-shell.dark-mode .dashboard-page .dashboard-app-header .pageTitle {
+  color: var(--finapp-heading, #ffffff) !important;
+}
+
+.dashboard-page .dashboard-app-header .headerButton {
+  position: relative;
+  z-index: 21;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 36px;
+  height: 56px;
+  padding: 10px;
+  text-decoration: none !important;
+  cursor: pointer;
+  color: var(--finapp-heading, #27173e) !important;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto !important;
+}
+
+.dashboard-page .dashboard-app-header .headerButton:active {
+  opacity: 0.65;
+}
+
+body.finapp-app-shell.dark-mode .dashboard-page .dashboard-app-header .headerButton {
+  color: var(--finapp-heading, #ffffff) !important;
+}

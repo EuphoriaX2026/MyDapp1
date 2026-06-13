@@ -1,0 +1,148 @@
+/**
+ * Withdraw E1 — weekly RFT → E1 payout (90% centered Finapp layout)
+ */
+
+.withdraw-e1-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 28px;
+}
+
+.withdraw-e1-surface {
+  width: var(--finapp-aligned-width);
+  max-width: 100%;
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+.withdraw-e1-card {
+  background: var(--finapp-content-bg, #fff);
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 80%, transparent);
+  box-shadow: 0 8px 24px rgba(98, 54, 255, 0.05);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.withdraw-e1-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+  font-family: Inter, var(--app-font-family), sans-serif;
+}
+
+.withdraw-e1-row:first-child {
+  border-top: none;
+}
+
+.withdraw-e1-label {
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.withdraw-e1-value {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--finapp-heading, #27173e);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.withdraw-e1-value--accent {
+  color: var(--finapp-primary, #6236ff);
+  font-size: 18px;
+}
+
+.withdraw-e1-desc {
+  margin: 0 0 12px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.withdraw-e1-section-title {
+  margin: 0 0 10px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.withdraw-e1-action-btn {
+  display: block;
+}
+
+.withdraw-e1-processing {
+  width: var(--finapp-aligned-width);
+  margin: 12px auto 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--finapp-primary, #6236ff);
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 8%, var(--finapp-content-bg, #fff));
+  border: 1px solid color-mix(in srgb, var(--finapp-primary, #6236ff) 20%, transparent);
+}
+
+.withdraw-e1-success {
+  width: var(--finapp-aligned-width);
+  margin: 0 auto 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #1dcc70;
+  text-align: center;
+  background: color-mix(in srgb, #1dcc70 12%, var(--finapp-content-bg, #fff));
+  border: 1px solid color-mix(in srgb, #1dcc70 35%, transparent);
+}
+
+.withdraw-e1-error {
+  width: var(--finapp-aligned-width);
+  margin: 0 auto 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #ff3b30;
+  text-align: center;
+  background: color-mix(in srgb, #ff3b30 10%, var(--finapp-content-bg, #fff));
+  border: 1px solid color-mix(in srgb, #ff3b30 30%, transparent);
+}
+
+.withdraw-e1-loading {
+  width: var(--finapp-aligned-width);
+  margin: 32px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.withdraw-e1-empty {
+  padding: 24px 16px;
+  text-align: center;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+body.finapp-app-shell.dark-mode .withdraw-e1-section-title,
+body.finapp-app-shell.dark-mode .withdraw-e1-value {
+  color: var(--finapp-heading, #fff);
+}
+
+body.finapp-app-shell.dark-mode .withdraw-e1-card {
+  background: var(--finapp-content-bg, #1a1525);
+}

@@ -1,0 +1,282 @@
+/**
+ * Finapp credit cards (E-Dex) — glass overlay + realm buy layout.
+ */
+
+.edex-coming-soon {
+  width: var(--finapp-aligned-width);
+  max-width: var(--finapp-aligned-width);
+  margin: 2.5rem auto 1.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+  font-size: clamp(1.75rem, 8vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  text-indent: 0.35em;
+  line-height: 1.2;
+  color: var(--finapp-color-text, #8f82a5);
+  opacity: 0.55;
+  user-select: none;
+}
+
+body.finapp-app-shell.dark-mode .edex-coming-soon {
+  color: var(--finapp-color-text, #8f82a5);
+}
+
+.finapp-bank-cards.section {
+  margin-top: 0.5rem;
+}
+
+.finapp-bank-cards-notice {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #5c4d72;
+  background: rgba(98, 54, 255, 0.08);
+}
+
+.finapp-bank-cards-notice--error {
+  color: #7a2e2e;
+  background: rgba(220, 53, 69, 0.1);
+}
+
+/* Glass 3D (Register glass-panel) — no border stroke */
+.finapp-bank-cards .card-block {
+  --card-tint: #6236ff;
+  height: 220px;
+  border-radius: 24px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: none;
+  background: var(--card-tint);
+  box-shadow:
+    0 8px 32px 0 rgba(31, 38, 135, 0.07),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.finapp-bank-cards .card-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.finapp-bank-cards .card-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.06) 42%,
+    rgba(255, 255, 255, 0.14) 100%
+  );
+}
+
+.finapp-bank-cards .card-block:hover {
+  transform: none;
+  box-shadow:
+    0 12px 40px 0 rgba(31, 38, 135, 0.1),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.finapp-bank-cards .card-block.bg-secondary {
+  --card-tint: #8494a8;
+}
+
+.finapp-bank-cards .card-block.bg-success {
+  --card-tint: #1dcc70;
+}
+
+.finapp-bank-cards .card-block.bg-danger {
+  --card-tint: #ff396f;
+}
+
+.finapp-bank-cards .card-block.bg-warning {
+  --card-tint: #ffb400;
+}
+
+.finapp-bank-cards .card-block.bg-info {
+  --card-tint: #05d0a4;
+}
+
+.finapp-bank-cards .card-block.bg-dark {
+  --card-tint: #222222;
+}
+
+.finapp-bank-cards .card-main {
+  position: absolute;
+  border-radius: 24px;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 20px 18px;
+  height: auto;
+  box-sizing: border-box;
+  background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.finapp-bank-cards .card-brand-slot {
+  position: absolute;
+  left: 20px;
+  top: 24px;
+  display: flex;
+  align-items: center;
+  min-height: 29px;
+  height: 29px;
+  max-width: calc(100% - 140px);
+  z-index: 2;
+}
+
+.finapp-bank-cards .card-brand-logo {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  user-select: none;
+}
+
+.finapp-bank-cards .card-price-corner {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.2rem;
+  max-width: 55%;
+}
+
+.finapp-bank-cards .card-erx-cost {
+  font-size: clamp(0.75rem, 3.5vw, 0.9375rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.finapp-bank-cards .card-price-value {
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  font-size: clamp(1.575rem, 9.8vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.finapp-bank-cards span.label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.5;
+  line-height: 1em;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 500;
+}
+
+.finapp-bank-cards .card-footer-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.finapp-bank-cards .in {
+  flex: 1;
+  min-width: 0;
+}
+
+.finapp-bank-cards .in .card-number {
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.finapp-bank-cards .in .card-expiry {
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.finapp-bank-cards .in .card-ccv {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.finapp-bank-cards .bottom {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Icy white — flat, no shadow */
+.finapp-bank-cards .card-buy-btn {
+  flex-shrink: 0;
+  align-self: flex-end;
+  min-height: 29px;
+  height: 29px;
+  min-width: 72px;
+  padding: 0 10px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 38%, #e8eef5 100%);
+  color: #3d4654;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: none;
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease,
+    filter 0.15s ease;
+}
+
+.finapp-bank-cards .card-buy-btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #edf2f7 100%);
+  filter: brightness(1.02);
+}
+
+.finapp-bank-cards .card-buy-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.finapp-bank-cards .card-buy-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}

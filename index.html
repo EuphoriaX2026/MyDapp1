@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" translate="no">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#F8F9FE">
+  <title>E.ONE</title>
+  <meta name="description" content="E.ONE - Decentralized organization">
+  <meta name="keywords"
+    content="crypto, fintech, blockchain, mlm, network marketing, e1, decentralized, affiliate, exchange, investment">
+
+  <link rel="icon" type="image/png" href="/loader-logo-color.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/loader-logo-color.png">
+  <meta name="apple-mobile-web-app-title" content="E.ONE">
+  <meta name="application-name" content="E.ONE">
+
+  <style>
+    #bootstrap-loader,
+    #route-loader {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #bootstrap-loader {
+      z-index: 99999;
+      background: #f8f9fe;
+    }
+    html.finapp-dark-boot #bootstrap-loader {
+      background: #161129;
+    }
+    .finapp-loader-logo-slot,
+    #bootstrap-loader .finapp-loader-logo-slot {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      animation: finapp-loader-pulse 2.8s ease-in-out infinite;
+    }
+    .finapp-loader-logo,
+    #bootstrap-loader .loading-icon {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      animation: none !important;
+      transform: none !important;
+    }
+    .finapp-loader-logo--dark,
+    #bootstrap-loader .loading-icon--dark {
+      display: none;
+    }
+    html.finapp-dark-boot .finapp-loader-logo--light,
+    html.finapp-dark-boot #bootstrap-loader .loading-icon--light {
+      display: none;
+    }
+    html.finapp-dark-boot .finapp-loader-logo--dark,
+    html.finapp-dark-boot #bootstrap-loader .loading-icon--dark {
+      display: block;
+    }
+    @keyframes finapp-loader-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.88; transform: scale(0.98); }
+    }
+  </style>
+
+  <script>
+    try {
+      if (localStorage.getItem('FinappDarkmode') === '1') {
+        document.documentElement.classList.add('finapp-dark-boot');
+      }
+    } catch (e) {}
+  </script>
+</head>
+
+<body>
+  <div id="bootstrap-loader" aria-hidden="true">
+    <div class="finapp-loader-logo-slot">
+      <img
+        src="/loader-logo-color.png"
+        alt=""
+        class="loading-icon loading-icon--light finapp-loader-logo finapp-loader-logo--light"
+        width="42"
+        height="42"
+        decoding="sync"
+      >
+      <img
+        src="/loader-logo-white.png"
+        alt=""
+        class="loading-icon loading-icon--dark finapp-loader-logo finapp-loader-logo--dark"
+        width="42"
+        height="42"
+        decoding="sync"
+      >
+    </div>
+  </div>
+
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

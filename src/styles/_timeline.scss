@@ -1,0 +1,45 @@
+// src/styles/_timeline.scss
+
+.timeline {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid var(--ion-color-step-200, #e1e1e1);
+  
+    .item {
+      position: relative;
+      margin-bottom: 24px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+  
+      .dot {
+        position: absolute;
+        left: -30px;
+        top: 4px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--ion-color-medium);
+        border: 3px solid var(--ion-color-step-100, #f8f8f8);
+  
+        &.text-success { background: var(--ion-color-success); }
+        &.text-warning { background: var(--ion-color-warning); }
+        &.text-primary { background: var(--ion-color-primary); }
+      }
+      
+      .content {
+        .title {
+          font-size: 16px;
+          font-weight: 700;
+          margin-bottom: 4px;
+        }
+        .text-small {
+          font-size: 13px;
+        }
+        ion-icon {
+          vertical-align: middle;
+        }
+      }
+    }
+  }

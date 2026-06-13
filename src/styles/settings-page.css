@@ -1,0 +1,104 @@
+/**
+ * Settings page typography
+ * Header: Inter Medium 500
+ * Section titles (Theme, Appearance): Inter Medium 500, smaller
+ * Row labels (Notification Sound, Your Wallet): Inter Regular 400, gray
+ */
+
+.settings-page .appHeader .pageTitle,
+.finapp-secondary-page .appHeader .pageTitle,
+.finapp-secondary-page.wallet-flow-page .wallet-flow-header .pageTitle {
+  font-family: var(--app-font-family) !important;
+  font-weight: 500 !important;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  color: var(--finapp-heading, #27173e) !important;
+}
+
+.settings-page .listview-title,
+.finapp-secondary-page .listview-title {
+  font-family: var(--app-font-family) !important;
+  font-weight: 500 !important;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: var(--finapp-heading, #27173e);
+  padding: 8px 16px 6px;
+}
+
+.settings-page .listview.image-listview.text.inset .settings-app-bg-in {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.settings-page .listview.image-listview.text.inset .settings-app-bg-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.settings-page .listview.image-listview.text.inset .settings-app-bg-preview {
+  margin-top: 4px;
+}
+
+.settings-page .listview.image-listview.text.inset,
+.finapp-secondary-page .listview.image-listview.text.inset {
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.settings-page .listview.image-listview.text.inset .item .in > div:first-child,
+.settings-page .listview.image-listview.text.inset a.item .in > div:first-child,
+.finapp-secondary-page .listview.image-listview.text.inset .item .in > div:first-child,
+.finapp-secondary-page .listview.image-listview.text.inset a.item .in > div:first-child {
+  font-family: var(--app-font-family) !important;
+  font-weight: 400 !important;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--finapp-text, rgb(149, 141, 158)) !important;
+}
+
+.settings-page .listview.image-listview.text.inset a.item {
+  color: var(--finapp-text, rgb(149, 141, 158)) !important;
+}
+
+.settings-page .listview.image-listview.text.inset .item .in > div:first-child .text-muted {
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--finapp-text-light, #a9abad) !important;
+  margin-top: 2px;
+}
+
+.settings-page .listview.image-listview.text.inset .item .in .text-primary {
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--finapp-primary, #6236ff) !important;
+}
+
+body.finapp-app-shell.dark-mode .settings-page .appHeader .pageTitle,
+body.finapp-app-shell.dark-mode .finapp-secondary-page .appHeader .pageTitle,
+body.finapp-app-shell.dark-mode .finapp-secondary-page.wallet-flow-page .wallet-flow-header .pageTitle {
+  color: var(--finapp-heading, #ffffff) !important;
+}
+
+body.finapp-app-shell.dark-mode .settings-page .listview-title,
+body.finapp-app-shell.dark-mode .finapp-secondary-page .listview-title {
+  color: var(--finapp-heading, #ffffff);
+}
+
+.settings-page .section.text-center .profile-username {
+  font-size: 20px;
+  margin-bottom: 4px;
+  color: var(--finapp-heading, #27173e) !important;
+}
+
+body.finapp-app-shell.dark-mode .settings-page .section.text-center .profile-username {
+  color: var(--finapp-heading, #ffffff) !important;
+}
+
+body.finapp-app-shell.dark-mode .settings-page .listview.image-listview.text.inset .item .in > div:first-child,
+body.finapp-app-shell.dark-mode .settings-page .listview.image-listview.text.inset a.item .in > div:first-child,
+body.finapp-app-shell.dark-mode .settings-page .listview.image-listview.text.inset a.item {
+  color: var(--finapp-text, #8f82a5) !important;
+}

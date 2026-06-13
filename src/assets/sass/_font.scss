@@ -1,0 +1,8 @@
+// Inter — loaded globally via styles/fonts.css
+$fontFamily: var(--app-font-family);
+
+// Define font weight
+// We use this variable for font weights.
+$regular : 400; // font regular
+$medium : 500; // font medium (if font does not support medium, define the semibold)
+$bold : 700; // font bold or black

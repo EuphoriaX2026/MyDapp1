@@ -1,0 +1,912 @@
+/* Activate — Inter typography (weights; family is global) */
+.activate-app-header,
+.activate-page-root {
+  --activate-font-family: var(--app-font-family, 'Inter', sans-serif);
+  --activate-font-mono: var(--app-font-mono);
+  --activate-font-title: var(--app-font-family, 'Inter', sans-serif);
+  --activate-font-body: var(--app-font-family, 'Inter', sans-serif);
+}
+
+/* Display & in-page titles — Inter Bold; header bar title stays Medium 500 */
+.activate-app-header .pageTitle {
+  font-family: var(--activate-font-title) !important;
+  font-weight: 500 !important;
+}
+
+.activate-page-root h1,
+.activate-page-root h2,
+.activate-page-root h4,
+.activate-page-root .activate-font-title-bold {
+  font-family: var(--activate-font-title) !important;
+  font-weight: 700 !important;
+}
+
+.activate-page-root .activate-card-price {
+  font-family: var(--app-font-family) !important;
+  font-weight: 900 !important;
+  font-variant-numeric: tabular-nums;
+  font-synthesis: none;
+  margin-bottom: 0.35rem;
+  font-size: 4.4625rem;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+.activate-page-root .activate-detail-price {
+  font-family: var(--app-font-family) !important;
+  font-weight: 800 !important;
+  font-variant-numeric: tabular-nums;
+  font-synthesis: none;
+}
+
+.activate-e1-logo-white {
+  filter: brightness(0) invert(1);
+}
+
+@keyframes activate-lock-blink {
+  0%,
+  49% {
+    color: #8494a8;
+  }
+  50%,
+  100% {
+    color: #ff396f;
+  }
+}
+
+.activate-lock-message {
+  animation: activate-lock-blink 1.4s step-end infinite;
+}
+
+.activate-details-qty-value {
+  font-family: var(--activate-font-title) !important;
+  font-weight: 800 !important;
+}
+
+.activate-page-root .activate-flow-total-value {
+  font-family: var(--activate-font-title) !important;
+  font-weight: 700 !important;
+}
+
+/* Secondary titles — Inter Medium (500) */
+.activate-page-root .activate-card-name,
+.activate-page-root h3.activate-card-name,
+.activate-page-root .activate-card-name--center,
+.activate-page-root .activate-card-name--peek,
+.activate-details-table thead th,
+.activate-page-root .activate-font-title-medium,
+.activate-page-root .btn {
+  font-family: var(--activate-font-title) !important;
+  font-weight: 500 !important;
+}
+
+.activate-page-root .activate-exec-card h4,
+.activate-page-root .activate-zap-step-label {
+  font-weight: 700 !important;
+}
+
+/* Body copy — Inter Regular */
+.activate-page-root,
+.activate-cart-subtitle,
+.activate-details-table tbody td,
+.activate-page-root .activate-flow-text {
+  font-family: var(--activate-font-body) !important;
+  font-weight: 400 !important;
+}
+
+.activate-page-root h1.activate-flow-text,
+.activate-page-root h2.activate-flow-text,
+.activate-page-root h4.activate-flow-text,
+.activate-page-root .activate-font-title-bold {
+  font-weight: 700 !important;
+}
+
+.activate-page-root h3.activate-flow-text,
+.activate-page-root .activate-font-title-medium {
+  font-weight: 500 !important;
+}
+
+/* Descriptions / secondary — Inter Regular */
+.activate-page-root .activate-flow-muted {
+  font-family: var(--activate-font-body) !important;
+  font-weight: 400 !important;
+}
+
+.activate-encrypted-session {
+  font-family: var(--activate-font-body) !important;
+  font-weight: 100 !important;
+}
+
+.activate-cart-badge {
+  font-weight: 700 !important;
+}
+
+/* Activate — header matches page background */
+.activate-app-header {
+  background: var(--finapp-body-bg) !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+  color: #1a1a2e;
+}
+
+.activate-app-header::before {
+  background: var(--finapp-body-bg) !important;
+}
+
+.activate-app-header .pageTitle {
+  color: #1a1a2e;
+}
+
+.activate-app-header .pageTitle.activate-cart-title {
+  font-weight: 500;
+}
+
+.activate-cart-subtitle {
+  margin: 0.375rem 0 0.25rem;
+  padding: 0;
+  font-size: 15px;
+  color: #6b7280;
+  text-align: center;
+}
+
+.activate-app-header .activate-header-btn {
+  color: #1a1a2e !important;
+}
+
+.activate-app-header .activate-header-btn ion-icon {
+  color: #1a1a2e;
+}
+
+.activate-app-header .left .activate-header-btn ion-icon {
+  font-size: 24px;
+}
+
+.activate-app-header .activate-header-cart-btn ion-icon {
+  font-size: 22px;
+}
+
+.activate-app-header .activate-header-cart-btn {
+  position: relative;
+}
+
+.activate-cart-badge {
+  position: absolute;
+  top: 6px;
+  right: 2px;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 2px solid #f8f9fe;
+  background: #db2cf5;
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+body.finapp-app-shell.dark-mode .activate-app-header,
+body.finapp-app-shell.dark-mode .activate-app-header::before {
+  background: var(--finapp-body-bg) !important;
+}
+
+body.finapp-app-shell.dark-mode .activate-app-header .pageTitle,
+body.finapp-app-shell.dark-mode .activate-app-header .activate-header-btn {
+  color: var(--finapp-heading) !important;
+}
+
+body.finapp-app-shell.dark-mode .activate-app-header .activate-header-btn ion-icon {
+  color: var(--finapp-heading);
+}
+
+body.finapp-app-shell.dark-mode .activate-cart-badge {
+  border-color: var(--finapp-body-bg);
+}
+
+/* Accordion carousel — center card + peeking prev/next (wraps 1↔7) */
+.activate-catalog-wrap {
+  --activate-text: #1a1a2e;
+  --activate-side-gutter: 10%;
+  --activate-card-gap: 10px;
+  --activate-peek-height: 360px;
+  --activate-peek-width: 240px;
+  --activate-card-ratio: 2 / 3;
+  width: 100%;
+}
+
+body.finapp-app-shell.dark-mode .activate-catalog-wrap {
+  --activate-text: var(--finapp-heading);
+}
+
+.activate-accordion {
+
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  touch-action: pan-y pinch-zoom;
+  overflow: hidden;
+}
+
+.activate-accordion-center {
+  position: relative;
+  z-index: 20;
+  width: var(--activate-center-width);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+
+.activate-product-card--center {
+  width: 100%;
+  height: auto;
+  aspect-ratio: var(--activate-card-ratio);
+  border-radius: 2.5rem;
+}
+
+.activate-card-overlay {
+  padding-bottom: 1.25rem;
+}
+
+.activate-card-name--center {
+  margin-bottom: 1.75rem;
+  font-size: 1.96875rem;
+}
+
+.activate-card-name--peek {
+  margin-bottom: 0;
+  padding-bottom: 1.5rem;
+  font-size: 1.70625rem;
+}
+
+.activate-accordion-side {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: var(--activate-peek-width);
+  height: var(--activate-peek-height);
+  max-width: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0.68;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform, opacity;
+}
+
+.activate-accordion-side:hover {
+  opacity: 0.88;
+}
+
+/* Left peek — only right edge visible; 10px gap from center */
+.activate-accordion-side--left {
+  left: calc(var(--activate-side-gutter) - var(--activate-card-gap));
+  transform: translate(-100%, -50%);
+}
+
+.activate-accordion-side--left:active {
+  transform: translate(-100%, -50%) scale(0.97);
+}
+
+/* Right peek — only left edge visible; 10px gap from center */
+.activate-accordion-side--right {
+  left: calc(var(--activate-side-gutter) + var(--activate-center-width) + var(--activate-card-gap));
+  transform: translateY(-50%);
+}
+
+.activate-accordion-side--right:active {
+  transform: translateY(-50%) scale(0.97);
+}
+
+.activate-accordion-side .activate-product-card--peek {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 2.5rem;
+  pointer-events: none;
+  filter: saturate(0.88) brightness(0.92);
+}
+
+body.finapp-app-shell.dark-mode .activate-accordion-side .activate-product-card--peek {
+  filter: saturate(0.85) brightness(0.78);
+}
+
+/* Peek cards refresh with subtle accordion motion */
+@keyframes activate-side-left-refresh {
+  0% {
+    opacity: 0.35;
+    transform: translate(-100%, -50%) scale(0.92);
+  }
+  100% {
+    opacity: 0.68;
+    transform: translate(-100%, -50%) scale(1);
+  }
+}
+
+@keyframes activate-side-right-refresh {
+  0% {
+    opacity: 0.35;
+    transform: translateY(-50%) scale(0.92);
+  }
+  100% {
+    opacity: 0.68;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.activate-accordion-side--left.activate-accordion-side--refresh {
+  animation: activate-side-left-refresh 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+.activate-accordion-side--right.activate-accordion-side--refresh {
+  animation: activate-side-right-refresh 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+/* Smooth accordion slide — center card */
+@keyframes activate-center-enter-next {
+  0% {
+    opacity: 0.35;
+    transform: translateX(28%) rotate(7deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes activate-center-enter-prev {
+  0% {
+    opacity: 0.35;
+    transform: translateX(-28%) rotate(-7deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+}
+
+.activate-accordion-center--enter-next {
+  animation: activate-center-enter-next 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+.activate-accordion-center--enter-prev {
+  animation: activate-center-enter-prev 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+/* Activate page — edge-to-edge inside mobile frame (cancel dapp-page px-4) */
+body.finapp-app-shell .dapp-page:has(.activate-page-root) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.activate-page-root {
+  --activate-center-width: 80%;
+  width: 100%;
+  max-width: 100%;
+  background: transparent !important;
+  background-image: none !important;
+  min-height: 0;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 15px;
+  color: #1a1a2e;
+}
+
+.activate-page-root .activate-flow-text {
+  font-size: 15px;
+  color: #1a1a2e;
+}
+
+.activate-page-root .activate-flow-muted {
+  font-size: 15px;
+  color: #6b7280;
+}
+
+.activate-page-root .activate-flow-total-value {
+  font-size: 20px;
+  color: #1a1a2e;
+  line-height: 1.2;
+}
+
+/* Execution — independent tx cards */
+.activate-exec-card {
+  width: 100%;
+}
+
+.activate-exec-card .glass-panel {
+  border-radius: 1rem;
+}
+
+.activate-exec-card .activate-tx-progress {
+  margin-top: 4px;
+}
+
+.activate-tx-progress {
+  height: 14px;
+  margin-top: 10px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.activate-tx-progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 6px;
+  transition: width 0.45s ease;
+}
+
+
+/* Cart + invoice — 90% width */
+.activate-content-width {
+  width: var(--finapp-aligned-width);
+  max-width: none;
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+/* Shared activate stage cards — same GlassCard treatment as Invoice */
+.activate-stage-card .glass-panel {
+  background: var(--app-glass-bg, rgba(255, 255, 255, 0.12));
+  border-color: var(--app-glass-border, rgba(255, 255, 255, 0.22));
+}
+
+.activate-cart-line-card .glass-panel {
+  border-radius: 1.25rem;
+}
+
+.activate-cart-summary-card .glass-panel {
+  border-radius: 2rem;
+}
+
+.activate-details-glass-inner {
+  padding: 0.75rem 0.625rem;
+}
+
+.activate-details-header {
+  width: 100%;
+  margin: 0 auto 0.85rem;
+  text-align: center;
+}
+
+.activate-details-heading {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--activate-text);
+}
+
+.activate-details-subtitle {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  color: #6b7280;
+}
+
+body.finapp-app-shell.dark-mode .activate-details-subtitle {
+  color: #9ca3af;
+}
+
+.activate-details-balance-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  margin: 0.85rem auto 0;
+  text-align: center;
+}
+
+.activate-details-balance-row .activate-exec-e1-value {
+  justify-content: flex-end;
+}
+
+.activate-details-balance-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.activate-details-balance-row .activate-flow-text {
+  font-size: 15px;
+  color: var(--activate-text);
+}
+
+.activate-details-balance-row .activate-flow-muted {
+  font-size: 13px;
+}
+
+/* Product details — below center card, aligned with main card */
+.activate-center-details-wrap {
+  width: var(--activate-center-width);
+  max-width: none;
+  margin: 1rem auto 0;
+  padding: 0;
+}
+
+.activate-product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.875rem;
+  color: var(--activate-text);
+}
+
+/* Activate invoice — EDex review sheet pattern */
+.activate-invoice-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-family: var(--app-font-family, 'Inter', ui-sans-serif, system-ui, sans-serif);
+}
+
+.activate-invoice-iconbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.35rem auto 0.65rem;
+  color: var(--finapp-primary, #6236ff);
+}
+
+.activate-invoice-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--colorHeading, #27173e);
+}
+
+.activate-invoice-subtitle {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--colorTextSecondary, #6b7280);
+}
+
+.activate-invoice-panel {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--finapp-card-border, #e5e7eb);
+  background: var(--finapp-card-bg, #fff);
+  box-sizing: border-box;
+}
+
+body.finapp-app-shell.dark-mode .activate-invoice-panel {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: var(--finapp-card-bg, #1e1e2e);
+}
+
+.activate-invoice-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.activate-invoice-rows li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--finapp-card-border, #ededf5);
+  direction: ltr;
+}
+
+.activate-invoice-rows li:last-child {
+  border-bottom: 0;
+}
+
+.activate-invoice-row-label {
+  flex: 1 1 auto;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 400 !important;
+  color: var(--colorText, #958d9e);
+}
+
+.activate-invoice-row-value {
+  flex: 1 1 auto;
+  text-align: right;
+  font-size: 0.875rem;
+  font-weight: 400 !important;
+  color: var(--colorHeading, #27173e);
+}
+
+.activate-invoice-price-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.activate-invoice-e1-logo {
+  filter: brightness(0);
+}
+
+.activate-invoice-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.activate-invoice-confirm,
+.activate-invoice-cancel {
+  width: 90% !important;
+  max-width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 1rem;
+}
+
+.activate-invoice-cancel {
+  font-weight: 500;
+  border: 0;
+  background: transparent;
+}
+
+/* Activate execution — full-page stages (swap / approve pattern) */
+.activate-exec-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 0.5rem;
+  font-family: var(--app-font-family, 'Inter', ui-sans-serif, system-ui, sans-serif);
+  text-align: center;
+}
+
+.activate-exec-stage .edex-review-title,
+.activate-exec-stage .edex-review-subtitle,
+.activate-exec-stage .edex-review-wallet-hint {
+  width: 100%;
+}
+
+.activate-exec-stage .edex-review-panel {
+  width: 100%;
+}
+
+.activate-exec-status-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.activate-exec-status-icon .iconbox {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  color: #ffffff;
+}
+
+.edex-review-row-value--danger {
+  color: #ff396f;
+}
+
+.activate-exec-success-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+.activate-exec-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.activate-exec-actions--in-card {
+  margin-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.activate-exec-primary,
+.activate-exec-cancel {
+  width: 90% !important;
+  max-width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 1rem;
+}
+
+.activate-exec-cancel {
+  font-weight: 500;
+  border: 0;
+  background: transparent;
+}
+
+.activate-exec-error {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: #ff396f;
+  text-align: center;
+}
+
+.activate-exec-e1-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.activate-exec-stage .edex-review-wallet-hint--two-line .edex-review-subtitle-line {
+  display: block;
+}
+
+.activate-details-qty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.25rem 0;
+  background: transparent;
+}
+
+.activate-details-qty-btn {
+  flex-shrink: 0;
+  height: 2.75rem;
+  width: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0;
+  border-radius: 9999px !important;
+  color: var(--activate-text) !important;
+}
+
+.activate-details-qty-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.activate-details-qty-value {
+  min-width: 2.5rem;
+  text-align: center;
+  font-size: 2.25rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--activate-text);
+  background: transparent;
+}
+
+.activate-details-table-section {
+  width: 100%;
+}
+
+.activate-details-glass .activate-details-table-section .table-responsive {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.activate-details-table-section .table-responsive {
+  background: var(--app-glass-bg, rgba(255, 255, 255, 0.55));
+  border: 1px solid var(--app-glass-border, rgba(255, 255, 255, 0.45));
+  border-radius: 0.875rem;
+  backdrop-filter: blur(24px) saturate(1.15);
+  -webkit-backdrop-filter: blur(24px) saturate(1.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+body.finapp-app-shell.dark-mode .activate-details-table-section .table-responsive {
+  background: var(--app-glass-bg, rgba(255, 255, 255, 0.08));
+  border-color: var(--app-glass-border, rgba(255, 255, 255, 0.18));
+}
+
+.activate-details-table {
+  margin-bottom: 0;
+  background: transparent !important;
+}
+
+.activate-details-table tr {
+  background: transparent !important;
+}
+
+.activate-details-table th,
+.activate-details-table td {
+  position: relative;
+  z-index: 1;
+  text-align: center !important;
+  vertical-align: middle;
+  color: var(--activate-text) !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0.4rem 0.5rem !important;
+  line-height: 1.3;
+}
+
+.activate-details-table thead th {
+  padding-top: 0.6rem !important;
+  padding-bottom: 0.5rem !important;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid var(--app-glass-border, rgba(255, 255, 255, 0.28)) !important;
+}
+
+.activate-details-table tbody td {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.6rem !important;
+  font-size: 0.8125rem;
+}
+
+/* Finapp Continue — alias width; visuals in finapp-action-button.css */
+.activate-continue-btn {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 10px !important;
+}
+
+/* Encrypted Web3 Session — 50% smaller */
+.activate-encrypted-session {
+  font-size: 6.5px;
+  line-height: 1.2;
+}
+
+.activate-encrypted-session-icon {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+}
+
+/* Dark mode — Your Cart */
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-item-price,
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-item-qty {
+  color: #ffffff !important;
+}
+
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-promo-input {
+  color: #ffffff !important;
+}
+
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-promo-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-promo-tag {
+  color: #ffffff !important;
+}
+
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-promo-apply--idle {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-summary-row-label {
+  color: #9ca3af !important;
+}
+
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-summary-row-value,
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-discount-value {
+  color: #ffffff !important;
+}
+
+body.finapp-app-shell.dark-mode .activate-page-root .activate-cart-discount-label {
+  color: #9ca3af !important;
+}

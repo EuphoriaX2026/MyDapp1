@@ -1,0 +1,78 @@
+#bootstrap-loader,
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: $colorPrimary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+
+    &.hidden {
+        display: none;
+    }
+}
+
+/* React route / auth loading overlay (must not share id with bootstrap-loader) */
+.route-loader,
+#route-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+}
+
+body:not(.animationGoBack) #appCapsule {
+    transform: none !important;
+}
+
+@keyframes loadingAnimation {
+    from {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    to {
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
+
+
+body.animationGoBack {
+    overflow: hidden;
+
+    .appHeader,
+    .appBottomMenu,
+    .extraHeader,
+    #appCapsule {
+        transform: translate(100%, 0);
+        transition: all .24s linear;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: $colorPrimary;
+        background-image: url("../../assets/img/logos/my-logo.png");
+        background-repeat: no-repeat;
+        background-size: 42px auto;
+        background-position: center center;
+        z-index: 9999;
+        animation: animationGoBack .24s linear;
+    }
+}
+
+@keyframes animationGoBack {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0;
+    }
+}

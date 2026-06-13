@@ -1,0 +1,1096 @@
+/**
+ * Send Money — Finapp mobile-frame aligned layout (finapp-aligned-block)
+ * Card/button width: 100% inside block → calc(100% - 40px) / 408px desktop
+ */
+
+.wallet-flow-page--flat {
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: tabular-nums;
+  --wallet-flow-surface: var(--finapp-body-bg, #ededf5);
+  background: var(--finapp-body-bg, #ededf5);
+  color: var(--finapp-text, rgb(149, 141, 158));
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body.finapp-app-shell.dark-mode .wallet-flow-page--flat {
+  --wallet-flow-surface: var(--finapp-body-bg, #030108);
+  background: var(--finapp-body-bg, #030108);
+}
+
+.wallet-flow-page--flat .wallet-flow-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  min-height: calc(100dvh - 56px);
+}
+
+.wallet-flow-page--flat .wallet-flow-flat-content {
+  flex: 1;
+  padding: 8px 0 16px;
+  overflow-y: auto;
+}
+
+.wallet-flow-page--flat .wallet-flow-flat-footer {
+  flex-shrink: 0;
+  padding: 12px 0 calc(16px + env(safe-area-inset-bottom, 0px));
+  background: var(--finapp-body-bg, #ededf5);
+}
+
+body.finapp-app-shell.dark-mode .wallet-flow-page--flat .wallet-flow-flat-footer {
+  background: var(--finapp-body-bg, #030108);
+}
+
+.wallet-flow-page--flat .wallet-flow-header .pageTitle {
+  font-family: var(--app-font-family);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--finapp-heading, #27173e) !important;
+}
+
+.wallet-flow-page--flat .wallet-flow-header .pageTitle.wallet-flow-title--medium {
+  font-weight: 500 !important;
+}
+
+/* Inter typography helpers */
+.send-money-text-regular {
+  font-family: var(--app-font-family);
+  font-weight: 400;
+}
+
+.send-money-text-medium {
+  font-family: var(--app-font-family);
+  font-weight: 500 !important;
+}
+
+.send-money-text-bold {
+  font-family: var(--app-font-family);
+  font-weight: 700 !important;
+}
+
+/* Footer / confirm — width from .finapp-aligned-block (.cursorrules §3) */
+.wallet-flow-page--flat .send-money-footer-actions,
+.wallet-flow-page--flat .send-money-confirm-actions--stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wallet-flow-page--flat .send-money-footer-actions .btn,
+.wallet-flow-page--flat .send-money-confirm-actions--stacked .btn {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Page column — strict frame child (100% of finapp-aligned-block) */
+.finapp-aligned-block.send-money-page,
+.send-money-page.finapp-aligned-block {
+  --send-money-blue: #2563eb;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.send-money-page {
+  --send-money-blue: #2563eb;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Nested Finapp .section must not add a second frame inset */
+.send-money-page .section {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+.send-money-page .card,
+.send-money-page .send-money-card-btn,
+.send-money-page .send-money-section-header,
+.send-money-page .send-money-network-notice,
+.send-money-page .send-money-balance-line,
+.send-money-page .send-money-fee-breakdown,
+.send-money-page .alert,
+.send-money-page .send-money-verify-top,
+.send-money-page .send-money-verify-copy,
+.send-money-page .listed-detail,
+.send-money-page .send-money-result-list,
+.send-money-page .send-money-result-explorer,
+.send-money-page .send-money-amount-stack,
+.send-money-page .transaction-report-page,
+.send-money-page .transaction-report-page .listed-detail,
+.send-money-page .transaction-report-page .listview,
+.send-money-page .send-money-confirm-pol-balance,
+.send-money-page .eguard-penalty-banner {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+.send-money-page .card {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.09);
+}
+
+.send-money-page .card.bg-primary {
+  box-shadow: 0 8px 24px rgba(98, 54, 255, 0.25);
+}
+
+/* Typography — constitution: labels 500, balances/amounts 700, body 400 */
+.send-money-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 2px;
+  margin-bottom: 4px !important;
+}
+
+.send-money-section-title {
+  margin: 0;
+  font-family: var(--app-font-family);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  color: var(--finapp-heading, #27173e);
+  line-height: 1.25;
+}
+
+body.finapp-app-shell.dark-mode .send-money-section-title {
+  color: var(--finapp-heading, #ffffff);
+}
+
+/* Clickable card wrapper */
+.send-money-card-btn {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0 0 8px;
+  border: none;
+  background: none;
+  text-align: inherit;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.send-money-card-btn .card {
+  width: 100%;
+}
+
+.send-money-card-btn:active .card {
+  opacity: 0.92;
+}
+
+/* Wallet row */
+.send-money-wallet-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.send-money-wallet-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.send-money-wallet-name--btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.send-money-wallet-name--btn:active {
+  opacity: 0.75;
+}
+
+.send-money-wallet-name__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 12%, var(--finapp-content-bg, #fff));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--finapp-heading, #27173e);
+}
+
+.send-money-wallet-name__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--finapp-heading, #27173e);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.send-money-wallet-address {
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  font-family: var(--app-font-family);
+}
+
+/* Token row — name beside logo */
+.send-money-token-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.send-money-token-logo-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.send-money-token-logo-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--finapp-heading, #27173e);
+  line-height: 1.3;
+}
+
+body.finapp-app-shell.dark-mode .send-money-token-logo-name {
+  color: var(--finapp-heading, #ffffff);
+}
+
+.send-money-token-icon-wrap {
+  position: relative;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.send-money-token-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.send-money-token-icon-fallback {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.send-money-token-chain-badge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--finapp-content-bg, #ffffff);
+  background: var(--finapp-content-bg, #ffffff);
+}
+
+.send-money-token-chevron {
+  flex-shrink: 0;
+  color: var(--finapp-text-light, #a9abad);
+}
+
+/* Section action icons */
+.send-money-section-actions {
+  display: flex;
+  align-items: center;
+}
+
+.send-money-section-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  padding: 0 2px;
+  border: none;
+  background: transparent;
+  color: var(--send-money-blue, #2563eb);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.send-money-section-action-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--send-money-blue, #2563eb);
+  flex-shrink: 0;
+}
+
+.send-money-section-action-btn:active {
+  background: color-mix(in srgb, var(--finapp-line, #dcdce9) 40%, transparent);
+}
+
+.send-money-section-action-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--finapp-line, #dcdce9);
+  margin: 0 2px;
+}
+
+body.finapp-app-shell.dark-mode .send-money-section-action-btn,
+body.finapp-app-shell.dark-mode .send-money-section-action-icon {
+  color: #60a5fa;
+}
+
+/* Finapp boxed inputs inside send-money cards */
+.send-money-page .form-group.boxed {
+  margin: 0;
+  padding: 0;
+}
+
+.send-money-page .form-group.boxed .label {
+  margin-bottom: 8px;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.send-money-page .form-group.boxed .form-control {
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 15px;
+  background: var(--finapp-content-bg, #fff);
+  box-shadow: none;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.send-money-page .form-group.boxed .form-control:focus {
+  border-color: var(--finapp-primary, #6236ff);
+  box-shadow: 0 0 0 0.2rem rgba(98, 54, 255, 0.1);
+}
+
+body.finapp-app-shell.dark-mode .send-money-page .form-group.boxed .form-control {
+  background: color-mix(in srgb, var(--finapp-content-bg, #1a1525) 90%, #000);
+  border-color: color-mix(in srgb, var(--finapp-line, #dcdce9) 35%, transparent);
+  color: var(--finapp-heading, #fff);
+}
+
+.send-money-boxed-input-row {
+  position: relative;
+}
+
+.send-money-boxed-input-row .form-control {
+  padding-right: 72px !important;
+}
+
+/* Ghost cards — fade outer frame, keep input borders */
+.send-money-ghost-card {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.send-money-ghost-card .card-body {
+  padding: 0 !important;
+}
+
+.send-money-boxed-input-row--plain,
+.send-money-boxed-amount-row--plain {
+  position: relative;
+}
+
+.send-money-paste-capture {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.send-money-paste-btn {
+  position: absolute;
+  right: 8px;
+  bottom: 0;
+  height: 42px;
+  padding: 0 4px;
+  border: none;
+  border-radius: 0;
+  background: transparent !important;
+  color: var(--send-money-blue, #2563eb);
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 13px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.send-money-paste-btn:active {
+  opacity: 0.75;
+}
+
+body.finapp-app-shell.dark-mode .send-money-paste-btn {
+  color: #60a5fa;
+}
+
+.send-money-boxed-input-row--plain .form-control {
+  font-size: calc(15px * 0.7);
+}
+
+.send-money-amount-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.send-money-amount-stack .send-money-ghost-card {
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+.send-money-field--filled .form-control {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--send-money-blue, #2563eb) 10%, var(--finapp-content-bg, #fff)),
+    color-mix(in srgb, var(--finapp-primary, #6236ff) 6%, var(--finapp-body-bg, #ededf5))
+  ) !important;
+  border-color: color-mix(in srgb, var(--send-money-blue, #2563eb) 28%, var(--finapp-line, #dcdce9)) !important;
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--send-money-blue, #2563eb) 12%, transparent);
+}
+
+body.finapp-app-shell.dark-mode .send-money-field--filled .form-control {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--send-money-blue, #2563eb) 18%, #0f172a),
+    color-mix(in srgb, var(--finapp-primary, #6236ff) 12%, #030108)
+  ) !important;
+  border-color: color-mix(in srgb, var(--send-money-blue, #2563eb) 35%, transparent) !important;
+  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.15);
+}
+
+.send-money-boxed-amount-row {
+  position: relative;
+}
+
+.send-money-boxed-amount-row .form-control {
+  padding-right: 96px !important;
+}
+
+.send-money-amount-trailing {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.send-money-amount-suffix {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.send-money-amount-suffix--boxed {
+  position: absolute;
+  right: 14px;
+  bottom: 0;
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.send-money-max-btn {
+  flex-shrink: 0;
+  font-size: 12px;
+  padding: 3px 8px;
+  border: 0.5px solid var(--finapp-line, #dcdce9);
+  background: transparent;
+  color: var(--finapp-heading, #27173e);
+  border-radius: 6px;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.send-money-max-btn:active {
+  opacity: 0.8;
+}
+
+.send-money-field-error {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #ff3b30;
+}
+
+.send-money-recipient-label {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #1dcc70;
+}
+
+body.finapp-app-shell.dark-mode .send-money-recipient-label {
+  color: #40e0d0;
+}
+
+/* Network notice — blue, 30% smaller than prior size */
+.send-money-network-notice {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: calc(13px * 1.3 * 0.7);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--send-money-blue, #2563eb);
+  text-align: left;
+}
+
+body.finapp-app-shell.dark-mode .send-money-network-notice {
+  color: #60a5fa;
+}
+
+.send-money-balance-line {
+  margin: 0;
+  font-size: 13px;
+  text-align: left;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.send-money-balance-line strong {
+  color: var(--finapp-primary, #6236ff);
+  font-weight: 700;
+}
+
+/* Burn fee + recipient colors */
+.send-money-burn-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(90deg, #ef4444, #6366f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.send-money-burn-value__icon {
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.send-money-receive-value {
+  color: #40e0d0 !important;
+  font-weight: 700 !important;
+  font-family: var(--app-font-family);
+}
+
+.wallet-flow-page--flat .send-money-confirm-actions--stacked.send-money-confirm-actions--single .btn {
+  width: 100%;
+}
+
+/* Verify step — Finapp transfer-verification */
+.send-money-verify-top {
+  width: 100%;
+  max-width: 100%;
+  margin: 8px 0 0;
+}
+
+.send-money-verify-amount {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.send-money-verify-amount .caption {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  line-height: 1.2;
+}
+
+.send-money-verify-top .transfer-amount h2.send-money-verify-amount-primary {
+  font-family: var(--app-font-family);
+  font-weight: 700 !important;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  color: var(--finapp-heading, #27173e);
+  margin: 4px 0 0;
+  text-align: center;
+}
+
+.send-money-verify-fiat-amount {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  text-align: center;
+}
+
+body.finapp-app-shell.dark-mode .send-money-verify-top .transfer-amount h2.send-money-verify-amount-primary {
+  color: var(--finapp-heading, #ffffff);
+}
+
+/* Sender left, recipient right — centered columns */
+.send-money-from-to {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.send-money-from-to__party {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 0 0 auto;
+  width: 72px;
+  position: relative;
+  z-index: 2;
+}
+
+.send-money-from-to__sender {
+  align-items: center;
+}
+
+.send-money-from-to__recipient {
+  align-items: center;
+  margin-left: auto;
+}
+
+.send-money-verify-avatar-ring {
+  width: 48px;
+  height: 48px;
+  padding: 2px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #bae6fd 0%, #99f6e4 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.send-money-verify-avatar-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--finapp-content-bg, #ffffff);
+}
+
+.send-money-verify-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.send-money-verify-avatar__img--empty {
+  background: var(--finapp-content-bg, #fff);
+}
+
+body.finapp-app-shell.dark-mode .send-money-verify-avatar-inner,
+body.finapp-app-shell.dark-mode .send-money-verify-avatar__img--empty {
+  background: color-mix(in srgb, var(--finapp-content-bg, #1a1525) 90%, #000);
+}
+
+.send-money-from-to__role {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--finapp-heading, #27173e);
+}
+
+body.finapp-app-shell.dark-mode .send-money-from-to__role {
+  color: var(--finapp-heading, #ffffff);
+}
+
+.send-money-from-to__suffix {
+  margin-top: 4px;
+  line-height: 1.3;
+  font-size: 12px;
+  font-weight: 400 !important;
+  font-family: var(--app-font-mono, ui-monospace, monospace) !important;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  letter-spacing: 0.02em;
+}
+
+.send-money-from-to .item .send-money-from-to__suffix {
+  font-weight: 400 !important;
+}
+
+.send-money-verify-copy {
+  text-align: center;
+}
+
+.send-money-verify-copy h2.send-money-text-medium {
+  font-family: var(--app-font-family);
+  font-weight: 500 !important;
+  font-size: 20px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.send-money-verify-copy p {
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+/* Result step — listed-detail (width via .send-money-page group above) */
+
+.send-money-result-hash-label {
+  margin: 0;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.send-money-result-hash {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--finapp-line, #dcdce9);
+  border-radius: 10px;
+  background: var(--finapp-content-bg, #fff);
+  font-family: var(--app-font-family);
+  font-size: 13px;
+  color: var(--finapp-primary, #6236ff);
+  text-align: center;
+  word-break: break-all;
+  cursor: pointer;
+}
+
+.send-money-result-hash:active {
+  opacity: 0.85;
+}
+
+body.finapp-app-shell.dark-mode .send-money-result-hash {
+  background: color-mix(in srgb, var(--finapp-content-bg, #1a1525) 90%, #000);
+  border-color: color-mix(in srgb, var(--finapp-line, #dcdce9) 35%, transparent);
+}
+
+/* Confirm hero — legacy token top (unused) */
+.send-money-confirm-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 8px 0 4px;
+  text-align: center;
+}
+
+.send-money-confirm-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 9999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-money-confirm-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
+}
+
+.send-money-confirm-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 9999px;
+}
+
+.send-money-confirm-hero-amount {
+  margin: 16px 0 0;
+  font-family: var(--app-font-family);
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--finapp-heading, #27173e);
+  word-break: break-all;
+}
+
+body.finapp-app-shell.dark-mode .send-money-confirm-hero-amount {
+  color: #ffffff;
+}
+
+.wallet-flow-page--flat .send-money-confirm-actions--stacked .send-money-pol-warning {
+  width: 100%;
+  font-family: var(--app-font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  color: #ff3b30;
+}
+
+.wallet-flow-page--flat .send-money-confirm-actions--stacked .btn {
+  flex: none;
+}
+
+.send-money-confirm-detail {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.send-money-confirm-detail:first-child {
+  padding-top: 0;
+}
+
+.send-money-confirm-detail:last-child {
+  padding-bottom: 0;
+}
+
+.send-money-confirm-detail + .send-money-confirm-detail {
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.send-money-confirm-detail__label,
+.send-money-fee-breakdown__label {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.send-money-fee-breakdown__label {
+  font-size: 13px;
+}
+
+.send-money-confirm-detail__value,
+.send-money-fee-breakdown__value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--finapp-heading, #27173e);
+  text-align: right;
+  word-break: break-all;
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--app-font-family);
+}
+
+.send-money-fee-breakdown__value {
+  font-size: 13px;
+}
+
+.send-money-confirm-detail__value--to {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.send-money-confirm-recipient-name {
+  color: #40e0d0;
+}
+
+.send-money-confirm-paywith {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0 0;
+  margin-top: 4px;
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.send-money-confirm-pol-balance,
+.send-money-page .send-money-confirm-pol-balance {
+  margin: 0 0 8px;
+  width: 100%;
+  text-align: right;
+  font-size: 12px;
+  color: var(--finapp-text-light, #a9abad);
+}
+
+.send-money-confirm-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.send-money-confirm-actions .btn {
+  flex: 1;
+  font-weight: 400;
+}
+
+/* Token picker / contacts inside overlay modal */
+.send-money-token-options,
+.send-money-contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.send-money-token-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+}
+
+.send-money-token-option:active {
+  background: color-mix(in srgb, var(--finapp-line, #dcdce9) 35%, transparent);
+}
+
+.send-money-token-option--selected {
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 12%, #fff);
+}
+
+.send-money-contacts-empty {
+  text-align: center;
+  font-size: 14px;
+  color: var(--finapp-text-light, #a9abad);
+  padding: 16px 0;
+}
+
+.send-money-contact-option {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--app-font-family);
+  font-weight: 400;
+}
+
+.send-money-contact-option:active {
+  background: color-mix(in srgb, var(--finapp-line, #dcdce9) 35%, transparent);
+}
+
+.send-money-contact-option__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.send-money-contact-option__name {
+  font-size: 14px;
+  color: #40e0d0;
+}
+
+.send-money-contact-option__address {
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  font-family: var(--app-font-family);
+}
+
+.send-money-fee-breakdown {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--finapp-line, #dcdce9);
+}
+
+.send-money-fee-breakdown__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.send-money-fee-breakdown__row--net {
+  padding-top: 8px;
+  margin-top: 2px;
+  border-top: 1px dashed var(--finapp-line, #dcdce9);
+}
+
+/* QR scanner inside overlay modal */
+.send-money-qr-modal__viewport {
+  position: relative;
+  min-height: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  margin-bottom: 8px;
+}
+
+.send-money-qr-reader {
+  width: 100%;
+}
+
+.send-money-qr-reader video {
+  border-radius: 0 !important;
+}
+
+.send-money-qr-modal__status,
+.send-money-qr-modal__hint {
+  margin: 0;
+  padding: 8px 0 0;
+  font-size: 13px;
+  text-align: center;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.send-money-qr-modal__error {
+  margin: 0;
+  padding: 8px 0 0;
+  font-size: 13px;
+  text-align: center;
+  color: #ff3b30;
+}

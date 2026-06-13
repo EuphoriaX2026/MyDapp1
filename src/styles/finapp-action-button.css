@@ -1,0 +1,205 @@
+/**
+ * Finapp primary action button — reference: Activate group button
+ * (ActivateProductDetails: btn btn-primary btn-block btn-lg activate-continue-btn)
+ *
+ * Standard spec:
+ * - Label: Inter Medium 500, centered (flex)
+ * - Width: same as card above (100% inside aligned parent, or --finapp-aligned-width standalone)
+ * - Height: 52px (btn-lg)
+ * - Radius: 10px
+ * - Border: 2px solid --finapp-primary
+ * - Fill: --finapp-primary (#6236FF)
+ * - Text: #FFFFFF
+ * - Shadow: none
+ */
+
+.invisible-mobile-frame {
+  --finapp-action-height: 52px;
+  --finapp-action-radius: 10px;
+  --finapp-action-border: 2px;
+  --finapp-action-pad-x: 24px;
+}
+
+/* ─── Canonical utility (prefer on new internal pages) ─── */
+.finapp-action-btn {
+  box-sizing: border-box;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: var(--finapp-aligned-width);
+  max-width: var(--finapp-aligned-width);
+  min-height: var(--finapp-action-height);
+  height: var(--finapp-action-height);
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+  padding: 3px var(--finapp-action-pad-x) !important;
+  border-radius: var(--finapp-action-radius) !important;
+  border: var(--finapp-action-border) solid var(--finapp-primary, #6236ff) !important;
+  background: var(--finapp-primary, #6236ff) !important;
+  color: #ffffff !important;
+  font-family: var(--app-font-family, 'Inter', sans-serif) !important;
+  font-weight: 500 !important;
+  font-synthesis: none;
+  font-size: 15px;
+  line-height: 1.2;
+  text-align: center !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.finapp-action-btn:hover,
+.finapp-action-btn:focus-visible {
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 92%, #000) !important;
+  border-color: color-mix(in srgb, var(--finapp-primary, #6236ff) 92%, #000) !important;
+  color: #ffffff !important;
+}
+
+.finapp-action-btn:active:not(:disabled) {
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 85%, #000) !important;
+  border-color: color-mix(in srgb, var(--finapp-primary, #6236ff) 85%, #000) !important;
+}
+
+.finapp-action-btn:disabled,
+.finapp-action-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Inside aligned column — match card width exactly */
+.finapp-aligned-block > .finapp-action-btn,
+.activate-content-width > .finapp-action-btn,
+.activate-product-details > .finapp-action-btn,
+.send-money-page.finapp-aligned-block > .btn.btn-primary.btn-block.btn-lg,
+.send-money-footer-actions.finapp-aligned-block > .btn.btn-primary.btn-block.btn-lg,
+.send-money-confirm-actions.finapp-aligned-block > .btn.btn-primary.btn-block.btn-lg,
+.finapp-aligned-block > .btn.btn-primary.btn-block.btn-lg,
+.activate-content-width > .btn.btn-primary.btn-block.btn-lg,
+.activate-product-details > .btn.btn-primary.btn-block.btn-lg {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Card immediately above → same width (sibling pattern) */
+.finapp-aligned-block > .finapp-aligned-card + .finapp-action-btn,
+.finapp-aligned-block > .finapp-aligned-card + .btn.btn-primary.btn-block.btn-lg,
+.activate-product-details > .activate-stage-card + .btn.btn-primary.btn-block.btn-lg {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ─── Legacy Finapp Bootstrap stack (internal DApp) ─── */
+body.finapp-app-shell .btn.btn-primary.btn-block.btn-lg:not(.btn-sm):not(.btn-icon),
+body.finapp-app-shell .btn.btn-primary.btn-lg.withdraw-e1-action-btn,
+body.finapp-app-shell .btn.btn-primary.btn-lg.pending-stars-action-btn,
+body.finapp-app-shell .btn.btn-primary.btn-lg.reports-stars-action-btn,
+body.finapp-app-shell .btn.btn-primary.btn-lg.edex-review-primary,
+body.finapp-app-shell .btn.btn-primary.btn-block.btn-lg.activate-continue-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: var(--finapp-action-height, 52px);
+  height: var(--finapp-action-height, 52px);
+  padding: 3px var(--finapp-action-pad-x, 24px) !important;
+  border-radius: var(--finapp-action-radius, 10px) !important;
+  border-width: var(--finapp-action-border, 2px) !important;
+  border-style: solid !important;
+  background: var(--finapp-primary, #6236ff) !important;
+  border-color: var(--finapp-primary, #6236ff) !important;
+  color: #ffffff !important;
+  font-family: var(--app-font-family, 'Inter', sans-serif) !important;
+  font-weight: 500 !important;
+  font-synthesis: none;
+  text-align: center !important;
+  box-shadow: none !important;
+}
+
+body.finapp-app-shell .btn.btn-primary.btn-block.btn-lg:not(.btn-sm):not(.btn-icon):hover,
+body.finapp-app-shell .btn.btn-primary.btn-block.btn-lg:not(.btn-sm):not(.btn-icon):focus-visible,
+body.finapp-app-shell .btn.btn-primary.btn-lg.withdraw-e1-action-btn:hover,
+body.finapp-app-shell .btn.btn-primary.btn-lg.pending-stars-action-btn:hover,
+body.finapp-app-shell .btn.btn-primary.btn-lg.reports-stars-action-btn:hover {
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 92%, #000) !important;
+  border-color: color-mix(in srgb, var(--finapp-primary, #6236ff) 92%, #000) !important;
+  color: #ffffff !important;
+}
+
+/* Standalone page actions — frame width (same as card gutters) */
+body.finapp-app-shell .withdraw-e1-action-btn,
+body.finapp-app-shell .reports-stars-action-btn,
+body.finapp-app-shell .reports-stars-page .btn.btn-primary.btn-block.btn-lg {
+  width: var(--finapp-aligned-width);
+  max-width: var(--finapp-aligned-width);
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+/* Inside aligned surface — match card width */
+body.finapp-app-shell .pending-stars-surface .pending-stars-action-btn,
+body.finapp-app-shell .pending-stars-surface .btn.btn-primary.btn-block.btn-lg {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Dual-button row — equal split inside aligned width */
+.pending-stars-step1-actions--dual .pending-stars-action-btn,
+.pending-stars-step1-actions--dual .pending-stars-activation-btn {
+  width: auto;
+  flex: 1;
+  margin: 0;
+}
+
+/* All labeled internal action controls — Inter Medium */
+body.finapp-app-shell .btn,
+body.finapp-app-shell .finapp-action-btn,
+body.finapp-app-shell .accounts-modal-add-btn,
+body.finapp-app-shell .accounts-subdialog-btn,
+body.finapp-app-shell [class*='-action-btn']:not(.mywallet2-mlm-btn) {
+  font-family: var(--app-font-family, 'Inter', sans-serif) !important;
+  font-weight: 500 !important;
+  font-synthesis: none;
+}
+
+body.finapp-app-shell .accounts-modal-add-btn {
+  min-height: var(--finapp-action-height, 52px);
+  height: var(--finapp-action-height, 52px);
+  padding: 3px var(--finapp-action-pad-x, 24px);
+  border-radius: var(--finapp-action-radius, 10px) !important;
+  border: var(--finapp-action-border, 2px) solid var(--finapp-primary, #6236ff) !important;
+  background: var(--finapp-primary, #6236ff) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  text-align: center;
+}
+
+body.finapp-app-shell .accounts-subdialog-btn--primary {
+  background: var(--finapp-primary, #6236ff) !important;
+  border: var(--finapp-action-border, 2px) solid var(--finapp-primary, #6236ff) !important;
+  color: #ffffff !important;
+  border-radius: var(--finapp-action-radius, 10px) !important;
+  box-shadow: none !important;
+}
+
+body.finapp-app-shell .edex-review-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: var(--finapp-action-radius, 10px) !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+}
+
+/* Activate alias — width only; visuals from finapp-action standard */
+.activate-continue-btn {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: var(--finapp-action-radius, 10px) !important;
+}

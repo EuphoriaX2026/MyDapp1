@@ -1,0 +1,31 @@
+---
+description: Activate flow — UI labels vs on-chain G1–G7 group indices
+globs: src/components/activate/**,src/pages/Activate.tsx,src/pages/activate/**,src/hooks/useActivation*.ts,src/hooks/useActivator*.ts,src/hooks/useRealm*.ts,src/hooks/useActivatePaymentRoute.ts,src/data/storeRealmProducts.ts,src/types/activate.ts
+alwaysApply: false
+---
+
+# Activate: UI vs smart contracts
+
+Realm packages map to **on-chain groups G1–G7** (numeric `groupIdx` 1–7, string `level` like `"G3"`).
+
+## Smart contract layer (never change for UI requests)
+
+- Contract reads/writes use **`groupIdx`**, **`product.level` (G1–G7)**, and **`parseRealmGroupNumber(level)`**.
+- Hooks: `useActivatorPackagePrice`, `useRealmActivationEligibility`, `useActivationKind`, `useActivationZap`, `activatePackage`, `getUserGroupTimestamps`, `Ledger.userFirstActivationInGroup`, etc.
+- Do not pass display names (Winners, Beginner, …) to wagmi `args` or ABI function parameters.
+
+## UI layer only
+
+- Use **`getRealmDisplayName`**, **`getRealmNameByGroupIdx`**, **`formatSequentialActivationLockReason`** for labels, buttons, lock messages, invoices, and carousel copy.
+- User-facing text may show card names; eligibility and txs still use numeric/`G*` identifiers internally.
+
+## Payment routing (Balance-First)
+
+1. `useRealmActivationEligibility` — sequential gate (on-chain G(X-1) must be active).
+2. `useActivatePaymentRoute` — compare `E1.balanceOf` to `useActivatorPackagePrice`; if sufficient → E1 invoice/execution (no ERX Zap).
+3. Only when E1 insufficient: `useActivationKind` (Ledger) → ERX Zap (first) or insufficient-E1 store message (renewal).
+
+## When the user asks for UI changes
+
+- Change components, CSS, and display helpers.
+- Preserve `groupIdx`, `level`, and contract call signatures unchanged unless the user explicitly requests a contract/integration change.

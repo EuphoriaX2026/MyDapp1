@@ -1,0 +1,11 @@
+export { OverviewTab } from './OverviewTab';
+export { TypographyTab } from './TypographyTab';
+export { ButtonsColorsTab } from './ButtonsColorsTab';
+export { BadgesListsTab } from './BadgesListsTab';
+export { FinappCardsTab } from './FinappCardsTab';
+export { FinappChartsTab } from './FinappChartsTab';
+export { FinappMenusTab } from './FinappMenusTab';
+export { FinappFormsModalsTab } from './FinappFormsModalsTab';
+export { FinalizedProposalTab } from './FinalizedProposalTab';
+export { CATALOG_TABS, type CatalogTabId, type CanvasMode } from './types';
+export { canvasClasses, canvasStyle } from './catalogConstants';

@@ -1,0 +1,94 @@
+/* Custom improvements for My Cards carousel - 3 cards display */
+.carousel-single .splide__slide {
+    width: calc((100% - 32px) / 3) !important;
+    /* 3 cards with gap */
+    flex: 0 0 calc((100% - 32px) / 3) !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.carousel-single .splide__slide .card-block {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+/* Ensure consistent card width in single carousel */
+.carousel-single .splide__track {
+    width: 100%;
+}
+
+.carousel-single .splide__list {
+    width: 100%;
+}
+
+/* Watchlist carousel - 5 cards display with full width coverage */
+.carousel-multiple .splide__slide {
+    width: calc((100% - 16px) / 5) !important;
+    /* 5 cards with minimal gap for full coverage */
+    flex: 0 0 calc((100% - 16px) / 5) !important;
+    margin-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.carousel-multiple .splide__slide .card {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 120px;
+    /* Ensure minimum height for better appearance */
+}
+
+.carousel-multiple .splide__slide .card.coinbox {
+    padding: 16px 12px;
+    /* Better internal padding */
+}
+
+.carousel-multiple .splide__slide .card.coinbox .card-body {
+    padding: 12px 8px 8px 8px;
+    /* Optimized padding */
+}
+
+/* Ensure the carousel takes full width */
+.carousel-multiple.splide {
+    width: 100%;
+    margin: 0;
+}
+
+/* Ensure consistent card width in multiple carousel */
+.carousel-multiple .splide__track {
+    width: 100%;
+}
+
+.carousel-multiple .splide__list {
+    width: 100%;
+}
+
+/* Mobile responsive - 1 card */
+@media (max-width: 768px) {
+    .carousel-single .splide__slide {
+        width: calc(100% - 32px) !important;
+        /* 1 card with padding */
+        flex: 0 0 calc(100% - 32px) !important;
+    }
+
+    .carousel-multiple .splide__slide {
+        width: calc((100% - 16px) / 2) !important;
+        /* 2 cards on mobile with minimal gap */
+        flex: 0 0 calc((100% - 16px) / 2) !important;
+    }
+}
+
+/* Watchlist section full-width optimization */
+.section-heading.padding {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* Make watchlist carousel section full width */
+.carousel-multiple.splide {
+    margin-left: -8px;
+    margin-right: -8px;
+    width: calc(100% + 16px);
+}

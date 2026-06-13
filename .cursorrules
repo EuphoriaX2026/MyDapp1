@@ -1,0 +1,81 @@
+# E.ONE (EuphoriaX & Titan) DApp Development Constitution - PHASE 1
+
+**Role:** You are an Elite Web3 & React Frontend Architect and a Pixel-Perfect UI Developer. Your current mission is PHASE 1: Build a rock-solid, fully functional Web3 skeleton using our strict structural rules.
+
+## 1. Core Principles (The Source of Truth)
+- **Function Over Form:** We are in Phase 1. Focus entirely on Web3 logic, smart contract integration, and exact structural layout.
+- **Smart Contracts OVER Frontend:** Never invent frontend logic that contradicts on-chain rules (e.g., dynamic fees from `EConfigs`, penalties from `EGuard`). Treat the blockchain as the ultimate source of truth.
+
+## 2. Tech Stack & Web3 Rules
+- **Framework:** React 19, Vite 6, TypeScript.
+- **Web3 Engine:** STRICTLY use `wagmi v2` and `viem`. 
+- **FORBIDDEN:** Do NOT use `ethers.js` or `BrowserRouter` (We strictly use `HashRouter`).
+- **ABIs:** Import JSONs from `src/abis/`. Never inline full ABIs inside components.
+
+## 3. Strict UI, Styling & Layout Architecture (FINAPP TEMPLATE)
+For internal DApp pages, we are STRICTLY using the legacy Finapp (Bootstrap/SCSS) skeleton. 
+**EXCEPTION:** Do NOT alter the existing "outer" pages located directly in `src/pages` (e.g., Landing, Auth) unless explicitly requested. These rules apply to internal Web3 DApp screens.
+
+- **ZERO-TOLERANCE ALIGNMENT RULE (CRITICAL):**
+  - Absolutely **NO** arbitrary Tailwind width/padding/margin classes (e.g., `w-[90%]`, `w-11/12`, `px-4`, `mx-auto`) for main containers, cards, or buttons on internal pages.
+  - **The Wrapper:** All primary content inside an internal page MUST be wrapped inside a `<div className="finapp-aligned-block">`.
+  - **The Content:** Cards and action buttons inside this wrapper MUST strictly use `w-full` (`width: 100%`). The wrapper's CSS automatically constrains them to exactly `calc(100% - 40px)` relative to the `.invisible-mobile-frame`. Never invent new gutters.
+
+- **Layout & Sizing Constraints:**
+  - **Invisible Mobile Frame:** All internal DApp pages MUST live inside `.invisible-mobile-frame` (max-width 28rem column). Never let page content bleed past this column on desktop.
+  - **Alignment Boundary (Header + Profile Reference — Dashboard):**
+    - **Right vertical line:** Right edge of the header's right icon (Refresh / Settings / etc.).
+    - **Left vertical line (profile pages):** Left edge of the profile avatar image (Dashboard reference).
+    - **Left vertical line (standard pages):** Left edge of the header's left icon (Back / Menu).
+    - All cards, buttons, and primary content blocks MUST stay exactly between these two lines.
+  - **Default Width:** Utility classes to enforce this: `.finapp-aligned-block`, `.finapp-aligned-card`, `.finapp-aligned-btn`.
+  - **Button Placement:** Buttons must be placed OUTSIDE and BELOW the cards by default, unless explicitly requested otherwise.
+
+- **Typography (Strict Inter Font Rules):**
+  - **Headings & Main Card Balances:** `Inter Bold 700` (e.g., `fw-bold` or `font-bold`).
+  - **Card Names, Button Labels & Header Titles:** `Inter Medium 500` (e.g., `fw-medium` or `font-medium`).
+  - **Card Inner Descriptions/Texts:** `Inter Regular 400` (e.g., `fw-normal` or `font-normal`).
+  - **Text Alignment:** Body/descriptive copy on internal pages must use `text-align: justify`. Headings, balances, tab labels, buttons, and numeric values must be centered or start-aligned — do NOT justify them.
+
+- **Primary Action Button Standard (Activate Reference):**
+  - **Reference UI:** Group activation button on `#/Activate` (`ActivateProductDetails` — e.g., "Activate G1").
+  - **Mandatory class stack:** `finapp-action-btn` **or** `btn btn-primary btn-block btn-lg` (+ optional `activate-continue-btn` alias).
+  - **Label:** `Inter Medium 500` only; text **centered** (`inline-flex` + `justify-content: center`).
+  - **Width:** Always **equal to the card directly above** (`w-full` inside `.finapp-aligned-block`).
+  - **Frame Details:** height `52px` · border-radius `10px` · border `2px solid` · fill `--finapp-primary (#6236FF)` · text `#FFFFFF` · **no box-shadow** · hover/active ~5% darker. Do NOT invent custom gradients or radii.
+
+- **In-App Notifications (Glass — MANDATORY):**
+  - All transient feedback (copy, limits, errors, saves) MUST use `FinappNotification` / `Toast` — **never** Bootstrap `position: fixed` toasts outside the mobile column.
+  - **Style:** Rounded glass (`backdrop-filter` blur) · **no images/avatars/icons** in the notification body · close **×** top-right · auto-dismiss ~3.5s.
+  - **Colors (glass tint):** `success` → soft green or neutral grey · `error` / failure → **pink** glass · `warning` / `info` → grey glass.
+  - **Placement:**
+    - **Internal DApp** (`body.finapp-app-shell`, inside account): portal to `.invisible-mobile-frame` (or modal overlay e.g. `.accounts-modal-overlay`) — position **above bottom primary actions** (Add New Account, bottom nav), aligned to frame gutters.
+    - **Public / logged-out** (landing, login, public-edex): portal to `body` — position **top**, below `safe-area-inset-top` (device notification/header zone).
+  - Do NOT show limit hints as static page copy — notify only when the user triggers the blocked action.
+  - CSS: `src/styles/finapp-notification.css` · component: `src/components/FinappNotification.tsx`.
+
+- **Standard Page Header (MANDATORY):**
+  - EVERY new internal page MUST have a top header (`<div className="appHeader">`).
+  - **Title:** Centered, using `Inter Medium 500`.
+  - **Left Side:** Back Icon (default).
+  - **Right Side:** Refresh Icon (default, changeable based on needs).
+
+## 4. Blockchain Integration Patterns
+- **READ operations:** Always query `Lens` (`TITAN_CONTRACTS.Lens`).
+- **WRITE operations:** Route through `Panel` (`TITAN_CONTRACTS.Panel`).
+- **Swaps & Transfers:** Route through `EDex.sol`. ALWAYS use `useTransferFeeQuote` and `useEdexSwapQuote` for dynamic fees and `EGuard` penalties.
+
+## 5. File Structure
+- New Hooks → `src/hooks/`
+- New UI Components → `src/components/`
+- New Pages → `src/pages/` 
+
+Follow these rules blindly. Prioritize exact structural constraints and robust Web3 connections over custom glassmorphism/animations for now.
+
+## 6. Sidebar Integration & Routing Rule
+- **Automatic Sidebar Registration:** Every time you create a new page (e.g., `NewPage.tsx`), you MUST update the central navigation configuration (usually in `App.tsx` or `Sidebar.tsx`). 
+  - Each page must have:
+    1. A unique, clean, human-readable title.
+    2. An icon from `Iconify` (e.g., `@iconify/react` using consistent sets like `lucide:`).
+    3. The link MUST be seamlessly added to the main navigation menu.
+- **Independence:** Never modify the logic of existing transaction pages when building new reporting pages. Keep them strictly separated.

@@ -1,0 +1,266 @@
+/**
+ * Live Economy — Live Forge (cyan) & Vault (gold) dashboard
+ */
+
+.live-economy-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 28px;
+}
+
+.live-economy-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.live-economy-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.live-economy-section-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.live-economy-section-dot--forge {
+  background: #22d3ee;
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.85);
+  animation: live-economy-pulse-forge 2s ease-in-out infinite;
+}
+
+.live-economy-section-dot--vault {
+  background: #ffb400;
+  box-shadow: 0 0 12px rgba(255, 180, 0, 0.7);
+}
+
+@keyframes live-economy-pulse-forge {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+}
+
+.live-economy-glass-card {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: Inter, var(--app-font-family), sans-serif;
+}
+
+.live-economy-glass-card--forge {
+  border: 1px solid color-mix(in srgb, #22d3ee 35%, transparent);
+  box-shadow:
+    0 0 24px rgba(34, 211, 238, 0.18),
+    0 8px 32px rgba(34, 211, 238, 0.1),
+    inset 0 1px 0 color-mix(in srgb, #22d3ee 22%, transparent);
+}
+
+.live-economy-glass-card--vault {
+  border: 1px solid color-mix(in srgb, #ffb400 35%, transparent);
+  box-shadow:
+    0 8px 32px rgba(255, 180, 0, 0.12),
+    inset 0 1px 0 color-mix(in srgb, #ffb400 18%, transparent);
+}
+
+.live-economy-card-title {
+  padding: 14px 16px 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #22d3ee;
+  text-align: center;
+}
+
+.live-economy-card-title--vault {
+  color: #ffb400;
+}
+
+.live-economy-card-hero {
+  padding: 12px 16px 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 50%, transparent);
+}
+
+.live-economy-card-hero-label {
+  margin: 0 0 4px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.live-economy-card-hero-value {
+  margin: 0;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.live-economy-card-hero-value--forge {
+  color: #22d3ee;
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.45);
+}
+
+.live-economy-card-hero-value--vault {
+  color: #ffb400;
+}
+
+.live-economy-card-hero-sub {
+  margin: 6px 0 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.live-economy-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 50%, transparent);
+}
+
+.live-economy-label {
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.live-economy-value {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--finapp-heading, #27173e);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.live-economy-value--highlight-forge {
+  font-size: 18px;
+  color: #22d3ee;
+}
+
+.live-economy-value--highlight-vault {
+  font-size: 18px;
+  color: #ffb400;
+}
+
+.live-economy-locked-btn {
+  opacity: 0.72;
+  cursor: not-allowed;
+  background: rgba(55, 65, 81, 0.55) !important;
+  border-color: rgba(107, 114, 128, 0.5) !important;
+  color: rgba(209, 213, 219, 0.85) !important;
+  box-shadow: none !important;
+}
+
+.live-economy-locked-btn:hover,
+.live-economy-locked-btn:active {
+  background: rgba(55, 65, 81, 0.55) !important;
+  border-color: rgba(107, 114, 128, 0.5) !important;
+  color: rgba(209, 213, 219, 0.85) !important;
+}
+
+.live-economy-convert-btn {
+  box-shadow:
+    0 0 20px rgba(98, 54, 255, 0.45),
+    0 0 40px rgba(255, 180, 0, 0.22);
+  animation: live-economy-glow-vault 2.4s ease-in-out infinite;
+}
+
+@keyframes live-economy-glow-vault {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(98, 54, 255, 0.45),
+      0 0 40px rgba(255, 180, 0, 0.22);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(98, 54, 255, 0.65),
+      0 0 52px rgba(255, 180, 0, 0.38);
+  }
+}
+
+.live-economy-status {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.live-economy-status--processing {
+  font-weight: 500;
+  color: var(--finapp-primary, #6236ff);
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 8%, var(--finapp-content-bg, #fff));
+  border: 1px solid color-mix(in srgb, var(--finapp-primary, #6236ff) 20%, transparent);
+}
+
+.live-economy-status--success {
+  color: #1dcc70;
+  background: color-mix(in srgb, #1dcc70 12%, var(--finapp-content-bg, #fff));
+  border: 1px solid color-mix(in srgb, #1dcc70 35%, transparent);
+}
+
+.live-economy-status--error {
+  color: #ff3b30;
+  background: color-mix(in srgb, #ff3b30 10%, var(--finapp-content-bg, #fff));
+  border: 1px solid color-mix(in srgb, #ff3b30 30%, transparent);
+}
+
+.live-economy-loading {
+  width: 100%;
+  margin: 32px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.live-economy-empty {
+  padding: 16px 0 4px;
+  text-align: center;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.live-economy-modal-copy {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+body.finapp-app-shell.dark-mode .live-economy-glass-card--forge,
+body.finapp-app-shell.dark-mode .live-economy-glass-card--vault {
+  background: rgba(17, 24, 39, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.finapp-app-shell.dark-mode .live-economy-section-header,
+body.finapp-app-shell.dark-mode .live-economy-value {
+  color: var(--finapp-heading, #fff);
+}

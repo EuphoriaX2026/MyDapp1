@@ -1,0 +1,133 @@
+/**
+ * Finapp invisible mobile frame — content alignment & typography
+ * Left boundary: header left icon (20px) or profile avatar (32px on dashboard)
+ * Right boundary: header right icon outer edge (20px)
+ */
+
+.invisible-mobile-frame {
+  --finapp-header-gutter: 10px;
+  --finapp-header-control-pad: 10px;
+  --finapp-header-icon-size: 26px;
+  /* Right edge of header right icon */
+  --finapp-content-inset-end: calc(var(--finapp-header-gutter) + var(--finapp-header-control-pad));
+  /* Left edge of header left / back icon */
+  --finapp-content-inset-start-header: calc(var(--finapp-header-gutter) + var(--finapp-header-control-pad));
+  /* Left edge of dashboard / profile avatar (profile-card p-8) */
+  --finapp-content-inset-start-profile: 32px;
+  --finapp-content-inset-start: var(--finapp-content-inset-start-header);
+  --finapp-aligned-width: calc(100% - var(--finapp-content-inset-start) - var(--finapp-content-inset-end));
+}
+
+/* Dashboard & profile-first pages — card left edge aligns with avatar */
+.dashboard-page,
+.mywallet2-page {
+  --finapp-content-inset-start: var(--finapp-content-inset-start-profile);
+}
+
+/* ─── Justified body copy (internal DApp only) ─── */
+body.finapp-app-shell p,
+body.finapp-app-shell .accounts-subdialog-body,
+body.finapp-app-shell .accounts-subdialog-body p,
+body.finapp-app-shell .accounts-modal-empty,
+body.finapp-app-shell .accounts-modal-hint,
+body.finapp-app-shell .content-footer,
+body.finapp-app-shell .content-header,
+body.finapp-app-shell .listview .text-muted,
+body.finapp-app-shell .card-text,
+body.finapp-app-shell .section-desc,
+body.finapp-app-shell .finapp-dialog-body,
+body.finapp-app-shell .send-money-hint,
+body.finapp-app-shell .withdraw-e1-note,
+body.finapp-app-shell .commissions-section-desc,
+body.finapp-app-shell .activate-details-note,
+body.finapp-app-shell .reports-stars-section-desc,
+body.finapp-app-shell .genealogy-node-meta,
+body.finapp-app-shell .transaction-report-desc {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* Keep headings, numbers, controls readable */
+body.finapp-app-shell h1,
+body.finapp-app-shell h2,
+body.finapp-app-shell h3,
+body.finapp-app-shell h4,
+body.finapp-app-shell .pageTitle,
+body.finapp-app-shell .accounts-modal-title,
+body.finapp-app-shell .accounts-subdialog-title,
+body.finapp-app-shell .profile-card-balance,
+body.finapp-app-shell .profile-username,
+body.finapp-app-shell .total,
+body.finapp-app-shell .btn,
+body.finapp-app-shell button,
+body.finapp-app-shell .nav-tabs,
+body.finapp-app-shell .listview-title,
+body.finapp-app-shell [class*='tabular-nums'],
+body.finapp-app-shell .profile-stat-value,
+body.finapp-app-shell .accounts-modal-item__title {
+  text-align: inherit;
+  hyphens: manual;
+}
+
+body.finapp-app-shell .pageTitle,
+body.finapp-app-shell .accounts-modal-title,
+body.finapp-app-shell .accounts-subdialog-title,
+body.finapp-app-shell .edex-page-header-title {
+  text-align: center;
+}
+
+/* Primary CTAs — always centered labels (override text-align: inherit on button) */
+body.finapp-app-shell .swap-edex-confirm-btn,
+body.finapp-app-shell .finapp-action-btn,
+body.finapp-app-shell .btn.btn-primary.btn-block.btn-lg,
+body.finapp-app-shell .btn.btn-primary.btn-lg.edex-review-primary {
+  text-align: center !important;
+}
+
+/* ─── Aligned block utilities ─── */
+.finapp-aligned-block,
+.finapp-aligned-card,
+.finapp-aligned-btn {
+  width: var(--finapp-aligned-width);
+  max-width: var(--finapp-aligned-width);
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+  box-sizing: border-box;
+}
+
+.finapp-aligned-btn {
+  /* Prefer .finapp-action-btn — width-only alias for legacy markup */
+  display: block;
+}
+
+/* Profile hero — edges match frame lines */
+.profile-card.finapp-frame-padding {
+  width: 100%;
+  max-width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: var(--finapp-content-inset-start-profile);
+  padding-right: var(--finapp-content-inset-end);
+  box-sizing: border-box;
+}
+
+/* Page capsule — stay inside invisible frame column */
+body.finapp-app-shell .invisible-mobile-frame #appCapsule,
+body.finapp-app-shell .invisible-mobile-frame .dapp-page,
+body.finapp-app-shell .invisible-mobile-frame .finapp-secondary-page,
+body.finapp-app-shell .invisible-mobile-frame .edex-page,
+body.finapp-app-shell .invisible-mobile-frame .mywallet2-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Standard internal sections inherit frame width for direct children cards */
+body.finapp-app-shell .invisible-mobile-frame #appCapsule > .section:not(.full) > .card,
+body.finapp-app-shell .invisible-mobile-frame #appCapsule > .section:not(.full) > .finapp-aligned-card {
+  width: var(--finapp-aligned-width);
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}

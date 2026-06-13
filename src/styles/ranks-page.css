@@ -1,0 +1,439 @@
+/**
+ * Ranks — Finapp internal page (header, bank-card hero, 2-col level shields)
+ */
+
+.ranks-page {
+  padding-bottom: 5.5rem;
+}
+
+.ranks-page .finapp-aligned-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ISO bank-card ratio — same spec as EDex credit cards */
+.ranks-hero-card {
+  --ranks-hero-width: min(100%, calc(176px * 85.6 / 53.98));
+  position: relative;
+  width: var(--ranks-hero-width);
+  max-width: var(--finapp-aligned-width);
+  aspect-ratio: 85.6 / 53.98;
+  margin: 0.75rem auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+  isolation: isolate;
+  border: none;
+  background: var(--finapp-primary, #6236ff);
+  box-shadow:
+    0 8px 32px rgba(98, 54, 255, 0.18),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.06);
+}
+
+.ranks-hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.ranks-hero-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.04) 45%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+}
+
+.ranks-hero-card__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 12px 14px 11px;
+  box-sizing: border-box;
+}
+
+.ranks-hero-card__stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.ranks-hero-card__title {
+  margin: 0 0 4px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.95rem, 4.2vw, 1.125rem);
+  line-height: 1.15;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.ranks-hero-card__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.ranks-hero-card__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  color: #fff;
+}
+
+.ranks-hero-card__stat img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.ranks-hero-card__segments {
+  display: flex;
+  gap: 4px;
+}
+
+.ranks-hero-card__segment {
+  height: 3px;
+  width: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.ranks-hero-card__segment--active {
+  background: #ffb400;
+  box-shadow: 0 0 6px rgba(255, 180, 0, 0.45);
+}
+
+.ranks-hero-card__character {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 108%;
+  width: 42%;
+  max-width: 120px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ranks-hero-card__character img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+}
+
+.ranks-hero-actions {
+  width: var(--finapp-aligned-width);
+  margin: 1rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ranks-hero-timer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.ranks-hero-timer__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 52px;
+  height: 62px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--finapp-content-bg, #fff);
+  border: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 85%, transparent);
+  box-shadow: 0 2px 8px rgba(98, 54, 255, 0.06);
+}
+
+.ranks-hero-timer__value {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--finapp-heading, #27173e);
+  font-variant-numeric: tabular-nums;
+}
+
+.ranks-hero-timer__label {
+  width: 100%;
+  padding: 4px 0;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--finapp-text, #958d9e);
+  background: color-mix(in srgb, var(--finapp-line, #dcdce9) 35%, transparent);
+}
+
+.ranks-hero-upgrade {
+  width: 100%;
+}
+
+/* Level shields — 2 per row */
+.ranks-level-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 10px;
+  width: var(--finapp-aligned-width);
+  margin: 1.75rem auto 0;
+}
+
+.ranks-level-card {
+  --ranks-shield-top: #ffffff;
+  --ranks-shield-bottom: #ededf5;
+  --ranks-shield-stroke: #dcdce9;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0.35rem 0.5rem 2.75rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.ranks-level-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.ranks-hero-actions .finapp-action-btn {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.ranks-level-card:hover {
+  transform: translateY(-2px);
+}
+
+.ranks-level-card--selected {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 8px 20px rgba(98, 54, 255, 0.22));
+}
+
+.ranks-level-card__shield {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ranks-level-card__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.ranks-level-card__title {
+  margin: 0 0 4px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--finapp-heading, #27173e);
+}
+
+.ranks-level-card--selected .ranks-level-card__title {
+  color: #fff;
+}
+
+.ranks-level-card__stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 0.65rem;
+}
+
+.ranks-level-card__rows {
+  width: 100%;
+  padding: 0 4px;
+}
+
+.ranks-level-card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--finapp-line, #dcdce9) 55%, transparent);
+}
+
+.ranks-level-card--selected .ranks-level-card__row {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.ranks-level-card__row-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--finapp-text, #958d9e);
+}
+
+.ranks-level-card--selected .ranks-level-card__row-label {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.ranks-level-card__row-label img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.ranks-level-card__row-value {
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--finapp-heading, #27173e);
+}
+
+.ranks-level-card--selected .ranks-level-card__row-value {
+  color: #fff;
+}
+
+.ranks-level-card__days {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.ranks-level-card__days-value {
+  display: block;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1;
+  color: var(--finapp-heading, #27173e);
+}
+
+.ranks-level-card--selected .ranks-level-card__days-value {
+  color: #fff;
+}
+
+.ranks-level-card__days-label {
+  display: block;
+  margin-top: 2px;
+  font-family: Inter, var(--app-font-family), sans-serif;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--finapp-text-light, #a9abad);
+}
+
+.ranks-level-card--selected .ranks-level-card__days-label {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.ranks-level-card__badge {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: var(--finapp-content-bg, #fff);
+  border: 2px solid var(--finapp-line, #dcdce9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.ranks-level-card--selected .ranks-level-card__badge {
+  border-color: color-mix(in srgb, var(--finapp-primary, #6236ff) 55%, #fff);
+}
+
+.ranks-level-card__badge-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+}
+
+.ranks-level-card__badge-inner--ok {
+  background: #1dcc70;
+}
+
+.ranks-level-card__badge-inner--lock {
+  background: color-mix(in srgb, var(--finapp-line, #dcdce9) 40%, var(--finapp-content-bg, #fff));
+}
+
+.ranks-hero-card__character img.ranks-hero-fade-in {
+  animation: ranksHeroFadeIn 0.45s ease-out forwards;
+}
+
+@keyframes ranksHeroFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+body.finapp-app-shell.dark-mode .ranks-hero-timer__unit {
+  background: var(--finapp-content-bg, #161129);
+  border-color: color-mix(in srgb, var(--finapp-line, #2f2842) 90%, transparent);
+}
+
+body.finapp-app-shell.dark-mode .ranks-level-card__badge {
+  background: var(--finapp-content-bg, #161129);
+  border-color: var(--finapp-line, #2f2842);
+}
+
+body.finapp-app-shell.dark-mode .ranks-level-card:not(.ranks-level-card--selected) {
+  --ranks-shield-top: #221a38;
+  --ranks-shield-bottom: #161129;
+  --ranks-shield-stroke: #2f2842;
+}

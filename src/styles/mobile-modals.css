@@ -1,0 +1,490 @@
+/* Mobile-responsive fixes for Transaction Modals */
+/* Modern, App-like Mobile Modal Design */
+
+/* Custom Transaction Modal Classes - No Bootstrap conflicts */
+.transaction-modal {
+    z-index: 99999 !important;
+    /* Much higher than Bootstrap action-sheet modals (12000) and all other modals */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+    /* Modern backdrop with blur effect */
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Ensure transaction modals are above Bootstrap modals */
+.dialogbox {
+    z-index: 99999 !important;
+    /* Much higher than Bootstrap action-sheet modals (12000) and all other modals */
+}
+
+/* Modern backdrop with blur effect for legacy dialogbox class */
+.dialogbox {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* App column — bottom-sheet modals (same pattern on all viewports inside shell) */
+.invisible-mobile-frame .transaction-modal .transaction-modal-dialog,
+.invisible-mobile-frame .dialogbox .modal-dialog {
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.invisible-mobile-frame .transaction-modal .transaction-modal-content,
+.invisible-mobile-frame .dialogbox .modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 24px 24px 0 0 !important;
+    background: #ffffff !important;
+    box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.25) !important;
+    max-height: 80dvh !important;
+    overflow: hidden !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* Mobile: Bottom Sheet Design */
+@media (max-width: 767px) {
+
+    /* Force bottom sheet positioning for both custom and legacy modals */
+    .transaction-modal,
+    .dialogbox {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        overflow: hidden !important;
+        z-index: 20000 !important;
+    }
+
+    .transaction-modal .transaction-modal-dialog,
+    .dialogbox .modal-dialog {
+        display: flex !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .transaction-modal .transaction-modal-content,
+    .dialogbox .modal-content {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        border: none !important;
+        border-radius: 24px 24px 0 0 !important;
+        background: #ffffff !important;
+        box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.25) !important;
+        max-height: 80vh !important;
+        max-height: 80dvh !important;
+        overflow: hidden !important;
+        position: relative !important;
+        transform: translateY(0) !important;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        /* Ensure no padding/margin affects width */
+        box-sizing: border-box !important;
+        left: 0 !important;
+        right: 0 !important;
+        /* Allow interactions within modal content */
+        pointer-events: auto !important;
+    }
+
+    /* Modal entrance animation */
+    .transaction-modal:not(.show) .transaction-modal-content,
+    .dialogbox:not(.show) .modal-content {
+        transform: translateY(100%);
+    }
+
+    .transaction-modal.show .transaction-modal-content,
+    .dialogbox.show .modal-content {
+        transform: translateY(0);
+    }
+
+    /* Drag handle at top of modal */
+    .transaction-modal .transaction-modal-content::before,
+    .dialogbox .modal-content::before {
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 36px;
+        height: 4px;
+        background: #D1D5DB;
+        border-radius: 2px;
+        z-index: 1;
+    }
+
+    /* Modal header styling */
+    .transaction-modal .transaction-modal-header,
+    .dialogbox .modal-header {
+        padding: 32px 24px 16px 24px;
+        border-bottom: none;
+        text-align: center;
+        position: relative;
+    }
+
+    .transaction-modal .transaction-modal-title,
+    .dialogbox .modal-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #111827;
+        margin: 0;
+        line-height: 1.25;
+    }
+
+    /* Modal body styling */
+    .transaction-modal .transaction-modal-body,
+    .dialogbox .modal-body {
+        padding: 0 24px 16px 24px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #374151;
+        text-align: center;
+    }
+
+    .transaction-modal .transaction-modal-body p,
+    .dialogbox .modal-body p {
+        margin: 0 0 12px 0;
+    }
+
+    .transaction-modal .transaction-modal-body .text-muted,
+    .dialogbox .modal-body .text-muted {
+        font-size: 14px;
+        color: #6B7280;
+    }
+
+    /* Modal footer styling */
+    .transaction-modal .transaction-modal-footer,
+    .dialogbox .modal-footer {
+        padding: 16px 24px 32px 24px;
+        border-top: none;
+        background: transparent;
+        /* Ensure footer is properly positioned and clickable */
+        position: relative;
+        z-index: 2;
+        pointer-events: auto;
+    }
+
+    /* Button styling for mobile */
+    .transaction-modal .transaction-btn-inline,
+    .dialogbox .btn-inline {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        /* Ensure button container is clickable */
+        pointer-events: auto;
+        position: relative;
+        z-index: 10;
+    }
+
+    .transaction-modal .transaction-btn,
+    .dialogbox .btn-inline .btn {
+        width: 100%;
+        margin: 0 !important;
+        min-height: 52px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 12px;
+        border: none;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 0.5px;
+        /* Ensure buttons are clickable */
+        position: relative;
+        z-index: 10;
+        cursor: pointer;
+        pointer-events: auto !important;
+        /* Better touch targets */
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+        /* Improved mobile touch handling */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /* Ensure proper click/tap handling */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        /* Force button behavior */
+        outline: none;
+    }
+
+    /* Primary button */
+    .transaction-modal .transaction-btn-primary,
+    .dialogbox .btn-primary {
+        background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%) !important;
+        color: white !important;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        /* Ensure clickability on mobile */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        /* Force button interaction */
+        pointer-events: auto !important;
+        cursor: pointer !important;
+    }
+
+    .transaction-modal .transaction-btn-primary:active,
+    .transaction-modal .transaction-btn-primary:focus,
+    .transaction-modal .transaction-btn-primary:hover,
+    .dialogbox .btn-primary:active,
+    .dialogbox .btn-primary:focus,
+    .dialogbox .btn-primary:hover {
+        transform: translateY(1px);
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%) !important;
+        outline: none !important;
+    }
+
+    /* Secondary button */
+    .transaction-modal .transaction-btn-secondary,
+    .transaction-modal .transaction-btn-outline-primary,
+    .dialogbox .btn-secondary,
+    .dialogbox .btn-outline-primary {
+        background: #F3F4F6 !important;
+        color: #374151 !important;
+        border: 1px solid #E5E7EB !important;
+        /* Ensure clickability on mobile */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        /* Force button interaction */
+        pointer-events: auto !important;
+        cursor: pointer !important;
+    }
+
+    .transaction-modal .transaction-btn-secondary:active,
+    .transaction-modal .transaction-btn-secondary:focus,
+    .transaction-modal .transaction-btn-secondary:hover,
+    .transaction-modal .transaction-btn-outline-primary:active,
+    .transaction-modal .transaction-btn-outline-primary:focus,
+    .transaction-modal .transaction-btn-outline-primary:hover,
+    .dialogbox .btn-secondary:active,
+    .dialogbox .btn-secondary:focus,
+    .dialogbox .btn-secondary:hover,
+    .dialogbox .btn-outline-primary:active,
+    .dialogbox .btn-outline-primary:focus,
+    .dialogbox .btn-outline-primary:hover {
+        transform: translateY(1px);
+        background: #E5E7EB !important;
+        color: #1F2937 !important;
+        outline: none !important;
+    }
+
+    /* Success button variant */
+    .transaction-modal .transaction-btn-success,
+    .dialogbox .btn-success {
+        background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+        color: white !important;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Modal icon styling */
+    .transaction-modal-icon,
+    .modal-icon {
+        font-size: 56px !important;
+        margin: 16px auto 16px auto !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: rgba(59, 130, 246, 0.1);
+    }
+
+    .transaction-modal-icon.text-success,
+    .modal-icon.text-success {
+        background: rgba(16, 185, 129, 0.1);
+        color: #10B981 !important;
+    }
+
+    .transaction-modal-icon.text-danger,
+    .modal-icon.text-danger {
+        background: rgba(239, 68, 68, 0.1);
+        color: #EF4444 !important;
+    }
+
+    .transaction-modal-icon.text-warning,
+    .modal-icon.text-warning {
+        background: rgba(245, 158, 11, 0.1);
+        color: #F59E0B !important;
+    }
+
+    /* Ensure proper stacking and override Bootstrap */
+    .dialogbox {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        overflow: hidden !important;
+        z-index: 20000 !important;
+        /* Override Bootstrap modal fade animations for custom bottom-sheet animation */
+        opacity: 1 !important;
+    }
+
+    /* Force bottom-sheet animation instead of Bootstrap fade */
+    .dialogbox.modal {
+        opacity: 1 !important;
+        /* Override Bootstrap fade opacity */
+        transition: none !important;
+        /* Remove Bootstrap fade transition */
+    }
+
+    .dialogbox:not(.show) .modal-content {
+        transform: translateY(100%) !important;
+    }
+
+    .dialogbox.show .modal-content {
+        transform: translateY(0) !important;
+    }
+
+    /* Ensure modal content transition works properly */
+    .dialogbox .modal-content {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+}
+
+/* Handle very small screens */
+@media (max-width: 360px) {
+    .dialogbox .modal-header {
+        padding: 28px 20px 12px 20px;
+    }
+
+    .dialogbox .modal-body {
+        padding: 0 20px 12px 20px;
+        font-size: 15px;
+    }
+
+    .dialogbox .modal-footer {
+        padding: 12px 20px 28px 20px;
+    }
+
+    .dialogbox .modal-title {
+        font-size: 18px;
+    }
+
+    .modal-icon {
+        font-size: 48px !important;
+        width: 64px;
+        height: 64px;
+    }
+}
+
+/* Landscape mobile adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .dialogbox .modal-content {
+        max-height: 90vh;
+        max-height: 90dvh;
+    }
+
+    .dialogbox .modal-header {
+        padding: 20px 24px 12px 24px;
+    }
+
+    .dialogbox .modal-footer {
+        padding: 12px 24px 20px 24px;
+    }
+
+    .modal-icon {
+        font-size: 40px !important;
+        width: 56px;
+        height: 56px;
+        margin: 8px auto 12px auto !important;
+    }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 767px) {
+        .dialogbox {
+            height: -webkit-fill-available;
+        }
+
+        .dialogbox .modal-dialog {
+            min-height: -webkit-fill-available;
+        }
+    }
+}
+
+/* Android specific improvements */
+@media (max-width: 767px) {
+    .dialogbox .modal-content {
+        /* Better Android performance */
+        will-change: transform;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    /* Prevent zoom on input focus */
+    .dialogbox input,
+    .dialogbox select,
+    .dialogbox textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+    @media (max-width: 767px) {
+        .dialogbox .modal-content {
+            background: #1F2937;
+        }
+
+        .dialogbox .modal-title {
+            color: #F9FAFB;
+        }
+
+        .dialogbox .modal-body {
+            color: #D1D5DB;
+        }
+
+        .dialogbox .modal-body .text-muted {
+            color: #9CA3AF;
+        }
+
+        .dialogbox .btn-secondary,
+        .dialogbox .btn-outline-primary {
+            background: #374151 !important;
+            color: #D1D5DB !important;
+            border-color: #4B5563 !important;
+        }
+    }
+}

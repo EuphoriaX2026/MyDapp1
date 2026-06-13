@@ -1,0 +1,599 @@
+/* EDex swap / approve review — bottom sheet inside invisible-mobile-frame (28rem column) */
+
+
+
+.invisible-mobile-frame .edex-review-sheet {
+
+  position: absolute;
+
+  inset: 0;
+
+}
+
+
+
+.edex-review-sheet {
+
+  --edex-review-anim: 390ms;
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 200002;
+
+  font-family: var(--app-font-family, 'Inter', ui-sans-serif, system-ui, sans-serif);
+
+  font-weight: 400;
+
+  direction: ltr;
+
+  text-align: center;
+
+}
+
+
+
+.edex-review-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  backdrop-filter: blur(8px);
+
+  -webkit-backdrop-filter: blur(8px);
+
+  opacity: 0;
+
+  transition: opacity var(--edex-review-anim) ease;
+
+  pointer-events: none;
+
+}
+
+
+
+.edex-review-sheet--visible .edex-review-overlay {
+
+  opacity: 1;
+
+  pointer-events: auto;
+
+}
+
+
+
+.edex-review-dialog {
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  pointer-events: none;
+
+}
+
+
+
+.edex-review-content {
+
+  position: relative;
+
+  width: 100%;
+
+  max-width: 28rem;
+
+  background: var(--finapp-card-bg, #fff);
+
+  border-radius: 1.25rem 1.25rem 0 0;
+
+  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);
+
+  transform: translateY(100%);
+
+  transition: transform var(--edex-review-anim) ease;
+
+  pointer-events: auto;
+
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+}
+
+
+
+.edex-review-sheet--visible .edex-review-content {
+
+  transform: translateY(0);
+
+}
+
+
+
+body.finapp-app-shell.dark-mode .edex-review-content {
+
+  background: var(--finapp-card-bg, #1e1e2e);
+
+}
+
+
+
+.edex-review-close {
+
+  position: absolute;
+
+  top: 0.35rem;
+
+  right: 0.5rem;
+
+  z-index: 3;
+
+  width: 2.5rem;
+
+  height: 2.5rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #a9abad;
+
+  cursor: pointer;
+
+}
+
+
+
+.edex-review-close:disabled {
+
+  opacity: 0.5;
+
+  cursor: not-allowed;
+
+}
+
+
+
+.edex-review-body {
+
+  padding: 1.25rem 1rem 1rem;
+
+}
+
+
+
+.edex-review-title {
+
+  margin: 0 0 0.35rem;
+
+  font-size: 1.15rem;
+
+  font-weight: 700;
+
+  text-align: center !important;
+
+  color: var(--colorHeading, #27173e);
+
+}
+
+
+
+.edex-review-title--swap {
+
+  font-size: calc(1.15rem * 1.3);
+
+}
+
+
+
+.edex-review-subtitle {
+
+  margin: 0 0 0.85rem;
+
+  font-size: 0.85rem;
+
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  text-align: center !important;
+
+  color: var(--colorTextSecondary, #6b7280);
+
+}
+
+
+
+.edex-review-subtitle--swap .edex-review-subtitle-line {
+
+  display: block;
+
+}
+
+
+
+.edex-review-wallet-hint {
+
+  margin: 0.85rem auto 1rem;
+
+  max-width: 100%;
+
+  font-size: 0.75rem;
+
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  text-align: center !important;
+
+  color: var(--colorTextSecondary, #6b7280);
+
+}
+
+
+
+.edex-review-iconbox {
+
+  font-size: 3rem;
+
+  margin: 0.35rem 0 0.5rem;
+
+  text-align: center;
+
+  color: var(--finapp-primary, #6236ff);
+
+}
+
+
+
+.edex-review-iconbox--swap {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 0 auto 0.65rem;
+
+  color: var(--finapp-primary, #6236ff);
+
+}
+
+
+
+.edex-review-iconbox--pending {
+
+  color: var(--finapp-primary, #6236ff);
+
+}
+
+
+
+/* Approve — single 380px card, top-to-bottom stack */
+
+.edex-approve-card {
+
+  width: 380px;
+
+  max-width: calc(100% - 24px);
+
+  margin: 0 auto;
+
+  padding: 1rem 1rem 0.5rem;
+
+  border-radius: 1rem;
+
+  border: 1px solid var(--finapp-card-border, #e5e7eb);
+
+  background: var(--finapp-card-bg, #fff);
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+}
+
+
+
+body.finapp-app-shell.dark-mode .edex-approve-card {
+
+  border-color: rgba(255, 255, 255, 0.08);
+
+  background: var(--finapp-card-bg, #1e1e2e);
+
+}
+
+
+
+.edex-approve-badge {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 4rem;
+
+  height: 4rem;
+
+  margin: 0 auto 0.65rem;
+
+}
+
+
+
+.edex-approve-badge svg {
+
+  display: block;
+
+  width: 4rem;
+
+  height: 4rem;
+
+}
+
+
+
+.edex-approve-badge--success {
+
+  color: #16a34a;
+
+}
+
+
+
+.edex-review-tx-link {
+
+  color: var(--finapp-primary, #6236ff);
+
+  text-decoration: none;
+
+  font-weight: 500;
+
+}
+
+
+
+.edex-review-tx-link:hover {
+
+  text-decoration: underline;
+
+}
+
+
+
+.edex-approve-card .edex-review-subtitle {
+
+  margin-bottom: 1rem;
+
+}
+
+
+
+.edex-approve-card .edex-review-rows {
+
+  border-top: 1px solid var(--finapp-card-border, #ededf5);
+
+}
+
+
+
+.edex-approve-card .edex-review-wallet-hint {
+
+  margin-top: 1rem;
+
+  margin-bottom: 1rem;
+
+}
+
+
+
+.edex-approve-card .edex-review-actions {
+
+  padding-bottom: 0.25rem;
+
+}
+
+
+
+/* Swap review panel */
+
+.edex-review-panel {
+
+  position: relative;
+
+  width: 100%;
+
+  margin: 0 auto;
+
+  padding: 0.85rem 1rem;
+
+  border-radius: 1rem;
+
+  border: 1px solid var(--finapp-card-border, #e5e7eb);
+
+  background: var(--finapp-card-bg, #fff);
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+}
+
+
+
+body.finapp-app-shell.dark-mode .edex-review-panel {
+
+  border-color: rgba(255, 255, 255, 0.08);
+
+  background: var(--finapp-card-bg, #1e1e2e);
+
+}
+
+
+
+.edex-review-rows {
+
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  text-align: left;
+
+  font-family: var(--app-font-family, 'Inter', ui-sans-serif, system-ui, sans-serif);
+
+}
+
+
+
+.edex-review-rows li {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 0.75rem;
+
+  padding: 0.65rem 0;
+
+  border-bottom: 1px solid var(--finapp-card-border, #ededf5);
+
+  direction: ltr;
+
+}
+
+
+
+.edex-review-rows li:last-child {
+
+  border-bottom: 0;
+
+}
+
+
+
+.edex-review-row-label {
+
+  flex: 0 1 auto;
+
+  font-size: 0.875rem;
+
+  font-weight: 500;
+
+  color: var(--colorText, #958d9e);
+
+}
+
+
+
+.edex-review-row-value {
+
+  flex: 0 1 auto;
+
+  font-size: 0.875rem;
+
+  font-weight: 400;
+
+  text-align: right;
+
+  color: var(--colorHeading, #27173e);
+
+}
+
+
+
+.edex-review-row-value--success {
+
+  color: #16a34a;
+
+  font-weight: 700;
+
+}
+
+
+
+.edex-review-row-value--small {
+
+  font-size: 0.8125rem;
+
+}
+
+
+
+.edex-review-actions {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  width: 100%;
+
+}
+
+
+
+.edex-review-primary,
+
+.edex-review-cancel {
+
+  width: 90% !important;
+
+  max-width: 100%;
+
+  margin-left: auto !important;
+
+  margin-right: auto !important;
+
+  border-radius: 1rem;
+
+}
+
+
+
+.edex-review-primary {
+
+  font-weight: 500;
+
+  margin-bottom: 0;
+
+}
+
+
+
+.edex-review-cancel {
+
+  font-weight: 500;
+
+  border: 0;
+
+  background: transparent;
+
+}
+
+

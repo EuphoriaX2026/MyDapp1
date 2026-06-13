@@ -1,0 +1,8 @@
+{
+  "abi": [
+    { "inputs": [{ "internalType": "address", "name": "token", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "onFeeReceived", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+    { "inputs": [], "name": "distribute", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+    { "inputs": [], "name": "claim", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+    { "inputs": [{ "internalType": "address", "name": "user", "type": "address" }, { "internalType": "address", "name": "token", "type": "address" }], "name": "getClaimableAmount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }
+  ]
+}

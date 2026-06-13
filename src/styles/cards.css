@@ -1,0 +1,151 @@
+/* KODNOUS: Card Styles from "Cosmic Cards Final" */
+.card-block {
+    color: #FFFFFF;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    overflow: hidden;
+}
+
+.card-block:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+.card-main {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+@keyframes light-sweep {
+    0% {
+        transform: translateX(-150%) skewX(-30deg);
+    }
+
+    100% {
+        transform: translateX(150%) skewX(-30deg);
+    }
+}
+
+.card-vip .card-main::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    animation: light-sweep 1.5s ease-in-out 3.5s infinite;
+}
+
+.card-classic-s1 {
+    background: radial-gradient(ellipse at 70% 30%, #3a7c8e 0%, transparent 50%), radial-gradient(ellipse at 30% 80%, #1e3a5f 0%, transparent 60%), #0d1226 !important;
+}
+
+.card-vip-s1 {
+    background: radial-gradient(ellipse at 50% 50%, #00d1a3 0%, #0c3d3e 80%), #05141e !important;
+}
+
+.card-vip-s1 .card-main::after {
+    background: linear-gradient(to right, transparent 0%, #99ffec 50%, transparent 100%);
+}
+
+.card-classic-s2 {
+    background: radial-gradient(ellipse at 70% 80%, #5a6d8c 0%, transparent 60%), radial-gradient(ellipse at 30% 20%, #b26c45 0%, transparent 50%), #0b1023 !important;
+}
+
+.card-vip-s2 {
+    background: radial-gradient(circle at 50% 50%, #2f2757 0%, #a258a4 60%, #e7846d 90%), #100f24 !important;
+}
+
+.card-vip-s2 .card-main::after {
+    background: linear-gradient(to right, transparent 0%, #e1c4ff 50%, transparent 100%);
+}
+
+.card-classic-s3 {
+    background: radial-gradient(ellipse at 80% 20%, #faff78 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, #68e673 0%, transparent 60%), #062e15 !important;
+}
+
+.card-vip-s3 {
+    background: radial-gradient(circle at 50% 50%, #0f3939 0%, #16655c 60%, #44f0c9 90%), #021a20 !important;
+}
+
+.card-vip-s3 .card-main::after {
+    background: linear-gradient(to right, transparent 0%, #adffde 50%, transparent 100%);
+}
+
+.card-classic-s4 {
+    background: radial-gradient(ellipse at 50% 50%, #ff8c4f 0%, #2c72be 60%), #080d24 !important;
+}
+
+.card-vip-s4 {
+    background: radial-gradient(ellipse at 50% 50%, #e65cff 0%, #4b2d9b 60%), #040221 !important;
+}
+
+.card-vip-s4 .card-main::after {
+    background: linear-gradient(to right, transparent 0%, #ffc8f2 50%, transparent 100%);
+}
+
+.card-classic-s5 {
+    background: radial-gradient(ellipse at 50% 50%, #ffdadd 0%, #d42e61 50%), #4d001c !important;
+}
+
+.card-vip-s5 {
+    background: radial-gradient(circle at 20% 30%, #ff2a6d 0%, #5a001d 50%), radial-gradient(circle at 80% 70%, #ff2a6d 0%, #5a001d 50%), #000000 !important;
+}
+
+.card-vip-s5 .card-main::after {
+    background: linear-gradient(to right, transparent 0%, #ff99b5 50%, transparent 100%);
+}
+
+.card-classic-s6 {
+    background: radial-gradient(ellipse at 50% 50%, #FFD700 0%, #FFB300 50%), #1c1000 !important;
+}
+
+.card-vip-s6 {
+    background: radial-gradient(ellipse at 70% 30%, #ffcc00 0%, transparent 60%), radial-gradient(ellipse at 30% 70%, #ff6600 0%, transparent 50%), #1a0800 !important;
+}
+
+.card-vip-s6 .card-main::after {
+    background: linear-gradient(to right, transparent 0%, #ffee99 50%, transparent 100%);
+}
+
+.card-classic-s7 {
+    background: conic-gradient(from 90deg at 50% 50%, #ff00ff, #00ffff, #ffff00, #ff00ff) !important;
+}
+
+.card-vip-s7 {
+    background: radial-gradient(ellipse at center, #000 15%, transparent 60%),
+        conic-gradient(from 180deg at 50% 50%, #6a0dad, #0000ff, #00ffff, #ff00ff, #6a0dad) !important;
+    animation: holo-glow 8s cubic-bezier(0.4, 0.0, 0.6, 1) infinite;
+}
+
+@keyframes holo-glow {
+    from {
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.card-vip-s7 .card-main::after {
+    background: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
+}
+
+.interactive-list-item {
+    transition: transform 0.2s ease-in-out;
+}
+
+.interactive-list-item:active {
+    transform: scale(0.97);
+}
+
+@media (hover: hover) {
+    .interactive-list-item:hover {
+        transform: scale(1.03);
+        z-index: 10;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+}

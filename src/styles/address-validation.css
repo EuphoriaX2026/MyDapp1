@@ -1,0 +1,71 @@
+/* Address validation styles for send money modal */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.is-valid {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control.is-warning {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+.form-text.text-danger {
+    color: #dc3545 !important;
+}
+
+.form-text.text-success {
+    color: #28a745 !important;
+}
+
+.form-text.text-warning {
+    color: #ffc107 !important;
+}
+
+/* Ensure form icon positioning */
+.input-wrapper {
+    position: relative;
+}
+
+.form-icon {
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Address input specific styles */
+#recipient-address {
+    padding-right: 40px;
+    /* Make room for validation icon */
+}
+
+/* Validation message styling */
+.form-text {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    line-height: 1.4;
+}
+
+/* Button disabled state when validation fails */
+.btn-primary:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Mobile responsive validation feedback */
+@media (max-width: 767px) {
+    .form-text {
+        font-size: 0.8rem;
+    }
+
+    .form-icon {
+        right: 8px !important;
+    }
+
+    #recipient-address {
+        padding-right: 35px;
+    }
+}

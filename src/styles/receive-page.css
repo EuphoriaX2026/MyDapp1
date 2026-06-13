@@ -1,0 +1,471 @@
+/**
+ * Receive page — SafePal-style QR receive (Finapp-aligned)
+ */
+
+.receive-page {
+  font-family: var(--app-font-family);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.receive-page .receive-bottom-stack {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+.receive-page .card {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.09);
+}
+
+/* Wallet name bar */
+.receive-wallet-bar .card-body {
+  padding: 12px 16px;
+}
+
+.receive-wallet-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.receive-wallet-row__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 10%, var(--finapp-content-bg, #fff));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--finapp-heading, #27173e);
+}
+
+.receive-wallet-row__name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--finapp-heading, #27173e);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.finapp-app-shell.dark-mode .receive-wallet-row__name {
+  color: var(--finapp-heading, #ffffff);
+}
+
+/* Lilac QR card */
+.receive-qr-card {
+  background: #f3f0ff;
+  border-radius: 16px;
+  padding: 20px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+body.finapp-app-shell.dark-mode .receive-qr-card {
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 14%, var(--finapp-content-bg, #1a1228));
+}
+
+.receive-token-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  margin-bottom: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.receive-token-selector:active {
+  opacity: 0.8;
+}
+
+.receive-token-selector--static {
+  cursor: default;
+  pointer-events: none;
+  margin-bottom: 16px;
+}
+
+.receive-payment-uri {
+  width: 100%;
+  margin-top: 8px;
+  padding: 0 4px;
+  font-family: var(--app-font-family);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--finapp-primary, #6236ff);
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+}
+
+.receive-token-selector__label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--finapp-heading, #27173e);
+  letter-spacing: -0.01em;
+}
+
+body.finapp-app-shell.dark-mode .receive-token-selector__label {
+  color: var(--finapp-heading, #ffffff);
+}
+
+.receive-token-selector__chevron {
+  color: var(--finapp-text, rgb(149, 141, 158));
+  flex-shrink: 0;
+}
+
+/* Token icon with chain badge */
+.receive-token-icon-wrap {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.receive-token-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.receive-token-chain-badge {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid #f3f0ff;
+  object-fit: cover;
+  background: #fff;
+}
+
+body.finapp-app-shell.dark-mode .receive-token-chain-badge {
+  border-color: color-mix(in srgb, var(--finapp-primary, #6236ff) 14%, var(--finapp-content-bg, #1a1228));
+}
+
+/* QR frame */
+.receive-qr-frame {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.receive-qr-inner {
+  position: relative;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.receive-qr-code {
+  display: block;
+  width: 200px !important;
+  height: 200px !important;
+}
+
+.receive-qr-center-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.receive-qr-center-badge__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.receive-qr-placeholder {
+  width: 228px;
+  height: 228px;
+  border-radius: 14px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.receive-qr-placeholder__icon {
+  color: var(--finapp-text, rgb(149, 141, 158));
+  opacity: 0.6;
+}
+
+.receive-qr-placeholder__text {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  text-align: center;
+}
+
+/* Full address — teal head/tail highlights */
+.receive-address-display {
+  font-family: var(--app-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: center;
+  word-break: break-all;
+  color: var(--finapp-heading, #27173e);
+  padding: 0 4px;
+}
+
+.receive-address-highlight {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.receive-address-body {
+  color: var(--finapp-heading, #27173e);
+}
+
+body.finapp-app-shell.dark-mode .receive-address-body {
+  color: var(--finapp-heading, #ffffff);
+}
+
+/* Share + Copy row */
+.receive-actions-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.receive-btn {
+  flex: 1;
+  min-height: 48px;
+  height: 48px;
+  border-radius: 10px;
+  font-family: var(--app-font-family);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s ease, background 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.receive-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.receive-btn:active {
+  opacity: 0.88;
+}
+
+.receive-btn--outline {
+  border: 1px solid color-mix(in srgb, var(--finapp-heading, #27173e) 12%, transparent);
+  background: var(--finapp-content-bg, #ffffff);
+  color: var(--finapp-heading, #27173e);
+}
+
+body.finapp-app-shell.dark-mode .receive-btn--outline {
+  background: var(--finapp-content-bg, #1a1228);
+  color: var(--finapp-heading, #ffffff);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.receive-btn--primary {
+  border: 2px solid var(--finapp-primary, #6236ff);
+  background: var(--finapp-primary, #6236ff);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.receive-btn--primary:hover,
+.receive-btn--primary:focus-visible {
+  background: color-mix(in srgb, var(--finapp-primary, #6236ff) 95%, #000);
+  border-color: color-mix(in srgb, var(--finapp-primary, #6236ff) 95%, #000);
+}
+
+/* Warning + brand footer — flush stack, sharp edges, full aligned width */
+.receive-bottom-stack {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.receive-bottom-stack .receive-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 0;
+  border: 1px solid color-mix(in srgb, var(--finapp-heading, #27173e) 10%, transparent);
+  border-bottom: none;
+  background: var(--finapp-content-bg, #ffffff);
+  box-sizing: border-box;
+}
+
+body.finapp-app-shell.dark-mode .receive-bottom-stack .receive-warning {
+  background: var(--finapp-content-bg, #1a1228);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.receive-warning__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--finapp-text, rgb(149, 141, 158)) 18%, transparent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  margin-top: 1px;
+}
+
+.receive-warning__text {
+  font-family: var(--app-font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: justify;
+  color: var(--finapp-text, rgb(149, 141, 158));
+}
+
+.receive-warning__emphasis {
+  font-weight: 700;
+  color: var(--finapp-heading, #27173e);
+}
+
+body.finapp-app-shell.dark-mode .receive-warning__emphasis {
+  color: var(--finapp-heading, #ffffff);
+}
+
+/* E.ONE brand footer — flush under warning, sharp edges, full aligned width */
+.receive-bottom-stack .receive-brand-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: 0;
+  background: var(--finapp-primary, #6236ff);
+  box-sizing: border-box;
+  min-height: 88px;
+}
+
+.receive-brand-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.receive-brand-footer__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.receive-brand-footer__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.receive-brand-footer__name {
+  font-family: var(--app-font-family);
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-align: start;
+}
+
+.receive-brand-footer__url {
+  font-family: var(--app-font-family);
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.2;
+}
+
+.receive-brand-footer__app-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.receive-brand-footer__app-qr-inner {
+  position: relative;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 4px;
+  line-height: 0;
+}
+
+.receive-brand-footer__app-qr-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 1px;
+  box-sizing: border-box;
+}
+
+.receive-brand-footer__app-qr-label {
+  font-family: var(--app-font-family);
+  font-size: 10px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1;
+  text-align: center;
+}

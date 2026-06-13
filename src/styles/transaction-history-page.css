@@ -1,0 +1,172 @@
+.transaction-history-page {
+  min-height: 100vh;
+  font-family: Inter, var(--app-font-family), sans-serif;
+}
+
+.transaction-history-content {
+  padding-bottom: 1.5rem;
+}
+
+.transaction-history-overview__body {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.transaction-history-overview__count {
+  font-size: 1.35rem;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--finapp-heading, #1a1523);
+}
+
+.transaction-history-overview__meta,
+.transaction-history-overview__retention {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--finapp-text, #958d9e);
+}
+
+.transaction-history-overview__meta {
+  margin-bottom: 0.35rem;
+}
+
+.transaction-history-tabs-wrap .nav-tabs.capsuled {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 0.35rem;
+  padding-bottom: 2px;
+}
+
+.transaction-history-tabs-wrap .nav-tabs.capsuled::-webkit-scrollbar {
+  display: none;
+}
+
+.transaction-history-tabs-wrap .nav-item {
+  flex: 0 0 auto;
+}
+
+.transaction-history-tabs-wrap .nav-link {
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  padding: 0.45rem 0.85rem;
+}
+
+.transaction-history-list-card {
+  overflow: hidden;
+}
+
+.transaction-history-item .in {
+  align-items: flex-start;
+}
+
+.transaction-history-item__main {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.transaction-history-item__summary {
+  display: block;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.transaction-history-item__meta {
+  margin-top: 0.2rem;
+  text-align: start;
+}
+
+.transaction-history-item__aside {
+  flex: 0 0 auto;
+  min-width: 5.5rem;
+}
+
+.transaction-history-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.transaction-history-status--success {
+  background: rgba(29, 204, 112, 0.14);
+  color: #128a4a;
+}
+
+.transaction-history-status--pending {
+  background: rgba(107, 114, 128, 0.14);
+  color: #6b7280;
+}
+
+.transaction-history-status--failed {
+  background: rgba(244, 114, 182, 0.16);
+  color: #db2777;
+}
+
+.transaction-history-item__date {
+  color: var(--finapp-heading, #1a1523);
+}
+
+.transaction-history-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.25rem;
+}
+
+.transaction-history-empty__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--finapp-primary, #6236ff);
+  opacity: 0.85;
+  margin-bottom: 0.75rem;
+}
+
+.transaction-history-empty__title {
+  font-size: 1rem;
+  color: var(--finapp-heading, #1a1523);
+}
+
+.transaction-history-empty__hint {
+  font-size: 0.875rem;
+  color: var(--finapp-text, #958d9e);
+  text-align: justify;
+  max-width: 18rem;
+}
+
+body.finapp-app-shell.dark-mode .transaction-history-overview__count,
+body.finapp-app-shell.dark-mode .transaction-history-item__date,
+body.finapp-app-shell.dark-mode .transaction-history-empty__title {
+  color: var(--finapp-heading-dark, #f5f5f7);
+}
+
+body.finapp-app-shell.dark-mode .transaction-history-overview__meta,
+body.finapp-app-shell.dark-mode .transaction-history-overview__retention,
+body.finapp-app-shell.dark-mode .transaction-history-empty__hint {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+body.finapp-app-shell.dark-mode .transaction-history-status--success {
+  background: rgba(29, 204, 112, 0.18);
+  color: #6ee7a8;
+}
+
+body.finapp-app-shell.dark-mode .transaction-history-status--pending {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+body.finapp-app-shell.dark-mode .transaction-history-status--failed {
+  background: rgba(244, 114, 182, 0.2);
+  color: #f9a8d4;
+}

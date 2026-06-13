@@ -1,0 +1,167 @@
+/**
+ * Finapp appBottomMenu — Light bar (component-appbottommenu.html)
+ * Theme tokens: finapp-app-theme.css light / dark-mode
+ */
+
+.eone-app-bottom-menu.appBottomMenu {
+  --bottom-menu-bg: #f8f9fa;
+  --bottom-menu-border: var(--finapp-line, #dcdce9);
+  --bottom-menu-icon: var(--finapp-heading, #27173e);
+  --bottom-menu-icon-active: var(--finapp-primary, #6236ff);
+  --bottom-menu-action-bg: var(--finapp-primary, #6236ff);
+  --bottom-nav-icon-size: 24px;
+  --bottom-nav-icon-active-size: 31.2px; /* +30% */
+
+  min-height: 56px;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  background: var(--bottom-menu-bg);
+  border-top: 1px solid var(--bottom-menu-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  font-family: var(--app-font-family, Inter, system-ui, sans-serif);
+  box-sizing: border-box;
+}
+
+body.finapp-app-shell.dark-mode .eone-app-bottom-menu.appBottomMenu {
+  --bottom-menu-bg: var(--finapp-content-bg, #161129);
+  --bottom-menu-border: var(--finapp-line, #2d1f3b);
+  --bottom-menu-icon: var(--finapp-heading, #ffffff);
+}
+
+.eone-app-bottom-menu.appBottomMenu .item {
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: 9px;
+  letter-spacing: 0;
+  text-align: center;
+  height: 56px;
+  line-height: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-decoration: none !important;
+  color: inherit;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item::before {
+  content: '';
+  display: block;
+  height: 2px;
+  border-radius: 0 0 10px 10px;
+  background: transparent;
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 0;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item .col {
+  width: 100%;
+  padding: 0 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item .eone-bottom-nav-icon-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bottom-nav-icon-active-size);
+  height: var(--bottom-nav-icon-active-size);
+  flex-shrink: 0;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item ion-icon,
+.eone-app-bottom-menu.appBottomMenu .item .eone-bottom-nav-icon {
+  display: block;
+  margin: 0;
+  width: var(--bottom-nav-icon-size);
+  height: var(--bottom-nav-icon-size);
+  font-size: var(--bottom-nav-icon-size);
+  line-height: 1em;
+  color: var(--bottom-menu-icon);
+  flex-shrink: 0;
+  transition:
+    width 0.22s ease,
+    height 0.22s ease,
+    color 0.22s ease,
+    filter 0.22s ease;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item .action-button {
+  display: inline-flex;
+  width: 50px;
+  height: 50px;
+  margin-left: -5px;
+  margin-right: -5px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 200px;
+  background: var(--bottom-menu-action-bg);
+}
+
+.eone-app-bottom-menu.appBottomMenu .item .action-button ion-icon {
+  color: #ffffff !important;
+  margin: 0 !important;
+  line-height: 0 !important;
+  font-size: 24px;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item strong {
+  margin-top: 2px;
+  display: block;
+  color: var(--bottom-menu-icon);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item:active {
+  opacity: 0.8;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item.active::before {
+  background: var(--bottom-menu-icon-active);
+}
+
+.eone-app-bottom-menu.appBottomMenu .item.active ion-icon,
+.eone-app-bottom-menu.appBottomMenu .item.active .eone-bottom-nav-icon,
+.eone-app-bottom-menu.appBottomMenu .item.active strong {
+  color: var(--bottom-menu-icon-active) !important;
+  font-weight: 500;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item.active .eone-bottom-nav-icon {
+  width: var(--bottom-nav-icon-active-size);
+  height: var(--bottom-nav-icon-active-size);
+}
+
+.eone-app-bottom-menu.appBottomMenu .item.active .action-button ion-icon {
+  color: #ffffff !important;
+}
+
+.eone-app-bottom-menu.appBottomMenu .item:hover ion-icon,
+.eone-app-bottom-menu.appBottomMenu .item:hover .eone-bottom-nav-icon,
+.eone-app-bottom-menu.appBottomMenu .item:hover strong {
+  color: var(--bottom-menu-icon);
+}

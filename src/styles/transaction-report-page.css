@@ -1,0 +1,119 @@
+.transaction-report-page .listed-detail,
+.transaction-report-page .transaction-report-list,
+.transaction-report-page .transaction-report-actions {
+  width: var(--finapp-aligned-width);
+  max-width: 100%;
+  margin-left: var(--finapp-content-inset-start);
+  margin-right: var(--finapp-content-inset-end);
+}
+
+.transaction-report-page--embedded {
+  min-height: 0;
+}
+
+.transaction-report-heading {
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.transaction-report-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.transaction-report-label,
+.transaction-report-value,
+.transaction-report-page .simple-listview li strong {
+  font-weight: 400 !important;
+}
+
+.transaction-report-label {
+  flex: 0 0 auto;
+  color: var(--finapp-text, rgb(149, 141, 158));
+  font-size: 14px;
+}
+
+.transaction-report-value {
+  flex: 1 1 auto;
+  text-align: end;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.transaction-report-hash-link {
+  color: var(--finapp-primary, #6236ff);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.transaction-report-hash-link:hover {
+  text-decoration: underline;
+  color: var(--finapp-primary, #6236ff);
+}
+
+.transaction-report-actions {
+  margin-top: 1rem;
+}
+
+.transaction-report-page .iconbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  color: #ffffff;
+}
+
+.transaction-report-iconbox--swap-success {
+  background: linear-gradient(145deg, #1dcc70 0%, #17b863 100%);
+  box-shadow: 0 6px 18px rgba(29, 204, 112, 0.35);
+}
+
+.transaction-report-iconbox--swap-pending {
+  background: linear-gradient(145deg, #8b93a7 0%, #6b7280 100%);
+}
+
+.transaction-report-iconbox--approve,
+.transaction-report-iconbox--approve-pending {
+  background: linear-gradient(145deg, #6b8cff 0%, #4f6fd8 100%);
+  box-shadow: 0 6px 18px rgba(79, 111, 216, 0.28);
+}
+
+.transaction-report-iconbox--approve-pending {
+  background: linear-gradient(145deg, #9ca3af 0%, #6b7280 100%);
+  box-shadow: none;
+}
+
+.transaction-report-iconbox--activate-success {
+  background: linear-gradient(145deg, #1dcc70 0%, #17b863 100%);
+  box-shadow: 0 6px 18px rgba(29, 204, 112, 0.35);
+}
+
+.transaction-report-iconbox--activate-pending {
+  background: linear-gradient(145deg, #6236ff 0%, #4f28d4 100%);
+}
+
+.transaction-report-iconbox--activate-failed,
+.transaction-report-iconbox--failed {
+  background: linear-gradient(145deg, #f472b6 0%, #ec4899 100%);
+  box-shadow: 0 6px 18px rgba(244, 114, 182, 0.32);
+}
+
+.transaction-report-iconbox--card-success,
+.transaction-report-iconbox--send-success,
+.transaction-report-iconbox--default {
+  background: linear-gradient(145deg, #6236ff 0%, #4f28d4 100%);
+}
+
+.image-listview .icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: #ffffff;
+}

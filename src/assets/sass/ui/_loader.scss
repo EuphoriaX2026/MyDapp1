@@ -1,0 +1,76 @@
+#loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background: $colorPrimary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+
+    .loading-icon {
+        width: 42px;
+        height: auto;
+        animation: loadingAnimation 1.2s linear infinite;
+        will-change: transform;
+        transform-origin: center center;
+    }
+
+    &.hidden {
+        display: none;
+    }
+}
+
+@keyframes loadingAnimation {
+    from {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    to {
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
+
+
+body.animationGoBack {
+    overflow: hidden;
+
+    .appHeader,
+    .appBottomMenu,
+    .extraHeader,
+    #appCapsule {
+        transform: translate(100%, 0);
+        transition: all .24s linear;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: $colorPrimary;
+        background-image: url("../img/logos/my-logo.png");
+        background-repeat: no-repeat;
+        background-size: 42px auto;
+        background-position: center center;
+        z-index: 9999;
+        animation: animationGoBack .24s linear;
+    }
+}
+
+@keyframes animationGoBack {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0;
+    }
+}

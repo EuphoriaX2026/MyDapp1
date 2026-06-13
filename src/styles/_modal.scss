@@ -1,0 +1,60 @@
+// src/styles/_modal.scss
+
+.dialogbox {
+    .modal-dialog {
+      transform: translate(0, -50px); // Default start position for animation
+      transition: transform 0.3s ease-out;
+    }
+  
+    &.show .modal-dialog {
+      transform: translate(0, 0); // Final position
+    }
+  
+    .modal-content {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      border-radius: 12px;
+      border: none;
+    }
+    
+    .modal-icon {
+        font-size: 48px;
+        margin-top: 20px;
+    }
+  
+    .btn-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0;
+    }
+  }
+
+  body.finapp-app-shell.dark-mode {
+    .dialogbox .modal-content {
+      background: #161129;
+      color: #ffffff;
+  
+      .modal-header,
+      .modal-footer {
+        border-color: #2d1f3b;
+      }
+  
+      .btn-text-secondary {
+          color: #8f82a5;
+      }
+  
+      .form-control {
+         background: #030108;
+         color: #ffffff;
+         border-color: #2d1f3b;
+         
+         &:focus {
+           color: #ffffff;
+         }
+      }
+  
+      label.label {
+          color: #8f82a5;
+      }
+    }
+  }
